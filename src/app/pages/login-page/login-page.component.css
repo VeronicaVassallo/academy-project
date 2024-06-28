@@ -1,0 +1,14 @@
+#loginPage {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backgroud-color-login);
+}
+#login {
+  border: solid 2px white;
+  width: 30%;
+  height: 50%;
+  margin: auto;
+  padding: 5%;
+  transform: translateY(30%);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
+}
