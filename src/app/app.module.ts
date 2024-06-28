@@ -8,10 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, LoginPageComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
