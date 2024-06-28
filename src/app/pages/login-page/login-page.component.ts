@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +12,7 @@ import { UserService } from '../../services/user.service';
 export class LoginPageComponent implements OnInit {
   dataLoginForm!: FormGroup;
   user: User | undefined;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
   ngOnInit(): void {
     this.dataLoginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -25,8 +26,8 @@ export class LoginPageComponent implements OnInit {
       if ((this.user = this.userService.getUser(email, password))) {
         //To DO: l'utente viene reinderizato all'homePage o il backOffice se è l'amministratore
         this.user.isBuildingManager == true
-          ? alert("E' l'amministratore")
-          : alert('Proprietario casa');
+          ? this.router.navigate(['backoffice'])
+          : this.router.navigate(['homepage']);
       } else {
         alert('Password o email errate!');
       }
