@@ -27,7 +27,6 @@ export class FormAddUserComponent implements OnInit {
     });
   }
   onSubmitSendData() {
-    debugger;
     const dataForm = this.dataFormUser.value;
     this.userService
       .insertUser(this.url, {
