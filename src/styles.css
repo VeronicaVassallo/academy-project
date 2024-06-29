@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --backgroud-color-login: rgb(112, 116, 187);
-  --white-button: aliceblue;
+  --blue-EasyHome: rgb(45, 45, 114);
+  --white-EasyHome: rgb(246, 239, 230);
+  --light-blue: rgb(188, 188, 226);
 }
 * {
   margin: 0px;
@@ -11,5 +12,5 @@
 .buttonEasyHome {
   border: 0px;
   border-radius: 10%;
-  background-color: var(--white-button);
+  background-color: var(--white-EasyHome);
 }

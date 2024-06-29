@@ -11,9 +11,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FormAddUserComponent } from './components/form-add-user/form-add-user.component';
+import { ShowHousesComponent } from './components/show-houses/show-houses.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, HomePageComponent, BackofficePageComponent],
+  declarations: [
+    AppComponent,
+    LoginPageComponent,
+    HomePageComponent,
+    BackofficePageComponent,
+    SidebarComponent,
+    FormAddUserComponent,
+    ShowHousesComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

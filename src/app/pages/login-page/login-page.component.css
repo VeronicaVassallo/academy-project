@@ -1,14 +1,24 @@
 #loginPage {
   width: 100vw;
   height: 100vh;
-  background-color: var(--backgroud-color-login);
+  background-image: url("../../assets/condominio.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #login {
-  border: solid 2px white;
+  border: solid 2px var(--blue-EasyHome);
+  color: var(--blue-EasyHome);
+  background-color: var(--light-blue);
+  opacity: 0.9;
   width: 30%;
   height: 50%;
   margin: auto;
   padding: 5%;
   transform: translateY(30%);
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
+}
+#login form {
+  position: relative;
+  z-index: 3;
+  opacity: 9;
 }

@@ -12,7 +12,7 @@ export class UserService {
     const UserFromDB = `
     {
       "id": "1234",
-      "isBuildingManager": false,
+      "isBuildingManager": true,
       "name": "Mario Rossi",
       "email": "mario@rossi.com",
       "password": "password",
