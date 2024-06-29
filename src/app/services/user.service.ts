@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getUser(email: string, password: string): User | undefined {
     //TO DO : get by mail and password...
@@ -33,5 +34,9 @@ export class UserService {
       expire: new Date(userObj.expire),
     };
     return user;
+  }
+
+  insertUser(url: string, body: {}) {
+    return this.http.post(url, body);
   }
 }

@@ -1,61 +1,90 @@
-<h2>Aggiungi un nuovo utente:</h2>
-<form>
-  <div>
-    <label for="name">Nome e Cognome:</label>
-    <br />
-    <input type="text" id="name" name="name" />
+<h2>Aggiungi un nuovo Utente:</h2>
+<form [formGroup]="dataFormUser" (ngSubmit)="onSubmitSendData()">
+  <div class="d-flex justify-content-around">
+    <div>
+      <label for="name">Nome e Cognome:</label>
+      <br />
+      <input type="text" id="name" name="name" formControlName="name" />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <br />
+      <input type="email" id="email" name="email" formControlName="email" />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <br />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        formControlName="password"
+      />
+    </div>
+    <!--TO DO: aggiungere riconfermare password-->
   </div>
-  <div>
-    <label for="email">Email:</label>
-    <br />
-    <input type="email" id="email" name="email" />
+  <div class="d-flex justify-content-around">
+    <div>
+      <label for="cell">Cellulare:</label>
+      <br />
+      <input type="text" id="cell" name="cell" formControlName="cell" />
+    </div>
+    <div>
+      <label for="birthDate">Data di nascita:</label>
+      <br />
+      <input
+        type="date"
+        id="birthDate"
+        name="birthDate"
+        formControlName="birthDate"
+      />
+    </div>
+    <div>
+      <label for="profileImg">Immagine profilo:</label>
+      <br />
+      <input
+        type="text"
+        id="profileImg"
+        name="profileImg"
+        formControlName="profileImg"
+      />
+    </div>
   </div>
-  <div>
-    <label for="password">Password:</label>
-    <br />
-    <input type="password" id="password" name="password" />
-  </div>
-  <!--TO DO: aggiungere riconfermare password-->
-  <div>
-    <label for="cell">Cellulare:</label>
-    <br />
-    <input type="text" id="cell" name="cell" />
-  </div>
-  <div>
-    <label for="birthDate">Data di nascita:</label>
-    <br />
-    <input type="date" id="birthDate" name="birthDate" />
-  </div>
+
   <div>
     <h4>Seleziona casa disponibile:</h4>
-    <div>casa 1</div>
-    <div>casa 2</div>
-    <div>casa 3</div>
-    <div>casa 3...</div>
+    <div class="d-flex">
+      <div>casa 1</div>
+      <div>casa 2</div>
+      <div>casa 3</div>
+      <div>casa 3...</div>
+    </div>
   </div>
-  <div>
-    <label for="profileImg">Immagine profilo:</label>
-    <br />
-    <input type="text" id="profileImg" name="profileImg" />
-  </div>
+
   <div>
     <label for="creditCard">Carta di credito:</label>
     <br />
-    <input type="text" id="creditCard" name="creditCard" />
+    <input
+      type="text"
+      id="creditCard"
+      name="creditCard"
+      formControlName="creditCard"
+    />
   </div>
   <div>
     <label for="cvv">CCV:</label>
     <br />
-    <input type="text" id="cvv" name="cvv" />
+    <input type="text" id="cvv" name="cvv" formControlName="cvv" />
   </div>
   <div>
-    <label for="birthDate">Data di scadenza Carta di credito:</label>
+    <label for="expire">Data di scadenza Carta di credito:</label>
     <br />
-    <input type="date" id="expire" name="expire" />
+    <input type="date" id="expire" name="expire" formControlName="expire" />
   </div>
   <div>
     <label for="holder">Titolare carta:</label>
     <br />
-    <input type="text" id="holder" name="holder" />
+    <input type="text" id="holder" name="holder" formControlName="holder" />
   </div>
+  <button type="submit">Salva</button>
 </form>

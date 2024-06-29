@@ -14,6 +14,7 @@ import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FormAddUserComponent } from './components/form-add-user/form-add-user.component';
 import { ShowHousesComponent } from './components/show-houses/show-houses.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { ShowHousesComponent } from './components/show-houses/show-houses.compon
     ShowHousesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
-  providers: [provideClientHydration()],
+  providers: [provideClientHydration(), provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
