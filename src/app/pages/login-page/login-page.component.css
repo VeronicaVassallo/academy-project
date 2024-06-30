@@ -5,20 +5,28 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+#veil {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 5;
+  background-color: var(--blue-EasyHome);
+  opacity: 0.9;
+}
 #login {
   border: solid 2px var(--blue-EasyHome);
-  color: var(--blue-EasyHome);
-  background-color: var(--light-blue);
-  opacity: 0.9;
+  color: var(--white-EasyHome);
+  background-color: var(--blue-EasyHome);
   width: 30%;
   height: 50%;
   margin: auto;
   padding: 5%;
   transform: translateY(30%);
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 1.94);
+  position: relative;
+  z-index: 7;
 }
 #login form {
   position: relative;
-  z-index: 3;
-  opacity: 9;
+  z-index: 10;
 }

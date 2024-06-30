@@ -15,6 +15,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FormAddUserComponent } from './components/form-add-user/form-add-user.component';
 import { ShowHousesComponent } from './components/show-houses/show-houses.component';
 import { provideHttpClient } from '@angular/common/http';
+import { CardFreeHouseComponent } from './components/card-free-house/card-free-house.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { provideHttpClient } from '@angular/common/http';
     SidebarComponent,
     FormAddUserComponent,
     ShowHousesComponent,
+    CardFreeHouseComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [provideClientHydration(), provideHttpClient()],

@@ -1,13 +1,15 @@
-h2,
-form {
-  margin-left: 20%;
-}
 .card {
   width: 15%;
-  height: 20%;
+  height: 100%;
   overflow: hidden;
-  border: 5px var(--white-EasyHome) solid;
+
   cursor: pointer;
+}
+.borderSelected {
+  border: 5px red solid;
+}
+.borderNone {
+  border: 5px var(--white-EasyHome) solid;
 }
 .card img {
   width: 300px;

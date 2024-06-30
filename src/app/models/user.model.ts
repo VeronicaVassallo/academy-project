@@ -8,7 +8,7 @@ export interface User {
   password: string;
   cell: string;
   birthDate: Date;
-  houses: House[];
+  //houses: House[]; da rimuovere perche altrimenti alla creazione al frontend mi si crea un loop
   profileImg: string;
   creditCard: string;
   cvv: number;

@@ -1,0 +1,13 @@
+<div
+  class="card m-2"
+  style="width: 18rem"
+  [ngClass]="{ borderSelected: isSelected, borderNone: !isSelected }"
+  (click)="onSelected()"
+>
+  <img class="card-img-top" src="{{ freeHouse.houseImg }}" alt="img_house" />
+  <div class="info-card pt-2">
+    <p><strong>Interno: </strong> {{ freeHouse.interno }}</p>
+    <p><strong>Piano: </strong> {{ freeHouse.piano }}</p>
+    <p><strong>Scala: </strong> {{ freeHouse.scala }}</p>
+  </div>
+</div>

@@ -53,11 +53,14 @@
 
   <div>
     <h4>Seleziona casa disponibile:</h4>
-    <div class="d-flex">
-      <div>casa 1</div>
-      <div>casa 2</div>
-      <div>casa 3</div>
-      <div>casa 3...</div>
+    <div class="d-flex flex-wrap">
+      @for (house of listFreeHouse; track house) {
+      <app-card-free-house
+        class="m-2"
+        [freeHouse]="house"
+        (addHouse)="onGetData($event)"
+      />
+      }
     </div>
   </div>
   <hr />
@@ -87,5 +90,5 @@
     <br />
     <input type="text" id="holder" name="holder" formControlName="holder" />
   </div>
-  <button type="submit" class="btn btn-info">Salva</button>
+  <button type="submit" class="btn btn-primary">Salva</button>
 </form>
