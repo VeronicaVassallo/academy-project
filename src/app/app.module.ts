@@ -16,6 +16,7 @@ import { FormAddUserComponent } from './components/form-add-user/form-add-user.c
 import { ShowHousesComponent } from './components/show-houses/show-houses.component';
 import { provideHttpClient } from '@angular/common/http';
 import { CardFreeHouseComponent } from './components/card-free-house/card-free-house.component';
+import { HeaderBackofficeComponent } from './componets/header-backoffice/header-backoffice.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CardFreeHouseComponent } from './components/card-free-house/card-free-h
     FormAddUserComponent,
     ShowHousesComponent,
     CardFreeHouseComponent,
+    HeaderBackofficeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [provideClientHydration(), provideHttpClient()],

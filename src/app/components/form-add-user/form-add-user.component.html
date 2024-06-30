@@ -1,6 +1,6 @@
 <h2>Aggiungi un nuovo Utente:</h2>
 <form [formGroup]="dataFormUser" (ngSubmit)="onSubmitSendData()">
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-around flex-wrap">
     <div>
       <label for="name">Nome e Cognome:</label>
       <br />
@@ -23,7 +23,7 @@
     </div>
     <!--TO DO: aggiungere riconfermare password-->
   </div>
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-around flex-wrap">
     <div>
       <label for="cell">Cellulare:</label>
       <br />
@@ -50,6 +50,36 @@
       />
     </div>
   </div>
+  <hr />
+  <h4>Dati carta di credito</h4>
+  <div class="d-flex justify-content-around flex-wrap">
+    <div>
+      <label for="creditCard">Carta di credito:</label>
+      <br />
+      <input
+        type="text"
+        id="creditCard"
+        name="creditCard"
+        formControlName="creditCard"
+      />
+    </div>
+    <div>
+      <label for="cvv">CCV:</label>
+      <br />
+      <input type="text" id="cvv" name="cvv" formControlName="cvv" />
+    </div>
+    <div>
+      <label for="expire">Data di scadenza Carta di credito:</label>
+      <br />
+      <input type="date" id="expire" name="expire" formControlName="expire" />
+    </div>
+    <div>
+      <label for="holder">Titolare carta:</label>
+      <br />
+      <input type="text" id="holder" name="holder" formControlName="holder" />
+    </div>
+  </div>
+  <hr />
 
   <div>
     <h4>Seleziona casa disponibile:</h4>
@@ -63,32 +93,5 @@
       }
     </div>
   </div>
-  <hr />
-  <h4>Dati carta di credito</h4>
-  <div>
-    <label for="creditCard">Carta di credito:</label>
-    <br />
-    <input
-      type="text"
-      id="creditCard"
-      name="creditCard"
-      formControlName="creditCard"
-    />
-  </div>
-  <div>
-    <label for="cvv">CCV:</label>
-    <br />
-    <input type="text" id="cvv" name="cvv" formControlName="cvv" />
-  </div>
-  <div>
-    <label for="expire">Data di scadenza Carta di credito:</label>
-    <br />
-    <input type="date" id="expire" name="expire" formControlName="expire" />
-  </div>
-  <div>
-    <label for="holder">Titolare carta:</label>
-    <br />
-    <input type="text" id="holder" name="holder" formControlName="holder" />
-  </div>
-  <button type="submit" class="btn btn-primary">Salva</button>
+  <button type="submit" class="btn btn-primary m-3">Salva</button>
 </form>

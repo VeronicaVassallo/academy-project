@@ -11,7 +11,7 @@
   position: relative;
   z-index: 5;
   background-color: var(--blue-EasyHome);
-  opacity: 0.9;
+  opacity: 0.8;
 }
 #login {
   border: solid 2px var(--blue-EasyHome);
