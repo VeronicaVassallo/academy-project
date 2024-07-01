@@ -14,7 +14,7 @@ import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FormAddUserComponent } from './components/form-add-user/form-add-user.component';
 import { ShowHousesComponent } from './components/show-houses/show-houses.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CardFreeHouseComponent } from './components/card-free-house/card-free-house.component';
 import { HeaderBackofficeComponent } from './componets/header-backoffice/header-backoffice.component';
 
@@ -31,7 +31,11 @@ import { HeaderBackofficeComponent } from './componets/header-backoffice/header-
     HeaderBackofficeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
-  providers: [provideClientHydration(), provideHttpClient()],
+  providers: [
+    provideClientHydration(),
+    provideHttpClient(),
+    provideHttpClient(withFetch()),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
