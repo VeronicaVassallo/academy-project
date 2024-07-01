@@ -1,0 +1,15 @@
+#sidebar {
+  background-color: var(--blue-EasyHome);
+  width: 15%;
+  height: 100vh;
+  position: fixed;
+}
+#profile {
+  background-color: var(--white-EasyHome);
+}
+#imgProfile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}

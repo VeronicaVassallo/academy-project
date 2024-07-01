@@ -17,6 +17,7 @@ import { ShowHousesComponent } from './components/show-houses/show-houses.compon
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CardFreeHouseComponent } from './components/card-free-house/card-free-house.component';
 import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
+import { SidebarHomepageComponent } from './components/sidebar-homepage/sidebar-homepage.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HeaderBackofficeComponent } from './components/header-backoffice/header
     ShowHousesComponent,
     CardFreeHouseComponent,
     HeaderBackofficeComponent,
+    SidebarHomepageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [
