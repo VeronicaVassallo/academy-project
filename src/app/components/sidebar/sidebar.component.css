@@ -13,3 +13,6 @@
   border-radius: 50%;
   overflow: hidden;
 }
+button {
+  width: 100%;
+}

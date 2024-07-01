@@ -7,13 +7,37 @@
           <label for="email">E-mail:</label>
           <br />
           <input type="email" name="email" formControlName="email" />
+          <br />
+          <p
+            *ngIf="
+              !dataLoginForm.get('email')?.valid &&
+              dataLoginForm.get('email')?.touched
+            "
+            class="text-danger"
+          >
+            Inserisci Email
+          </p>
         </div>
         <div>
           <label for="email">Password:</label>
           <br />
           <input type="password" name="password" formControlName="password" />
+          <br />
+          <p
+            *ngIf="
+              !dataLoginForm.get('password')?.valid &&
+              dataLoginForm.get('password')?.touched
+            "
+            class="text-danger"
+          >
+            Inserisci Password
+          </p>
         </div>
-        <button type="submit" class="btn btn-light py-2 px-3 mt-2">
+        <button
+          [disabled]="!dataLoginForm.valid"
+          type="submit"
+          class="btn btn-light py-2 px-3 mt-4"
+        >
           Login
         </button>
       </form>

@@ -2,7 +2,7 @@
   width: 15%;
   height: 100%;
   overflow: hidden;
-
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
   cursor: pointer;
 }
 .borderSelected {
