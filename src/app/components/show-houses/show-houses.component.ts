@@ -12,8 +12,7 @@ export class ShowHousesComponent implements OnInit {
   constructor(private houseService: HouseService) {}
   ngOnInit(): void {
     this.houseService
-      //TO DO: inserire il localhost corretto
-      .getAllHouses('http://localhost:1234/house/getAll')
+      .getAllHouses('http://localhost:8080/house/getAll')
       .subscribe({
         next: (data: House[]) => {
           console.log('Dati delle case dal BE', data);
