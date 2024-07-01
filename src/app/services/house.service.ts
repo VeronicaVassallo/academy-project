@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { House } from '../models/house.model';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,12 +10,11 @@ export class HouseService {
   listFreeHouse: House[] = [];
   constructor(private http: HttpClient) {}
 
-  getAllHouses(url: string) {
-    /*Da implementare...
-    return this.http.get(url);*/
+  getAllHouses(url: string): Observable<House[]> {
+    return this.http.get<House[]>(url);
   }
   getFreeHouses(url: string) {
-    //const free = this.http.get(url);
+    //const freeHousesFromDB = this.http.get(url);
     let freeHousesFromDB = `[
     {
         "id": "house1",

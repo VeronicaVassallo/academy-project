@@ -1,24 +1,76 @@
-<app-header-backoffice />
-<div class="card mt-3" style="width: 18rem; margin-left: 20%">
+<h3 class="my-3">Lista Case:</h3>
+<!--inizio SearchBar-->
+<nav class="navbar navbar-light bg-light rounded mb-4">
+  <form class="d-flex">
+    <div class="d-flex p-2 align-items-center">
+      <label class="mx-2" for="UserEntity">Propietario: </label>
+      <input
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="ex: Mario Rossi"
+        name="UserEntity"
+      />
+      <label class="mx-2" for="scala">Scala: </label>
+      <input
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="ex: A"
+        name="scala"
+      />
+      <label class="mx-2" for="piano">Piano: </label>
+      <input
+        class="form-control mr-sm-2"
+        type="number"
+        placeholder="ex: 3"
+        name="piano"
+      />
+      <label class="mx-2" for="interno">Interno: </label>
+      <input
+        class="form-control mr-sm-2"
+        type="number"
+        placeholder="ex: 3"
+        name="interno"
+      />
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="button">
+        Cerca
+      </button>
+    </div>
+  </form>
+</nav>
+<!--fine SearchBar-->
+@for (house of houses; track house) {
+<div class="card mt-3" style="width: 18rem">
+  <img class="card-img-top" src="{{ house.houseImg }}" alt="img_house" />
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Scala: </strong> {{ house.scala }}</li>
+    <li class="list-group-item"><strong>Piano: </strong> {{ house.piano }}</li>
+    <li class="list-group-item">
+      <strong>Interno: </strong>{{ house.interno }}
+    </li>
+    <li class="list-group-item">
+      <strong>Proprietario: </strong> {{ house.UserEntity.name }}
+    </li>
+  </ul>
+  <div class="card-body">
+    <button class="btn btn-primary mb-2">Dettagli</button>
+  </div>
+</div>
+
+}
+
+<div class="card mt-3" style="width: 18rem">
   <img
     class="card-img-top"
     src="https://www.altalex.com/~/media/Images/Lex/Condominio/condominio-GI-1060820416%20jpg.jpg"
-    alt="Card image cap"
+    alt="img_house"
   />
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Scala: </strong> A</li>
+    <li class="list-group-item"><strong>Piano: </strong> 3</li>
+    <li class="list-group-item"><strong>Interno: </strong> 12</li>
+    <li class="list-group-item"><strong>Proprietario: </strong> Mario Rossi</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <button class="btn btn-primary mb-2">Dettagli</button>
   </div>
 </div>

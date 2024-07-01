@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HouseService } from '../../services/house.service';
+import { House } from '../../models/house.model';
 
 @Component({
   selector: 'app-show-houses',
   templateUrl: './show-houses.component.html',
-  styleUrl: './show-houses.component.css'
+  styleUrl: './show-houses.component.css',
 })
-export class ShowHousesComponent {
-
+export class ShowHousesComponent implements OnInit {
+  houses: House[] = [];
+  constructor(private houseService: HouseService) {}
+  ngOnInit(): void {
+    this.houseService
+      //TO DO: inserire il localhost corretto
+      .getAllHouses('http://localhost:1234/house/getAll')
+      .subscribe({
+        next: (data: House[]) => {
+          console.log('Dati delle case dal BE', data);
+          this.houses = data;
+        },
+        error: (err) => {
+          console.error('Errore durante la ricezione dei dati:', err);
+        },
+      });
+  }
 }

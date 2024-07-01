@@ -1,0 +1,25 @@
+header {
+  margin-left: 18vw;
+  width: 80vw;
+  height: 30vh;
+  overflow: hidden;
+  border-radius: 0% 0% 30px 30px;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
+  position: relative;
+  z-index: 119;
+}
+header img {
+  width: 100%;
+}
+.title-header {
+  position: relative;
+  top: -350%;
+  left: 40%;
+  text-align: center;
+  z-index: 120;
+  color: var(--blue-EasyHome);
+  background-color: aliceblue;
+  width: 20%;
+  opacity: 0.8;
+  border-radius: 10px;
+}
