@@ -16,21 +16,35 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.dataLoginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.min(8)]),
+      password: new FormControl('', Validators.required),
     });
   }
   onSubmit() {
     if (this.dataLoginForm.valid) {
+      debugger;
       const email = this.dataLoginForm.get('email')?.value;
       const password = this.dataLoginForm.get('password')?.value;
-      if ((this.user = this.userService.getUser(email, password))) {
-        //To DO: l'utente viene reinderizato all'homePage o il backOffice se è l'amministratore
-        this.user.isBuildingManager == true
-          ? this.router.navigate(['backoffice'])
-          : this.router.navigate(['homepage']);
-      } else {
-        alert('Password o email errate!');
-      }
+      this.userService
+        .getUser(`http://localhost:8080/user/login/${email}/${password}`)
+        .subscribe({
+          next: (user: User) => {
+            this.user = user;
+            console.log(user.buildingManager);
+            console.log(user);
+
+            if (this.user.buildingManager) {
+              console.log('Navigating to backoffice');
+              this.router.navigate(['backoffice']);
+            } else {
+              console.log('Navigating to homepage');
+              this.router.navigate(['homepage']);
+            }
+          },
+          error: (err) => {
+            console.error('Error fetching user:', err);
+            alert('Password o email errate!');
+          },
+        });
     } else {
       console.log('Form non valido');
     }

@@ -12,8 +12,7 @@ import { HouseService } from '../../services/house.service';
 export class FormAddUserComponent implements OnInit {
   listFreeHouse: House[] = [];
   listHouseSelected: string[] = [];
-  url: string =
-    'https://gucci-copy-angular-default-rtdb.europe-west1.firebasedatabase.app/user.json';
+  url: string = 'http://localhost:8080/user/save';
   dataFormUser!: FormGroup;
   constructor(
     private userService: UserService,
@@ -36,23 +35,26 @@ export class FormAddUserComponent implements OnInit {
     this.listFreeHouse = this.houseService.getFreeHouses('url');
   }
   onSubmitSendData() {
+    debugger;
     const dataForm = this.dataFormUser.value;
     this.userService
       .insertUser(this.url, {
-        user: {
-          isBuildingManager: false,
-          name: dataForm.name,
-          email: dataForm.email,
-          password: dataForm.password,
-          cell: dataForm.cell,
-          birthDate: dataForm.birthDate,
-          profileImg: dataForm.profileImg,
-          creditCard: dataForm.creditCard,
-          cvv: dataForm.cvv,
-          expire: dataForm.expire,
-          holder: dataForm.holder,
-        },
-        houses: this.listHouseSelected, //lista id delle case scelte
+        //TO DO : rimuovi i commenti
+        // user:
+        //{
+        buildingManager: false,
+        name: dataForm.name,
+        email: dataForm.email,
+        password: dataForm.password,
+        cell: dataForm.cell,
+        birthDate: dataForm.birthDate,
+        profileImg: dataForm.profileImg,
+        creditCard: dataForm.creditCard,
+        cvv: dataForm.cvv,
+        expire: dataForm.expire,
+        holder: dataForm.holder,
+        // },
+        // houses: this.listHouseSelected, lista id delle case scelte
       })
       .subscribe({
         next: (data) => {
