@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HouseService } from '../../services/house.service';
 import { House } from '../../models/house.model';
+import { enviroment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-show-houses',
@@ -12,7 +13,7 @@ export class ShowHousesComponent implements OnInit {
   constructor(private houseService: HouseService) {}
   ngOnInit(): void {
     this.houseService
-      .getAllHouses('http://localhost:8080/house/getAll')
+      .getAllHouses(`${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/getAll`)
       .subscribe({
         next: (data: House[]) => {
           console.log('Dati delle case dal BE', data);

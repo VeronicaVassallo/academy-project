@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { House } from '../../models/house.model';
 import { HouseService } from '../../services/house.service';
+import { enviroment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-form-add-user',
@@ -12,7 +13,7 @@ import { HouseService } from '../../services/house.service';
 export class FormAddUserComponent implements OnInit {
   listFreeHouse: House[] = [];
   listHouseSelected: string[] = [];
-  url: string = 'http://localhost:8080/user/save';
+  url: string = `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/save`;
   dataFormUser!: FormGroup;
   constructor(
     private userService: UserService,
@@ -25,17 +26,27 @@ export class FormAddUserComponent implements OnInit {
       password: new FormControl('', Validators.required),
       cell: new FormControl('', Validators.required),
       birthDate: new FormControl(null, Validators.required),
-      profileImg: new FormControl(''),
-      creditCard: new FormControl(''),
-      cvv: new FormControl(null),
-      expire: new FormControl(null),
-      holder: new FormControl(''),
+      profileImg: new FormControl('', Validators.required),
+      creditCard: new FormControl('', Validators.required),
+      cvv: new FormControl(null, Validators.required),
+      expire: new FormControl(null, Validators.required),
+      holder: new FormControl('', Validators.required),
     });
 
-    this.listFreeHouse = this.houseService.getFreeHouses('url');
+    this.houseService;
+    /*TO DO: - mi ritorna 500.
+      .getFreeHouses('http://localhost:8080/house/getAll/houses/free')
+      .subscribe({
+        next: (data: House[]) => {
+          this.listFreeHouse = data;
+        },
+        error: (err) => {
+          console.error('Errore durante la ricezione dei dati:', err);
+        },
+      });
+      */
   }
   onSubmitSendData() {
-    debugger;
     const dataForm = this.dataFormUser.value;
     this.userService
       .insertUser(this.url, {
@@ -68,7 +79,6 @@ export class FormAddUserComponent implements OnInit {
   }
 
   onGetData(value: House | null) {
-    console.log('dati from children', value);
     if (value) {
       this.listHouseSelected.push(value.id);
     }

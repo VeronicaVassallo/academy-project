@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { enviroment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-login-page',
@@ -25,7 +26,9 @@ export class LoginPageComponent implements OnInit {
       const email = this.dataLoginForm.get('email')?.value;
       const password = this.dataLoginForm.get('password')?.value;
       this.userService
-        .getUser(`http://localhost:8080/user/login/${email}/${password}`)
+        .getUser(
+          `${enviroment.ANGULAR_APP_SERVER_BASE_URL}/user/login/${email}/${password}`
+        )
         .subscribe({
           next: (user: User) => {
             this.user = user;

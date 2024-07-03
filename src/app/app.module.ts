@@ -19,6 +19,8 @@ import { CardFreeHouseComponent } from './components/card-free-house/card-free-h
 import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
 import { SidebarHomepageComponent } from './components/sidebar-homepage/sidebar-homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UserHouseComponent } from './components/user-house/user-house.component';
+import { BachecaComponent } from './components/bacheca/bacheca.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HeaderBackofficeComponent,
     SidebarHomepageComponent,
     FooterComponent,
+    UserHouseComponent,
+    BachecaComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [

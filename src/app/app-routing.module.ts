@@ -5,11 +5,20 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page.component';
 import { FormAddUserComponent } from './components/form-add-user/form-add-user.component';
 import { ShowHousesComponent } from './components/show-houses/show-houses.component';
+import { BachecaComponent } from './components/bacheca/bacheca.component';
+import { UserHouseComponent } from './components/user-house/user-house.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', pathMatch: 'full', component: LoginPageComponent },
-  { path: 'homepage', pathMatch: 'full', component: HomePageComponent },
+  {
+    path: 'homepage',
+    component: HomePageComponent,
+    children: [
+      { path: '', component: BachecaComponent },
+      { path: 'userHouse', component: UserHouseComponent },
+    ],
+  },
   {
     path: 'backoffice',
     component: BackofficePageComponent,
