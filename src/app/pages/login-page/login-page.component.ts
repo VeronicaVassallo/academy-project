@@ -25,29 +25,25 @@ export class LoginPageComponent implements OnInit {
       debugger;
       const email = this.dataLoginForm.get('email')?.value;
       const password = this.dataLoginForm.get('password')?.value;
-      this.userService
-        .getUser(
-          `${enviroment.ANGULAR_APP_SERVER_BASE_URL}/user/login/${email}/${password}`
-        )
-        .subscribe({
-          next: (user: User) => {
-            this.user = user;
-            console.log(user.buildingManager);
-            console.log(user);
+      this.userService.getUser(email, password).subscribe({
+        next: (user: User) => {
+          this.user = user;
+          console.log(user.buildingManager);
+          console.log(user);
 
-            if (this.user.buildingManager) {
-              console.log('Navigating to backoffice');
-              this.router.navigate(['backoffice']);
-            } else {
-              console.log('Navigating to homepage');
-              this.router.navigate(['homepage']);
-            }
-          },
-          error: (err) => {
-            console.error('Error fetching user:', err);
-            alert('Password o email errate!');
-          },
-        });
+          if (this.user.buildingManager) {
+            console.log('Navigating to backoffice');
+            this.router.navigate(['backoffice']);
+          } else {
+            console.log('Navigating to homepage');
+            this.router.navigate(['homepage']);
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching user:', err);
+          alert('Password o email errate!');
+        },
+      });
     } else {
       console.log('Form non valido');
     }

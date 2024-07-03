@@ -38,23 +38,29 @@
   </form>
 </nav>
 <!--fine SearchBar-->
-@for (house of houses; track house) {
-<div class="card mt-3" style="width: 18rem">
-  <img class="card-img-top" src="{{ house.houseImg }}" alt="img_house" />
-  <ul class="list-group">
-    <li class="list-group-item"><strong>Scala: </strong> {{ house.scala }}</li>
-    <li class="list-group-item"><strong>Piano: </strong> {{ house.piano }}</li>
-    <li class="list-group-item">
-      <strong>Interno: </strong>{{ house.interno }}
-    </li>
-    <li class="list-group-item">
-      <strong>Proprietario:</strong>
-      <span *ngIf="house.UserEntity?.name">{{ house.UserEntity.name }}</span>
-    </li>
-  </ul>
-  <div class="card-body">
-    <button class="btn btn-primary mb-2">Dettagli</button>
+<div class="d-flex">
+  @for (house of houses; track house) {
+  <div class="card mt-3" style="width: 18rem">
+    <img class="card-img-top" src="{{ house.houseImg }}" alt="img_house" />
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>Scala: </strong> {{ house.scala }}
+      </li>
+      <li class="list-group-item">
+        <strong>Piano: </strong> {{ house.piano }}
+      </li>
+      <li class="list-group-item">
+        <strong>Interno: </strong>{{ house.interno }}
+      </li>
+      <li class="list-group-item">
+        <strong>Proprietario: </strong>
+        <span *ngIf="house.user.name">{{ house.user.name }}</span>
+      </li>
+    </ul>
+    <div class="card-body">
+      <button class="btn btn-primary mb-2">Dettagli</button>
+    </div>
   </div>
-</div>
 
-}
+  }
+</div>

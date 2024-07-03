@@ -12,16 +12,15 @@ export class ShowHousesComponent implements OnInit {
   houses: House[] = [];
   constructor(private houseService: HouseService) {}
   ngOnInit(): void {
-    this.houseService
-      .getAllHouses(`${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/getAll`)
-      .subscribe({
-        next: (data: House[]) => {
-          console.log('Dati delle case dal BE', data);
-          this.houses = data;
-        },
-        error: (err) => {
-          console.error('Errore durante la ricezione dei dati:', err);
-        },
-      });
+    debugger;
+    this.houseService.getAllHouses().subscribe({
+      next: (data: House[]) => {
+        console.log('Dati delle case dal BE', data);
+        this.houses = data;
+      },
+      error: (err) => {
+        console.error('Errore durante la ricezione dei dati:', err);
+      },
+    });
   }
 }

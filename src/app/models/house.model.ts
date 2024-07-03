@@ -5,7 +5,7 @@ export interface House {
   scala: string;
   piano: number;
   interno: number;
-  UserEntity: User;
+  user: User;
   houseImg: string;
   gas: number;
   water: number;

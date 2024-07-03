@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { House } from '../../models/house.model';
 import { HouseService } from '../../services/house.service';
-import { enviroment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-form-add-user',
@@ -13,7 +12,6 @@ import { enviroment } from '../../../enviroments/enviroment';
 export class FormAddUserComponent implements OnInit {
   listFreeHouse: House[] = [];
   listHouseSelected: string[] = [];
-  url: string = `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/save`;
   dataFormUser!: FormGroup;
   constructor(
     private userService: UserService,
@@ -33,23 +31,19 @@ export class FormAddUserComponent implements OnInit {
       holder: new FormControl('', Validators.required),
     });
 
-    this.houseService;
-    /*TO DO: - mi ritorna 500.
-      .getFreeHouses('http://localhost:8080/house/getAll/houses/free')
-      .subscribe({
-        next: (data: House[]) => {
-          this.listFreeHouse = data;
-        },
-        error: (err) => {
-          console.error('Errore durante la ricezione dei dati:', err);
-        },
-      });
-      */
+    this.houseService.getFreeHouses().subscribe({
+      next: (data: House[]) => {
+        this.listFreeHouse = data;
+      },
+      error: (err) => {
+        console.error('Errore durante la ricezione dei dati:', err);
+      },
+    });
   }
   onSubmitSendData() {
     const dataForm = this.dataFormUser.value;
     this.userService
-      .insertUser(this.url, {
+      .insertUser({
         //TO DO : rimuovi i commenti
         // user:
         //{

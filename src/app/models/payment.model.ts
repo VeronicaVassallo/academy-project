@@ -6,7 +6,7 @@ export interface Payment {
   isPaid: boolean;
   ongoing: boolean;
   bolletta: string;
-  UserEntity: User;
+  user: User;
   HouseEntity: House;
   description: string;
   creditCard: String;

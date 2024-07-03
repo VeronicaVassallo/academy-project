@@ -5,4 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './backoffice-page.component.html',
   styleUrl: './backoffice-page.component.css',
 })
-export class BackofficePageComponent {}
+export class BackofficePageComponent {
+  title: string = 'BACKOFFICE';
+}
