@@ -20,6 +20,7 @@ export class FormAddUserComponent implements OnInit {
   ngOnInit(): void {
     this.dataFormUser = new FormGroup({
       name: new FormControl('', Validators.required),
+      surname: new FormControl('', Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
       cell: new FormControl('', Validators.required),
@@ -49,6 +50,7 @@ export class FormAddUserComponent implements OnInit {
         //{
         buildingManager: false,
         name: dataForm.name,
+        surname: dataForm.surname,
         email: dataForm.email,
         password: dataForm.password,
         cell: dataForm.cell,
@@ -63,7 +65,6 @@ export class FormAddUserComponent implements OnInit {
       })
       .subscribe({
         next: (data) => {
-          console.log('Dati inseriti');
           alert('Utente Registrato con successo');
         },
         error: (error) => {

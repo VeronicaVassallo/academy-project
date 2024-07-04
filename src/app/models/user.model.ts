@@ -2,6 +2,7 @@ export interface User {
   id: string;
   buildingManager: boolean;
   name: string;
+  surname: string;
   email: string;
   password: string;
   cell: string;
