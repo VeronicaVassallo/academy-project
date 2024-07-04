@@ -1,14 +1,16 @@
 <section id="sidebar">
   <div id="profile" class="ps-5 pt-3">
-    <div id="imgProfile">
+    <div id="imgProfile" class="m-2">
       <img
-        class="w-100"
-        src="/assests/{{ user?.profileImg }}"
+        class="w-100 h-100"
+        src="/assets/{{ user?.profileImg }}"
         alt="img_profile"
       />
     </div>
 
-    <p>{{ user?.name }} {{ user?.surname }}</p>
+    <p class="py-2">
+      <strong>Profilo: </strong>{{ user?.name }} {{ user?.surname }}
+    </p>
   </div>
   <div id="menu" class="ps-5 pt-3">
     <button routerLink="/homepage/" class="btn btn-primary mb-2">

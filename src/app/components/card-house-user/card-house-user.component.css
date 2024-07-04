@@ -1,0 +1,15 @@
+.card {
+  width: 15%;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
+  cursor: pointer;
+  border: 5px var(--white-EasyHome) solid;
+}
+.card img {
+  width: 300px;
+  height: 300px;
+}
+.info-card p {
+  margin-left: 10px;
+}

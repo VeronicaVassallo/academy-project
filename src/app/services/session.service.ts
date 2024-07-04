@@ -11,14 +11,18 @@ export class SessionService {
   constructor() {}
 
   setSession(user: User) {
-    this.userSession = JSON.stringify(user);
-    sessionStorage.setItem('user', this.userSession);
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      this.userSession = JSON.stringify(user);
+      sessionStorage.setItem('user', this.userSession);
+    }
   }
 
   getUserFromSession(): User | null {
-    let userString = sessionStorage.getItem('user');
-    if (userString) {
-      this.user = JSON.parse(userString);
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      const userString = sessionStorage.getItem('user');
+      if (userString) {
+        this.user = JSON.parse(userString);
+      }
     }
 
     return this.user;

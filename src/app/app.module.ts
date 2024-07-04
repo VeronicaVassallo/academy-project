@@ -21,6 +21,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { UserHouseComponent } from './components/user-house/user-house.component';
 import { BachecaComponent } from './components/bacheca/bacheca.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CardHouseUserComponent } from './components/card-house-user/card-house-user.component';
+import { ModalPaymentComponent } from './components/modal-payment/modal-payment.component';
+import { ModalUsageComponent } from './components/modal-usage/modal-usage.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { HeaderComponent } from './components/header/header.component';
     UserHouseComponent,
     BachecaComponent,
     HeaderComponent,
+    CardHouseUserComponent,
+    ModalPaymentComponent,
+    ModalUsageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [
