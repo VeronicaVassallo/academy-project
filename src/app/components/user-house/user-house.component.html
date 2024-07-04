@@ -1,1 +1,8 @@
-<h2>Le mie case:</h2>
+<h2 class="mt-3">Le mie case:</h2>
+<div class="container-fluid">
+  <div class="row">
+    @for (house of houses; track house.id) {
+    <app-card-free-house class="m-2" [freeHouse]="house" />
+    }
+  </div>
+</div>

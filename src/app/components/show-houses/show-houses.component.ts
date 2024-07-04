@@ -11,6 +11,7 @@ export class ShowHousesComponent implements OnInit {
   houses: House[] = [];
   constructor(private houseService: HouseService) {}
   ngOnInit(): void {
+    debugger;
     this.houseService.getAllHouses().subscribe({
       next: (data: House[]) => {
         console.log('Dati delle case dal BE', data);

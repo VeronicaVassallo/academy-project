@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +14,11 @@ export class LoginPageComponent implements OnInit {
   showPassword: boolean = false;
   dataLoginForm!: FormGroup;
   user: User | undefined;
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private sessionService: SessionService
+  ) {}
   ngOnInit(): void {
     this.dataLoginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -27,14 +32,11 @@ export class LoginPageComponent implements OnInit {
       this.userService.getUser(email, password).subscribe({
         next: (user: User) => {
           this.user = user;
-          console.log(user.buildingManager);
-          console.log(user);
+          this.sessionService.setSession(user);
 
           if (this.user.buildingManager) {
-            console.log('Navigating to backoffice');
             this.router.navigate(['backoffice']);
           } else {
-            console.log('Navigating to homepage');
             this.router.navigate(['homepage']);
           }
         },
