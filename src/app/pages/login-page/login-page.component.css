@@ -1,7 +1,7 @@
 #loginPage {
   width: 100vw;
   height: 100vh;
-  background-image: url("../../assets/condominio.jpg");
+  background-image: url("/assets/condominio.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -29,4 +29,8 @@
 #login form {
   position: relative;
   z-index: 10;
+}
+
+span svg {
+  cursor: pointer;
 }

@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { enviroment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-login-page',
@@ -11,6 +10,7 @@ import { enviroment } from '../../../enviroments/enviroment';
   styleUrl: './login-page.component.css',
 })
 export class LoginPageComponent implements OnInit {
+  showPassword: boolean = false;
   dataLoginForm!: FormGroup;
   user: User | undefined;
   constructor(private userService: UserService, private router: Router) {}
@@ -22,7 +22,6 @@ export class LoginPageComponent implements OnInit {
   }
   onSubmit() {
     if (this.dataLoginForm.valid) {
-      debugger;
       const email = this.dataLoginForm.get('email')?.value;
       const password = this.dataLoginForm.get('password')?.value;
       this.userService.getUser(email, password).subscribe({
@@ -47,5 +46,9 @@ export class LoginPageComponent implements OnInit {
     } else {
       console.log('Form non valido');
     }
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
 }

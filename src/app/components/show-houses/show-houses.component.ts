@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HouseService } from '../../services/house.service';
 import { House } from '../../models/house.model';
-import { enviroment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-show-houses',
@@ -12,7 +11,6 @@ export class ShowHousesComponent implements OnInit {
   houses: House[] = [];
   constructor(private houseService: HouseService) {}
   ngOnInit(): void {
-    debugger;
     this.houseService.getAllHouses().subscribe({
       next: (data: House[]) => {
         console.log('Dati delle case dal BE', data);
