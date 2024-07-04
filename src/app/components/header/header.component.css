@@ -1,7 +1,7 @@
 header {
   margin-left: 18vw;
   width: 78vw;
-  height: 24vh;
+  height: 26vh;
   overflow: hidden;
   border-radius: 0% 0% 30px 30px;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
@@ -13,7 +13,7 @@ header img {
 }
 .title-header {
   position: relative;
-  top: -420%;
+  top: -405%;
   left: 40%;
   text-align: center;
   z-index: 120;
@@ -22,4 +22,7 @@ header img {
   width: 20%;
   opacity: 0.8;
   border-radius: 10px;
+}
+#logo {
+  width: 40px;
 }

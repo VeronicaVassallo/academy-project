@@ -3,3 +3,10 @@ footer {
   background-color: var(--blue-EasyHome) !important;
   color: var(--white-EasyHome) !important;
 }
+#logo {
+  width: 50px;
+}
+
+svg {
+  padding-top: 2px;
+}

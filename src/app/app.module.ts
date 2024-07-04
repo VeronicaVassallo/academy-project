@@ -16,11 +16,11 @@ import { FormAddUserComponent } from './components/form-add-user/form-add-user.c
 import { ShowHousesComponent } from './components/show-houses/show-houses.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CardFreeHouseComponent } from './components/card-free-house/card-free-house.component';
-import { HeaderBackofficeComponent } from './components/header-backoffice/header-backoffice.component';
 import { SidebarHomepageComponent } from './components/sidebar-homepage/sidebar-homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserHouseComponent } from './components/user-house/user-house.component';
 import { BachecaComponent } from './components/bacheca/bacheca.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +32,11 @@ import { BachecaComponent } from './components/bacheca/bacheca.component';
     FormAddUserComponent,
     ShowHousesComponent,
     CardFreeHouseComponent,
-    HeaderBackofficeComponent,
     SidebarHomepageComponent,
     FooterComponent,
     UserHouseComponent,
     BachecaComponent,
+    HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [

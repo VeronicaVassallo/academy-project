@@ -54,7 +54,8 @@
       </li>
       <li class="list-group-item">
         <strong>Proprietario: </strong>
-        <span *ngIf="house.user.name">{{ house.user.name }}</span>
+        <span *ngIf="house.user">{{ house.user.name }}</span>
+        <span *ngIf="!house.user">nessuno</span>
       </li>
     </ul>
     <div class="card-body">
