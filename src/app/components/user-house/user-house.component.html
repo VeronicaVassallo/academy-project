@@ -3,6 +3,8 @@
   <div class="row">
     @for (house of houses; track house.id) {
     <app-card-free-house class="m-2" [freeHouse]="house" />
+    } @if (message) {
+    <h2>Non ci sono case!</h2>
     }
   </div>
 </div>

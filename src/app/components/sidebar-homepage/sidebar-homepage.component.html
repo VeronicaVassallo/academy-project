@@ -3,12 +3,12 @@
     <div id="imgProfile">
       <img
         class="w-100"
-        src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+        src="/assests/{{ user?.profileImg }}"
         alt="img_profile"
       />
     </div>
 
-    <p>Mario Rossi</p>
+    <p>{{ user?.name }} {{ user?.surname }}</p>
   </div>
   <div id="menu" class="ps-5 pt-3">
     <button routerLink="/homepage/" class="btn btn-primary mb-2">

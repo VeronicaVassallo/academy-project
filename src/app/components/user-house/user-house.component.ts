@@ -19,7 +19,6 @@ export class UserHouseComponent implements OnInit {
     private sessionService: SessionService
   ) {}
   ngOnInit(): void {
-    debugger;
     this.user = this.sessionService.getUserFromSession();
     if (this.user) {
       this.houseService.getSpecificHouse(this.user?.id).subscribe({
