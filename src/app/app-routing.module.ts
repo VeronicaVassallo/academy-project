@@ -29,6 +29,7 @@ const routes: Routes = [
       { path: 'bachecaAdmin', component: BachecaAdminComponent },
     ],
   },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

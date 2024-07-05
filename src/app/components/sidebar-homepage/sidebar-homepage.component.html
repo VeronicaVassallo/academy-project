@@ -3,7 +3,7 @@
     <div id="imgProfile" class="m-2">
       <img
         class="w-100 h-100"
-        src="/assets/{{ user?.profileImg }}"
+        [src]="'assets/' + (user?.profileImg || 'img2.jpg')"
         alt="img_profile"
       />
     </div>
@@ -12,7 +12,9 @@
       <strong>Profilo: </strong>{{ user?.name }} {{ user?.surname }}
     </p>
   </div>
+  <!--Bottoni User-->
   <div id="menu" class="px-3 pt-3">
+    @if (!user?.buildingManager) {
     <button routerLink="/homepage/" class="btn btn-primary mb-2">
       Bacheca
     </button>
@@ -20,16 +22,27 @@
       Le mie case
     </button>
     <button class="btn btn-primary mb-2">Impostazioni</button>
-    <p>Bottoni Amministratore</p>
-    <button routerLink="/backoffice/" class="btn btn-primary mb-2">
-      Visualizza Case
-    </button>
-    <button routerLink="/backoffice/formaAddUser" class="btn btn-primary mb-2">
-      Crea nuovo Utente
-    </button>
-    <button routerLink="/backoffice/bachecaAdmin" class="btn btn-primary mb-2">
-      Bacheca
-    </button>
-    <button class="btn btn-primary mb-2">Crea notifica bolletta</button>
+    }
+    <!--Bottoni Amministratore-->
+    @else {
+    <div>
+      <button routerLink="/backoffice/" class="btn btn-primary mb-2">
+        Visualizza Case
+      </button>
+      <button
+        routerLink="/backoffice/formaAddUser"
+        class="btn btn-primary mb-2"
+      >
+        Crea nuovo Utente
+      </button>
+      <button
+        routerLink="/backoffice/bachecaAdmin"
+        class="btn btn-primary mb-2"
+      >
+        Bacheca
+      </button>
+      <button class="btn btn-primary mb-2">Crea notifica bolletta</button>
+    </div>
+    }
   </div>
 </section>
