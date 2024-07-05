@@ -55,14 +55,11 @@
       <li class="list-group-item">
         <strong>Proprietario: </strong>
         <span *ngIf="house.user"
-          >{{ house.user.name }}{{ house.user.surname }}</span
+          >{{ house.user.name }} {{ house.user.surname }}</span
         >
         <span *ngIf="!house.user">nessuno</span>
       </li>
     </ul>
-    <div class="card-body">
-      <button class="btn btn-primary mb-2">Dettagli</button>
-    </div>
   </div>
 
   }

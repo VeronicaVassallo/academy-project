@@ -1,18 +1,35 @@
-h2,
-table {
-  margin-left: 20%;
+h2 {
+  margin-left: 50%;
 }
+table {
+  margin-left: 30%;
+}
+
 table {
   width: 50%;
   border-collapse: collapse;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
 }
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid var(--blue-EasyHome);
+  background-color: var(--light-blue);
 }
 th,
 td {
   padding: 10px;
   text-align: left;
+}
+
+thead tr th {
+  background-color: var(--blue-EasyHome);
+  color: var(--white-EasyHome);
+}
+
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  table {
+    margin-left: 5%;
+  }
 }
