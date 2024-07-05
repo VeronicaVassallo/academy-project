@@ -1,0 +1,22 @@
+<div id="bacheca" class="mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Messaggio</th>
+        <th scope="col">Data</th>
+        <th scope="col">Destinatario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notification of notficationsList">
+        <td>{{ notification.text }}</td>
+        <td>{{ notification.date | date : "dd/MM/yy" }}</td>
+        <td *ngIf="notification.referenceUser">
+          {{ notification.referenceUser.name }}
+          {{ notification.referenceUser.surname }}
+        </td>
+        <td *ngIf="!notification.referenceUser">Tutti</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

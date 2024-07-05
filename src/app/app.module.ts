@@ -24,6 +24,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { CardHouseUserComponent } from './components/card-house-user/card-house-user.component';
 import { ModalPaymentComponent } from './components/modal-payment/modal-payment.component';
 import { ModalUsageComponent } from './components/modal-usage/modal-usage.component';
+import { BachecaAdminComponent } from './components/bacheca-admin/bacheca-admin.component';
+import { TableNotificationComponent } from './components/table-notification/table-notification.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { ModalUsageComponent } from './components/modal-usage/modal-usage.compon
     CardHouseUserComponent,
     ModalPaymentComponent,
     ModalUsageComponent,
+    TableNotificationComponent,
+    BachecaAdminComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [

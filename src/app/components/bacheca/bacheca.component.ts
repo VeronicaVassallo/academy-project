@@ -21,7 +21,7 @@ export class BachecaComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.sessionService.getUserFromSession();
     if (this.user) {
-      this.notificationService.getNotification(this.user.id).subscribe({
+      this.notificationService.getNotificationUser(this.user.id).subscribe({
         next: (data: Notification[]) => {
           this.notifications = data;
           console.log('BACHECA:', this.notifications);

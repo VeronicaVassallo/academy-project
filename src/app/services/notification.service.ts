@@ -10,9 +10,15 @@ import { enviroment } from '../../enviroments/enviroment';
 export class NotificationService {
   constructor(private http: HttpClient) {}
 
-  getNotification(id: string): Observable<Notification[]> {
+  getNotificationUser(id: string): Observable<Notification[]> {
     return this.http.get<Notification[]>(
       `${enviroment.ANGULAR_APP_SERVER_BASE_URL}notification/getAll/personal/${id}`
+    );
+  }
+
+  getAllNotification(): Observable<Notification[]> {
+    return this.http.get<Notification[]>(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}notification/getAll`
     );
   }
 
