@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page.component';
-import { FormAddUserComponent } from './components/form-add-user/form-add-user.component';
+import { SectionRegisterNewUser } from './sections-backoffice/section-register-new-user/section-register-new-user.component';
 import { ShowHousesComponent } from './components/show-houses/show-houses.component';
 import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca-user/section-bacheca-user.component';
 import { UserHouseComponent } from './components/user-house/user-house.component';
@@ -25,7 +25,7 @@ const routes: Routes = [
     component: BackofficePageComponent,
     children: [
       { path: '', component: ShowHousesComponent },
-      { path: 'formaAddUser', component: FormAddUserComponent },
+      { path: 'formaAddUser', component: SectionRegisterNewUser },
       { path: 'bachecaAdmin', component: SectionBachecaAdminComponent },
     ],
   },

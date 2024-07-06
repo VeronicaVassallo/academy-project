@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page.component';
-import { FormAddUserComponent } from './components/form-add-user/form-add-user.component';
+import { SectionRegisterNewUser } from './sections-backoffice/section-register-new-user/section-register-new-user.component';
 import { ShowHousesComponent } from './components/show-houses/show-houses.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CardFreeHouseComponent } from './components/card-free-house/card-free-house.component';
@@ -32,7 +32,7 @@ import { TableNotificationComponent } from './components/table-notification/tabl
     LoginPageComponent,
     HomePageComponent,
     BackofficePageComponent,
-    FormAddUserComponent,
+    SectionRegisterNewUser,
     ShowHousesComponent,
     CardFreeHouseComponent,
     SidebarHomepageComponent,

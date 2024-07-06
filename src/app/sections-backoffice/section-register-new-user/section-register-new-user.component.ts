@@ -5,11 +5,11 @@ import { House } from '../../models/house.model';
 import { HouseService } from '../../services/house.service';
 
 @Component({
-  selector: 'app-form-add-user',
-  templateUrl: './form-add-user.component.html',
-  styleUrl: './form-add-user.component.css',
+  selector: 'app-section-register-new-user',
+  templateUrl: './section-register-new-user.component.html',
+  styleUrl: './section-register-new-user.component.css',
 })
-export class FormAddUserComponent implements OnInit {
+export class SectionRegisterNewUser implements OnInit {
   listFreeHouse: House[] = [];
   listHouseSelected: string[] = [];
   dataFormUser!: FormGroup;
