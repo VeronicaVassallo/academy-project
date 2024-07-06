@@ -3,11 +3,11 @@ import { NotificationService } from '../../services/notification.service';
 import { Notification } from '../../models/notification.model';
 
 @Component({
-  selector: 'app-bacheca-admin',
-  templateUrl: './bacheca-admin.component.html',
-  styleUrl: './bacheca-admin.component.css',
+  selector: 'section-bacheca-admin',
+  templateUrl: './section-bacheca-admin.component.html',
+  styleUrl: './section-bacheca-admin.component.css',
 })
-export class BachecaAdminComponent implements OnInit {
+export class SectionBachecaAdminComponent implements OnInit {
   @Input() notifications: Notification[] = [];
   constructor(private notificationService: NotificationService) {}
   ngOnInit(): void {

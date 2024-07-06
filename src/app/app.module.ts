@@ -18,12 +18,12 @@ import { CardFreeHouseComponent } from './components/card-free-house/card-free-h
 import { SidebarHomepageComponent } from './components/sidebar-homepage/sidebar-homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserHouseComponent } from './components/user-house/user-house.component';
-import { SectionBachecaUserComponent } from './components/section-bacheca-user/section-bacheca-user.component';
+import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca-user/section-bacheca-user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardHouseUserComponent } from './components/card-house-user/card-house-user.component';
 import { ModalPaymentComponent } from './components/modal-payment/modal-payment.component';
 import { ModalUsageComponent } from './components/modal-usage/modal-usage.component';
-import { BachecaAdminComponent } from './components/bacheca-admin/bacheca-admin.component';
+import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
 import { TableNotificationComponent } from './components/table-notification/table-notification.component';
 
 @NgModule({
@@ -44,7 +44,7 @@ import { TableNotificationComponent } from './components/table-notification/tabl
     ModalPaymentComponent,
     ModalUsageComponent,
     TableNotificationComponent,
-    BachecaAdminComponent,
+    SectionBachecaAdminComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [
