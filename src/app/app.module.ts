@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page.component';
 import { SectionRegisterNewUser } from './sections-backoffice/section-register-new-user/section-register-new-user.component';
-import { ShowHousesComponent } from './components/show-houses/show-houses.component';
+import { SectionShowHousesBackofficeComponent } from './sections-backoffice/section-show-houses-backoffice/section-show-houses-backoffice.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CardFreeHouseComponent } from './components/card-free-house/card-free-house.component';
 import { SidebarHomepageComponent } from './components/sidebar-homepage/sidebar-homepage.component';
@@ -33,7 +33,7 @@ import { TableNotificationComponent } from './components/table-notification/tabl
     HomePageComponent,
     BackofficePageComponent,
     SectionRegisterNewUser,
-    ShowHousesComponent,
+    SectionShowHousesBackofficeComponent,
     CardFreeHouseComponent,
     SidebarHomepageComponent,
     FooterComponent,

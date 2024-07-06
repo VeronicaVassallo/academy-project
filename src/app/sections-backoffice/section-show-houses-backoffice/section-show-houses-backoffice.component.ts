@@ -3,11 +3,11 @@ import { HouseService } from '../../services/house.service';
 import { House } from '../../models/house.model';
 
 @Component({
-  selector: 'app-show-houses',
-  templateUrl: './show-houses.component.html',
-  styleUrl: './show-houses.component.css',
+  selector: 'section-show-houses-backoffice',
+  templateUrl: './section-show-houses-backoffice.component.html',
+  styleUrl: './section-show-houses-backoffice.component.css',
 })
-export class ShowHousesComponent implements OnInit {
+export class SectionShowHousesBackofficeComponent implements OnInit {
   houses: House[] = [];
   constructor(private houseService: HouseService) {}
   ngOnInit(): void {
