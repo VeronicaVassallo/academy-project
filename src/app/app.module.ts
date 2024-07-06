@@ -17,7 +17,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CardFreeHouseComponent } from './components/card-free-house/card-free-house.component';
 import { SidebarHomepageComponent } from './components/sidebar-homepage/sidebar-homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { UserHouseComponent } from './components/user-house/user-house.component';
+import { SectionShowUserHouseHomepageComponent } from './sections-homepage/section-show-user-house-homepage/section-show-user-house-homepage.component';
 import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca-user/section-bacheca-user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardHouseUserComponent } from './components/card-house-user/card-house-user.component';
@@ -37,7 +37,7 @@ import { TableNotificationComponent } from './components/table-notification/tabl
     CardFreeHouseComponent,
     SidebarHomepageComponent,
     FooterComponent,
-    UserHouseComponent,
+    SectionShowUserHouseHomepageComponent,
     SectionBachecaUserComponent,
     HeaderComponent,
     CardHouseUserComponent,

@@ -5,11 +5,11 @@ import { SessionService } from '../../services/session.service';
 import { User } from '../../models/user.model';
 
 @Component({
-  selector: 'app-user-house',
-  templateUrl: './user-house.component.html',
-  styleUrl: './user-house.component.css',
+  selector: 'app-section-show-user-house-homepage',
+  templateUrl: './section-show-user-house-homepage.component.html',
+  styleUrl: './section-show-user-house-homepage.component.css',
 })
-export class UserHouseComponent implements OnInit {
+export class SectionShowUserHouseHomepageComponent implements OnInit {
   user: User | null = null;
   houses: House[] = [];
   message: boolean = false;

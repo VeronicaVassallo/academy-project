@@ -6,7 +6,7 @@ import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page
 import { SectionRegisterNewUser } from './sections-backoffice/section-register-new-user/section-register-new-user.component';
 import { SectionShowHousesBackofficeComponent } from './sections-backoffice/section-show-houses-backoffice/section-show-houses-backoffice.component';
 import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca-user/section-bacheca-user.component';
-import { UserHouseComponent } from './components/user-house/user-house.component';
+import { SectionShowUserHouseHomepageComponent } from './sections-homepage/section-show-user-house-homepage/section-show-user-house-homepage.component';
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
     component: HomePageComponent,
     children: [
       { path: '', component: SectionBachecaUserComponent },
-      { path: 'userHouse', component: UserHouseComponent },
+      { path: 'userHouse', component: SectionShowUserHouseHomepageComponent },
     ],
   },
   {
