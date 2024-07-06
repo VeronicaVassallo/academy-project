@@ -1,7 +1,7 @@
 <h2 class="mt-3">Le mie case:</h2>
 <div class="d-flex">
   @for (house of houses; track house.id) {
-  <app-card-house-user class="m-2" [freeHouse]="house" />
+  <app-card-house-user class="m-2" [userHouse]="house" />
   } @if (message) {
   <h2>Non ci sono case!</h2>
   }

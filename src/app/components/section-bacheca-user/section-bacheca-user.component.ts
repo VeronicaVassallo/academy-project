@@ -5,11 +5,11 @@ import { User } from '../../models/user.model';
 import { SessionService } from '../../services/session.service';
 
 @Component({
-  selector: 'app-bacheca',
-  templateUrl: './bacheca.component.html',
-  styleUrls: ['./bacheca.component.css'],
+  selector: 'app-section-bacheca-user',
+  templateUrl: './section-bacheca-user.component.html',
+  styleUrls: ['./section-bacheca-user.component.css'],
 })
-export class BachecaComponent implements OnInit {
+export class SectionBachecaUserComponent implements OnInit {
   notifications: Notification[] = [];
   user: User | null = null;
 

@@ -6,19 +6,6 @@ h3 {
   margin-left: 18%;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
 }
-.card {
+.navbar + div {
   margin-left: 20%;
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
-  border: 5px var(--white-EasyHome) solid;
-  cursor: pointer;
-  overflow: hidden;
-}
-.card img {
-  width: 300px;
-  height: 300px;
-}
-
-.card:hover {
-  border: 5px var(--blue-EasyHome) solid;
-  background-color: var(--blue-EasyHome);
 }

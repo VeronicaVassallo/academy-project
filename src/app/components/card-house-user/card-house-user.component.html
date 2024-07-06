@@ -1,9 +1,14 @@
 <div class="card m-2" style="width: 18rem">
-  <img class="card-img-top" src="{{ freeHouse.houseImg }}" alt="img_house" />
+  <img class="card-img-top" src="{{ userHouse.houseImg }}" alt="img_house" />
   <div class="info-card pt-2">
-    <p><strong>Interno: </strong> {{ freeHouse.interno }}</p>
-    <p><strong>Piano: </strong> {{ freeHouse.piano }}</p>
-    <p><strong>Scala: </strong> {{ freeHouse.scala }}</p>
+    <p><strong>Interno: </strong> {{ userHouse.interno }}</p>
+    <p><strong>Piano: </strong> {{ userHouse.piano }}</p>
+    <p><strong>Scala: </strong> {{ userHouse.scala }}</p>
+    <p *ngIf="userHouse.user">
+      <strong>Proprietario: </strong> {{ userHouse.user.name }}
+      {{ userHouse.user.surname }}
+    </p>
+    <p *ngIf="!userHouse.user"><strong>Proprietario: </strong>nessuno</p>
   </div>
   <div class="d-flex">
     <app-modal-payment class="mx-2" />

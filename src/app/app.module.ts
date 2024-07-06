@@ -18,7 +18,7 @@ import { CardFreeHouseComponent } from './components/card-free-house/card-free-h
 import { SidebarHomepageComponent } from './components/sidebar-homepage/sidebar-homepage.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserHouseComponent } from './components/user-house/user-house.component';
-import { BachecaComponent } from './components/bacheca/bacheca.component';
+import { SectionBachecaUserComponent } from './components/section-bacheca-user/section-bacheca-user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardHouseUserComponent } from './components/card-house-user/card-house-user.component';
 import { ModalPaymentComponent } from './components/modal-payment/modal-payment.component';
@@ -38,7 +38,7 @@ import { TableNotificationComponent } from './components/table-notification/tabl
     SidebarHomepageComponent,
     FooterComponent,
     UserHouseComponent,
-    BachecaComponent,
+    SectionBachecaUserComponent,
     HeaderComponent,
     CardHouseUserComponent,
     ModalPaymentComponent,

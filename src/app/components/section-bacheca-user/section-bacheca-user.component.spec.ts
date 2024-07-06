@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BachecaComponent } from './bacheca.component';
+import { BachecaComponent } from './section-bacheca-user.component';
 
 describe('BachecaComponent', () => {
   let component: BachecaComponent;
@@ -8,9 +8,8 @@ describe('BachecaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BachecaComponent]
-    })
-    .compileComponents();
+      declarations: [BachecaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BachecaComponent);
     component = fixture.componentInstance;

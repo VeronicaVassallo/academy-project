@@ -7,5 +7,5 @@ import { House } from '../../models/house.model';
   styleUrl: './card-house-user.component.css',
 })
 export class CardHouseUserComponent {
-  @Input() freeHouse!: House;
+  @Input() userHouse!: House;
 }
