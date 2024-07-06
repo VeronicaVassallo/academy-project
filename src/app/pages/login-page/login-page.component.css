@@ -34,3 +34,15 @@
 span svg {
   cursor: pointer;
 }
+
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  #login {
+    width: 100vw;
+    height: 70vh;
+    margin: 0px;
+    overflow: hidden;
+    transform: translateY(25%);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  }
+}

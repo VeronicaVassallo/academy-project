@@ -22,7 +22,27 @@ header img {
   width: 20%;
   opacity: 0.8;
   border-radius: 10px;
+  cursor: pointer;
 }
 #logo {
   width: 40px;
+}
+
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  header {
+    margin-left: 2.5vw;
+    width: 95vw;
+    height: 36vh;
+    padding-top: 20%;
+  }
+  .title-header {
+    position: relative;
+    top: -100%;
+    left: 30%;
+    width: 40%;
+  }
+  h1 {
+    display: none;
+  }
 }

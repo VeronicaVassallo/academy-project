@@ -8,9 +8,14 @@
       />
     </div>
 
-    <p class="py-2">
-      <strong>Profilo: </strong>{{ user?.name }} {{ user?.surname }}
-    </p>
+    <p class="py-2 px-3">{{ user?.name }} {{ user?.surname }}</p>
+    <img
+      id="logo"
+      routerLink="/login"
+      class="mt-1 d-sm-block d-md-none d-lg-none"
+      src="/assets/logo2.png"
+      alt="alt_logo"
+    />
   </div>
   <!--Bottoni User-->
   <div id="menu" class="px-3 pt-3">

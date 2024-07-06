@@ -10,3 +10,10 @@ footer {
 svg {
   padding-top: 2px;
 }
+
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  footer {
+    margin-left: 0px;
+  }
+}

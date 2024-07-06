@@ -4,16 +4,24 @@
   overflow: hidden;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
   cursor: pointer;
+  border: 5px var(--white-EasyHome) solid;
+}
+
+.card:hover {
+  border: 5px var(--blue-EasyHome) solid;
+  background-color: var(--blue-EasyHome);
+  color: aliceblue;
 }
 .borderSelected {
   border: 5px red solid;
 }
+
 .borderNone {
-  border: 5px var(--white-EasyHome) solid;
+  border: 5px white solid;
 }
 .card img {
   width: 300px;
-  height: 300px;
+  height: 200px;
 }
 .info-card p {
   margin-left: 10px;

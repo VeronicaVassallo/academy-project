@@ -2,3 +2,14 @@ h2,
 div {
   margin-left: 20%;
 }
+
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  div {
+    margin-left: 6%;
+  }
+  h2 {
+    margin-left: 0px;
+    text-align: center;
+  }
+}
