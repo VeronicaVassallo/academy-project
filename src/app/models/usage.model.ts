@@ -1,8 +1,8 @@
-import { User } from './user.model';
+import { House } from './house.model';
 
 export interface Usage {
   id: string;
-  user: User;
+  house: House;
   date: Date;
   water: number;
   gas: number;

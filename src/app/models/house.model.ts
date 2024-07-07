@@ -7,6 +7,4 @@ export interface House {
   interno: number;
   user: User;
   houseImg: string;
-  gas: number;
-  water: number;
 }
