@@ -1,5 +1,5 @@
 <div id="bacheca" class="mt-5">
-  <table class="table">
+  <table>
     <thead>
       <tr>
         <th scope="col">Messaggio</th>
@@ -11,11 +11,11 @@
       <tr *ngFor="let notification of notficationsList">
         <td>{{ notification.text }}</td>
         <td>{{ notification.date | date : "dd/MM/yy" }}</td>
-        <td *ngIf="notification.referenceUser">
-          {{ notification.referenceUser.name }}
-          {{ notification.referenceUser.surname }}
+        <td *ngIf="notification.user">
+          {{ notification.user.name }}
+          {{ notification.user.surname }}
         </td>
-        <td *ngIf="!notification.referenceUser">Tutti</td>
+        <td *ngIf="!notification.user">Tutti</td>
       </tr>
     </tbody>
   </table>

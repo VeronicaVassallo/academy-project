@@ -44,24 +44,22 @@ export class SectionRegisterNewUser implements OnInit {
   onSubmitSendData() {
     const dataForm = this.dataFormUser.value;
     this.userService
-      .insertUser({
-        //TO DO : rimuovi i commenti
-        // user:
-        //{
-        buildingManager: false,
-        name: dataForm.name,
-        surname: dataForm.surname,
-        email: dataForm.email,
-        password: dataForm.password,
-        cell: dataForm.cell,
-        birthDate: dataForm.birthDate,
-        profileImg: dataForm.profileImg,
-        creditCard: dataForm.creditCard,
-        cvv: dataForm.cvv,
-        expire: dataForm.expire,
-        holder: dataForm.holder,
-        // },
-        // houses: this.listHouseSelected, lista id delle case scelte
+      .createUserAndUpdateHouse({
+        id: 'idHome', //TO DO: implementa la logica di prendere l'id della casa liberà
+        user: {
+          buildingManager: false,
+          name: dataForm.name,
+          surname: dataForm.surname,
+          email: dataForm.email,
+          password: dataForm.password,
+          cell: dataForm.cell,
+          birthDate: dataForm.birthDate,
+          profileImg: dataForm.profileImg,
+          creditCard: dataForm.creditCard,
+          cvv: dataForm.cvv,
+          expire: dataForm.expire,
+          holder: dataForm.holder,
+        },
       })
       .subscribe({
         next: (data) => {

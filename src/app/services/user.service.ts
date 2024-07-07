@@ -25,10 +25,25 @@ export class UserService {
       );
   }
 
+  //To Do: da rimuovere
   insertUser(body: {}) {
     return this.http.post(
       `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/save`,
       body
+    );
+  }
+
+  //Metodo che crea un nuovo utente e aggiorna il campo user della casa:
+  createUserAndUpdateHouse(body: {}) {
+    return this.http.patch(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/update`,
+      body
+    );
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/getAll`
     );
   }
 }
