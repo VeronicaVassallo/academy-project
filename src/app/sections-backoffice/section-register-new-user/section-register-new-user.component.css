@@ -1,6 +1,20 @@
-h2,
+h2 {
+  margin-left: 43%;
+  font-weight: 700;
+  color: var(--white-EasyHome);
+  text-shadow: 6px 7px 9px rgba(0, 0, 0, 0.92);
+}
 form {
   margin-left: 20%;
+  background-color: var(--blue-EasyHome);
+  width: 75vw;
+  color: var(--white-EasyHome);
+  border-radius: 2%;
+  padding: 2%;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
+}
+form input {
+  margin-right: 15px;
 }
 .card {
   width: 15%;
@@ -26,18 +40,12 @@ form {
   border: 5px var(--white-EasyHome);
   padding-bottom: 2%;
 }
-.cross {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+
+form button {
   position: relative;
-  z-index: 95;
-  top: 30px;
-  left: -50px;
-  font-size: x-large;
-  font-weight: bolder;
-  color: red;
-}
-.cross:hover {
+  right: -90%;
+  background-color: var(--button-orange);
+  border: solid 2px var(--border-button-orange);
   color: var(--blue-EasyHome);
+  font-weight: bold;
 }

@@ -1,13 +1,22 @@
-<h2 class="mt-5 mb-4">Aggiungi un nuovo Utente:</h2>
+<h2 class="mt-5 mb-5">Aggiungi un nuovo Utente</h2>
 <form [formGroup]="dataFormUser" (ngSubmit)="onSubmitSendData()">
-  <div class="d-flex justify-content-around flex-wrap">
+  <div class="d-flex justify-content-start flex-wrap mb-4">
     <div>
-      <label for="name">Nome:</label>
+      <label for="name">*Nome:</label>
       <br />
       <input type="text" id="name" name="name" formControlName="name" />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('name')?.valid && dataFormUser.get('name')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci Nome
+      </p>
     </div>
     <div>
-      <label for="surname">Cognome:</label>
+      <label for="surname">*Cognome:</label>
       <br />
       <input
         type="text"
@@ -15,14 +24,52 @@
         name="surname"
         formControlName="surname"
       />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('surname')?.valid &&
+          dataFormUser.get('surname')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci Cognome
+      </p>
     </div>
     <div>
-      <label for="email">Email:</label>
+      <label for="email">*Email:</label>
       <br />
       <input type="email" id="email" name="email" formControlName="email" />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('email')?.valid &&
+          dataFormUser.get('email')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci Email
+      </p>
     </div>
     <div>
-      <label for="password">Password:</label>
+      <label for="cell">*Cellulare:</label>
+      <br />
+      <input type="text" id="cell" name="cell" formControlName="cell" />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('cell')?.valid && dataFormUser.get('cell')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci Cellulare
+      </p>
+    </div>
+
+    <!--TO DO: aggiungere riconfermare password-->
+  </div>
+  <div class="d-flex justify-content-start flex-wrap mb-5">
+    <div>
+      <label for="password">*Password:</label>
       <br />
       <input
         type="password"
@@ -30,25 +77,33 @@
         name="password"
         formControlName="password"
       />
-    </div>
-    <!--TO DO: aggiungere riconfermare password-->
-  </div>
-  <div class="d-flex justify-content-around flex-wrap">
-    <div>
-      <label for="cell">Cellulare:</label>
       <br />
-      <input type="text" id="cell" name="cell" formControlName="cell" />
+      <p
+        *ngIf="
+          !dataFormUser.get('password')?.valid &&
+          dataFormUser.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci Password
+      </p>
     </div>
     <div>
-      <label for="birthDate">Data di nascita:</label>
+      <label for="conferaPassword">*Conferma Password:</label>
       <br />
-      <input
-        type="date"
-        id="birthDate"
-        name="birthDate"
-        formControlName="birthDate"
-      />
+      <input type="password" id="conferaPassword" name="conferaPassword" />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('conferaPassword')?.valid &&
+          dataFormUser.get('conferaPassword')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci Password
+      </p>
     </div>
+
     <div>
       <label for="profileImg">Immagine profilo:</label>
       <br />
@@ -59,10 +114,30 @@
         formControlName="profileImg"
       />
     </div>
+    <div>
+      <label for="birthDate">*Data di nascita:</label>
+      <br />
+      <input
+        type="date"
+        id="birthDate"
+        name="birthDate"
+        formControlName="birthDate"
+      />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('birthDate')?.valid &&
+          dataFormUser.get('birthDate')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci Data di nascita
+      </p>
+    </div>
   </div>
   <hr />
   <h4>Dati carta di credito</h4>
-  <div class="d-flex justify-content-around flex-wrap">
+  <div class="d-flex justify-content-around flex-wrap mb-5">
     <div>
       <label for="creditCard">Carta di credito:</label>
       <br />
@@ -72,21 +147,60 @@
         name="creditCard"
         formControlName="creditCard"
       />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('creditCard')?.valid &&
+          dataFormUser.get('creditCard')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci carta di credito
+      </p>
     </div>
     <div>
       <label for="cvv">CCV:</label>
       <br />
       <input type="text" id="cvv" name="cvv" formControlName="cvv" />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('cvv')?.valid && dataFormUser.get('cvv')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci cvv
+      </p>
     </div>
     <div>
       <label for="expire">Data di scadenza Carta di credito:</label>
       <br />
       <input type="date" id="expire" name="expire" formControlName="expire" />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('expire')?.valid &&
+          dataFormUser.get('expire')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci data di scadenza
+      </p>
     </div>
     <div>
       <label for="holder">Titolare carta:</label>
       <br />
       <input type="text" id="holder" name="holder" formControlName="holder" />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('holder')?.valid &&
+          dataFormUser.get('holder')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci nome e cognome titolare carta
+      </p>
     </div>
   </div>
   <hr />
@@ -103,15 +217,15 @@
         "
         (addHouse)="onGetData($event)"
       />
-      <div
-        class="cross"
-        [ngClass]="house.id == houseSelected?.id ? 'd-block' : 'd-none'"
-        (click)="deselectHouse()"
-      >
-        X
-      </div>
+
       }
     </div>
   </div>
-  <button type="submit" class="btn btn-primary m-3">Salva</button>
+  <button
+    type="submit"
+    class="btn btn-primary m-3"
+    [disabled]="!dataFormUser.valid && houseSelected != null"
+  >
+    Salva
+  </button>
 </form>

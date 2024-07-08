@@ -3,6 +3,8 @@
   --blue-EasyHome: rgb(35, 75, 107);
   --white-EasyHome: rgb(246, 239, 230);
   --light-blue: rgb(188, 188, 226);
+  --border-button-orange: rgb(151, 100, 5);
+  --button-orange: orange;
 }
 * {
   margin: 0px;
@@ -10,6 +12,7 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 .buttonEasyHome {
   border: 0px;
   border-radius: 10%;

@@ -38,8 +38,8 @@
   </form>
 </nav>
 <!--fine SearchBar-->
-<div class="d-flex">
+<div class="d-flex flex-wrap">
   @for (house of houses; track house) {
-  <app-card-house-user [userHouse]="house" />
+  <app-card-house-user [userHouse]="house" class="mb-3" />
   }
 </div>

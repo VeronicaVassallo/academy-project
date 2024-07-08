@@ -81,12 +81,11 @@ export class SectionRegisterNewUser implements OnInit {
   }
 
   onGetData(value: House | null) {
+    debugger;
     if (value) {
       this.houseSelected = value;
+    } else {
+      this.houseSelected = null;
     }
-  }
-
-  deselectHouse() {
-    this.houseSelected = null;
   }
 }

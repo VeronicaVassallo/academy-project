@@ -10,6 +10,9 @@
 #profile {
   background-color: var(--white-EasyHome);
 }
+#profile p {
+  font-weight: bold;
+}
 #imgProfile {
   width: 100px;
   height: 100px;
@@ -19,6 +22,10 @@
 }
 button {
   width: 100%;
+  background-color: var(--button-orange);
+  border: solid 2px var(--border-button-orange);
+  color: var(--blue-EasyHome);
+  font-weight: bold;
 }
 
 /*media query mobile version*/
