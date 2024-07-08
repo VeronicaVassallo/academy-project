@@ -8,6 +8,7 @@ form {
   overflow: hidden;
   border: 5px var(--white-EasyHome) solid;
   cursor: pointer;
+  padding-bottom: 2%;
 }
 .card img {
   width: 300px;
@@ -15,4 +16,28 @@ form {
 }
 .info-card p {
   margin-left: 10px;
+}
+.borderSelected {
+  border: 5px red solid;
+  padding-bottom: 2%;
+}
+
+.borderNone {
+  border: 5px var(--white-EasyHome);
+  padding-bottom: 2%;
+}
+.cross {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  z-index: 95;
+  top: 30px;
+  left: -50px;
+  font-size: x-large;
+  font-weight: bolder;
+  color: red;
+}
+.cross:hover {
+  color: var(--blue-EasyHome);
 }

@@ -3,12 +3,12 @@
     <div id="imgProfile" class="m-2">
       <img
         class="w-100 h-100"
-        [src]="'assets/' + (user?.profileImg || 'img2.jpg')"
+        [src]="'assets/' + (user.profileImg || 'img2.jpg')"
         alt="img_profile"
       />
     </div>
 
-    <p class="py-2 px-3">{{ user?.name }} {{ user?.surname }}</p>
+    <p class="py-2 px-3">{{ user.name }} {{ user.surname }}</p>
     <img
       id="logo"
       routerLink="/login"
@@ -19,7 +19,7 @@
   </div>
   <!--Bottoni User-->
   <div id="menu" class="px-3 pt-3">
-    @if (!user?.buildingManager) {
+    <!--  @if (!user.buildingManager) { -->
     <button routerLink="/homepage/" class="btn btn-primary mb-2">
       Bacheca
     </button>
@@ -27,12 +27,10 @@
       Le mie case
     </button>
     <button class="btn btn-primary mb-2">Impostazioni</button>
-    <button routerLink="/backoffice/" class="btn btn-primary mb-2">
-      Visualizza Case
-    </button>
-    }
+    <!--  } -->
+    <h5 class="text-danger">Bottoni Amministratore</h5>
     <!--Bottoni Amministratore-->
-    @else {
+    <!--  @else { -->
     <div>
       <button routerLink="/backoffice/" class="btn btn-primary mb-2">
         Visualizza Case
@@ -50,6 +48,6 @@
         Bacheca
       </button>
     </div>
-    }
+    <!--  } -->
   </div>
 </section>

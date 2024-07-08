@@ -36,7 +36,7 @@ export class UserService {
   //Metodo che crea un nuovo utente e aggiorna il campo user della casa:
   createUserAndUpdateHouse(body: {}) {
     return this.http.patch(
-      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/update`,
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/patchUpdate`,
       body
     );
   }

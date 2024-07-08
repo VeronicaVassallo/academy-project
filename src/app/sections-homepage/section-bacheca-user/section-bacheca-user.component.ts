@@ -11,7 +11,22 @@ import { SessionService } from '../../services/session.service';
 })
 export class SectionBachecaUserComponent implements OnInit {
   notifications: Notification[] = [];
-  user: User | null = null;
+  // user: User | null = null; TO Do da rimuovere quando sara pronto la login
+  user: User = {
+    id: '123',
+    buildingManager: false,
+    name: 'Mario',
+    surname: 'Rossi',
+    email: 'mario@rossi.com',
+    password: 'password',
+    cell: '+391234567890',
+    birthDate: new Date('1980-01-01T00:00:00Z'),
+    profileImg: 'img2.jpg',
+    creditCard: '4111111111111111',
+    cvv: 123,
+    expire: new Date('2025-12-31T00:00:00Z'),
+    holder: 'Mario Rossi',
+  };
 
   constructor(
     private notificationService: NotificationService,
@@ -19,11 +34,12 @@ export class SectionBachecaUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.user = this.sessionService.getUserFromSession();
+    /* TO Do da rimuovere quando sara pronto la login
+    this.user = this.sessionService.getUserFromSession();*/
     if (this.user) {
       this.notificationService.getNotificationUser(this.user.id).subscribe({
-        next: (data: Notification[]) => {
-          this.notifications = data;
+        next: (data: any) => {
+          this.notifications = data.lo;
           console.log('BACHECA:', this.notifications);
         },
         error: (err) => {

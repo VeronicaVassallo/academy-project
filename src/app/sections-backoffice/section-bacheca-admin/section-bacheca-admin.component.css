@@ -15,7 +15,7 @@ form {
 select {
   width: 72vw;
 }
-form div input:first-of-type {
+form div textarea {
   width: 72vw;
   height: 40vh;
 }

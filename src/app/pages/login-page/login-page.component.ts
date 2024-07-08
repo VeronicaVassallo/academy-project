@@ -24,22 +24,6 @@ export class LoginPageComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
-    //TO DO: da rimuovere il rigo 28 a 41 quando la login Be è completata
-    this.sessionService.setSession({
-      id: '12345',
-      buildingManager: true,
-      name: 'Mario',
-      surname: 'Rossi',
-      email: 'mario@rossi.com',
-      password: 'password',
-      cell: '+391234567890',
-      birthDate: new Date('1980-01-01T00:00:00Z'),
-      profileImg: 'img2.jpg',
-      creditCard: '4111111111111111',
-      cvv: 123,
-      expire: new Date('2025-12-31T00:00:00Z'),
-      holder: 'Mario Rossi',
-    });
   }
   onSubmit() {
     /* TO DO: Rimuovere il commente qundo il BE Finisce di sistemare la query di login

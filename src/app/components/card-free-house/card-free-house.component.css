@@ -12,13 +12,7 @@
   background-color: var(--blue-EasyHome);
   color: aliceblue;
 }
-.borderSelected {
-  border: 5px red solid;
-}
 
-.borderNone {
-  border: 5px white solid;
-}
 .card img {
   width: 300px;
   height: 200px;

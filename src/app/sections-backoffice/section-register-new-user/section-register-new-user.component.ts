@@ -11,7 +11,7 @@ import { HouseService } from '../../services/house.service';
 })
 export class SectionRegisterNewUser implements OnInit {
   listFreeHouse: House[] = [];
-  listHouseSelected: string[] = [];
+  houseSelected: House | null = null;
   dataFormUser!: FormGroup;
   constructor(
     private userService: UserService,
@@ -33,8 +33,13 @@ export class SectionRegisterNewUser implements OnInit {
     });
 
     this.houseService.getFreeHouses().subscribe({
-      next: (data: House[]) => {
-        this.listFreeHouse = data;
+      next: (data: any) => {
+        if (data && data.lo) {
+          this.listFreeHouse = data.lo;
+        } else {
+          console.log('Non ci sono case a disposizione');
+          this.listFreeHouse = [];
+        }
       },
       error: (err) => {
         console.error('Errore durante la ricezione dei dati:', err);
@@ -45,7 +50,11 @@ export class SectionRegisterNewUser implements OnInit {
     const dataForm = this.dataFormUser.value;
     this.userService
       .createUserAndUpdateHouse({
-        id: 'idHome', //TO DO: implementa la logica di prendere l'id della casa liberà
+        id: this.houseSelected?.id,
+        scala: this.houseSelected?.scala,
+        piano: this.houseSelected?.piano,
+        interno: this.houseSelected?.interno,
+        houseImg: this.houseSelected?.houseImg,
         user: {
           buildingManager: false,
           name: dataForm.name,
@@ -73,7 +82,11 @@ export class SectionRegisterNewUser implements OnInit {
 
   onGetData(value: House | null) {
     if (value) {
-      this.listHouseSelected.push(value.id);
+      this.houseSelected = value;
     }
+  }
+
+  deselectHouse() {
+    this.houseSelected = null;
   }
 }

@@ -19,6 +19,7 @@ export class SectionShowUserHouseHomepageComponent implements OnInit {
     private sessionService: SessionService
   ) {}
   ngOnInit(): void {
+    /*TO DO; da rimuovere quando la login è pronta 
     this.user = this.sessionService.getUserFromSession();
     if (this.user) {
       this.houseService.getSpecificHouse(this.user?.id).subscribe({
@@ -32,5 +33,6 @@ export class SectionShowUserHouseHomepageComponent implements OnInit {
     } else {
       this.message = true;
     }
+      */
   }
 }

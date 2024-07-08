@@ -20,8 +20,13 @@ export class SectionBachecaAdminComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.notificationService.getAllNotification().subscribe({
-      next: (data: Notification[]) => {
-        this.notifications = data;
+      next: (data: any) => {
+        if (data && data.lo) {
+          this.notifications = data.lo;
+        } else {
+          console.log('Non ci sono case a disposizione');
+          this.notifications = [];
+        }
       },
       error: (err) => {
         console.error('Errore durante la ricezione dei dati:', err);
@@ -29,8 +34,15 @@ export class SectionBachecaAdminComponent implements OnInit {
     });
 
     this.userService.getAllUsers().subscribe({
-      next: (users) => {
-        this.listUsers = users;
+      next: (users: any) => {
+        if (users && users.lo) {
+          this.listUsers = users.lo.filter(
+            (u: User) => u.buildingManager === false
+          );
+        } else {
+          console.log('Non ci sono case a disposizione');
+          this.listUsers = [];
+        }
       },
       error: (err) => {
         console.error('Errore durante la ricezione dei dati:', err);
@@ -44,7 +56,28 @@ export class SectionBachecaAdminComponent implements OnInit {
   }
 
   onSubmit() {
-    //TO DO: Continua con la creazione della notifica
-    // this.notificationService.sendNotification().subscribe()
+    /* TO DO : da risolvere
+    if (this.dataForm.invalid) {
+      console.error('Form non valido');
+      return;
+    }
+
+    const formValue = this.dataForm.value;
+    const notification: Notification = {
+      date: new Date(),
+      text: formValue.text,
+      user: formValue.user ? { id: formValue.user } : null,
+    };
+    console.log('Dati inviati:', notification);
+
+    this.notificationService.sendNotification(notification).subscribe({
+      next: () => {
+        console.log('Notifica inviata con successo');
+      },
+      error: (err) => {
+        console.error("Errore durante l'invio della notifica:", err);
+      },
+    });
+    */
   }
 }

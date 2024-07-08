@@ -98,8 +98,18 @@
       <app-card-free-house
         class="m-2"
         [freeHouse]="house"
+        [ngClass]="
+          house.id == houseSelected?.id ? 'borderSelected' : 'borderNone'
+        "
         (addHouse)="onGetData($event)"
       />
+      <div
+        class="cross"
+        [ngClass]="house.id == houseSelected?.id ? 'd-block' : 'd-none'"
+        (click)="deselectHouse()"
+      >
+        X
+      </div>
       }
     </div>
   </div>

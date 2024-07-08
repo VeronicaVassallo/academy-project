@@ -1,7 +1,7 @@
 import { User } from './user.model';
 
 export interface Notification {
-  id: string;
+  id?: string;
   date: Date;
   text: string;
   user: User | null | undefined;

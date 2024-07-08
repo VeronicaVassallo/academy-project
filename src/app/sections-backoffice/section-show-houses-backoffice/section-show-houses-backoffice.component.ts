@@ -11,11 +11,14 @@ export class SectionShowHousesBackofficeComponent implements OnInit {
   houses: House[] = [];
   constructor(private houseService: HouseService) {}
   ngOnInit(): void {
-    debugger;
     this.houseService.getAllHouses().subscribe({
-      next: (data: House[]) => {
-        console.log('Dati delle case dal BE', data);
-        this.houses = data;
+      next: (data: any) => {
+        if (data && data.lo) {
+          this.houses = data.lo;
+        } else {
+          console.log('Non ci sono case a disposizione');
+          this.houses = [];
+        }
       },
       error: (err) => {
         console.error('Errore durante la ricezione dei dati:', err);

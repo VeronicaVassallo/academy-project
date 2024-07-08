@@ -22,8 +22,8 @@ export class NotificationService {
     );
   }
 
-  sendNotification(body: Notification) {
-    return this.http.post(
+  sendNotification(body: Notification): Observable<Notification> {
+    return this.http.post<Notification>(
       `${enviroment.ANGULAR_APP_SERVER_BASE_URL}notification/save`,
       body
     );
