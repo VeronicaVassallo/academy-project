@@ -23,5 +23,12 @@ form div textarea {
 }
 
 button {
-  margin-left: 95%;
+  margin-left: 94%;
+  background-color: var(--button-orange);
+  border: solid 2px var(--border-button-orange);
+  font-weight: bold;
+}
+button:hover {
+  border: solid 2px var(--border-button-orange);
+  background-color: rgb(210, 138, 4);
 }
