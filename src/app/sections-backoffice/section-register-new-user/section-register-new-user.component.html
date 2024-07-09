@@ -89,14 +89,19 @@
       </p>
     </div>
     <div>
-      <label for="conferaPassword">*Conferma Password:</label>
+      <label for="confirmPassword">*Conferma Password:</label>
       <br />
-      <input type="password" id="conferaPassword" name="conferaPassword" />
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        formControlName="confirmPassword"
+      />
       <br />
       <p
         *ngIf="
-          !dataFormUser.get('conferaPassword')?.valid &&
-          dataFormUser.get('conferaPassword')?.touched
+          !dataFormUser.get('confirmPassword')?.valid &&
+          dataFormUser.get('confirmPassword')?.touched
         "
         class="text-danger"
       >

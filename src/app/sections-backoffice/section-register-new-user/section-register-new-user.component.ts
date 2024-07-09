@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { House } from '../../models/house.model';
 import { HouseService } from '../../services/house.service';
@@ -23,6 +29,7 @@ export class SectionRegisterNewUser implements OnInit {
       surname: new FormControl('', Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
+      confirmPassword: new FormControl('', Validators.required),
       cell: new FormControl('', Validators.required),
       birthDate: new FormControl(null, Validators.required),
       profileImg: new FormControl('', Validators.required),
@@ -46,42 +53,67 @@ export class SectionRegisterNewUser implements OnInit {
       },
     });
   }
+
+  checkPassword(password: string, confirmPassword: string): boolean {
+    if (password && confirmPassword && password == confirmPassword) {
+      return true;
+    } else {
+      alert('Le password non corrispondono');
+      return false;
+    }
+  }
+
+  checkHouse(): boolean {
+    if (this.houseSelected != null) {
+      return true;
+    } else {
+      alert('Seleziona almeno una casa');
+      return false;
+    }
+  }
   onSubmitSendData() {
     const dataForm = this.dataFormUser.value;
-    this.userService
-      .createUserAndUpdateHouse({
-        id: this.houseSelected?.id,
-        scala: this.houseSelected?.scala,
-        piano: this.houseSelected?.piano,
-        interno: this.houseSelected?.interno,
-        houseImg: this.houseSelected?.houseImg,
-        user: {
-          buildingManager: false,
-          name: dataForm.name,
-          surname: dataForm.surname,
-          email: dataForm.email,
-          password: dataForm.password,
-          cell: dataForm.cell,
-          birthDate: dataForm.birthDate,
-          profileImg: dataForm.profileImg,
-          creditCard: dataForm.creditCard,
-          cvv: dataForm.cvv,
-          expire: dataForm.expire,
-          holder: dataForm.holder,
-        },
-      })
-      .subscribe({
-        next: (data) => {
-          alert('Utente Registrato con successo');
-        },
-        error: (error) => {
-          console.error("Errore durante l'inserimento:", error);
-        },
-      });
+    if (
+      this.dataFormUser.valid &&
+      this.checkPassword(dataForm.password, dataForm.confirmPassword) &&
+      this.checkHouse()
+    ) {
+      this.userService
+        .createUserAndUpdateHouse({
+          id: this.houseSelected?.id,
+          scala: this.houseSelected?.scala,
+          piano: this.houseSelected?.piano,
+          interno: this.houseSelected?.interno,
+          houseImg: this.houseSelected?.houseImg,
+          user: {
+            buildingManager: false,
+            name: dataForm.name,
+            surname: dataForm.surname,
+            email: dataForm.email,
+            password: dataForm.password,
+            cell: dataForm.cell,
+            birthDate: dataForm.birthDate,
+            profileImg: dataForm.profileImg,
+            creditCard: dataForm.creditCard,
+            cvv: dataForm.cvv,
+            expire: dataForm.expire,
+            holder: dataForm.holder,
+          },
+        })
+        .subscribe({
+          next: (data) => {
+            alert('Utente Registrato con successo');
+          },
+          error: (error) => {
+            console.error("Errore durante l'inserimento:", error);
+          },
+        });
+    } else {
+      console.log("I dati di registrazione dell'utente non sono corretti");
+    }
   }
 
   onGetData(value: House | null) {
-    debugger;
     if (value) {
       this.houseSelected = value;
     } else {
