@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalUsageComponent } from './modal-usage.component';
+import { UsageHomepageComponent } from './usage-homepage.component';
 
-describe('ModalUsageComponent', () => {
-  let component: ModalUsageComponent;
-  let fixture: ComponentFixture<ModalUsageComponent>;
+describe('UsageHomepageComponent', () => {
+  let component: UsageHomepageComponent;
+  let fixture: ComponentFixture<UsageHomepageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ModalUsageComponent]
+      declarations: [UsageHomepageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModalUsageComponent);
+    fixture = TestBed.createComponent(UsageHomepageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

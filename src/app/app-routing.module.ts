@@ -8,6 +8,7 @@ import { SectionShowHousesBackofficeComponent } from './sections-backoffice/sect
 import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca-user/section-bacheca-user.component';
 import { SectionShowUserHouseHomepageComponent } from './sections-homepage/section-show-user-house-homepage/section-show-user-house-homepage.component';
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
+import { UsageHomepageComponent } from './sections-homepage/usage-homepage/usage-homepage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: '', component: SectionBachecaUserComponent },
       { path: 'userHouse', component: SectionShowUserHouseHomepageComponent },
+      { path: 'usageHomepage/:idHouse', component: UsageHomepageComponent },
     ],
   },
   {

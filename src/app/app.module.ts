@@ -21,10 +21,9 @@ import { SectionShowUserHouseHomepageComponent } from './sections-homepage/secti
 import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca-user/section-bacheca-user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardHouseUserComponent } from './components/card-house-user/card-house-user.component';
-import { ModalPaymentComponent } from './components/modal-payment/modal-payment.component';
-import { ModalUsageComponent } from './components/modal-usage/modal-usage.component';
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
 import { TableNotificationComponent } from './components/table-notification/table-notification.component';
+import { UsageHomepageComponent } from './sections-homepage/usage-homepage/usage-homepage.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +40,9 @@ import { TableNotificationComponent } from './components/table-notification/tabl
     SectionBachecaUserComponent,
     HeaderComponent,
     CardHouseUserComponent,
-    ModalPaymentComponent,
-    ModalUsageComponent,
     TableNotificationComponent,
     SectionBachecaAdminComponent,
+    UsageHomepageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [
