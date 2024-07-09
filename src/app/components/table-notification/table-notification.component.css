@@ -24,6 +24,12 @@ thead tr th {
   color: var(--white-EasyHome);
 }
 
+.col-cancella {
+  width: 1%;
+  white-space: nowrap;
+  border-left: 0px;
+}
+
 /*media query mobile version*/
 @media only screen and (max-width: 767px) {
   table {

@@ -13,8 +13,12 @@ export class TableNotificationComponent {
   constructor(private notificationService: NotificationService) {}
 
   deleteNotification(id: string | undefined): void {
-    confirm('Confermi di voler cancellare la modifica');
-    if (id) {
+    if (!id) {
+      console.error('ID della notifica non definito');
+      return;
+    }
+    const confirmation = confirm('Confermi di voler cancellare la notifica?');
+    if (confirmation) {
       this.notificationService.deleteNotification(id).subscribe({
         next: (data) => {
           window.location.reload();
