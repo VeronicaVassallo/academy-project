@@ -5,6 +5,7 @@
         <th scope="col">Messaggio</th>
         <th scope="col">Data</th>
         <th scope="col">Destinatario</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,14 @@
           {{ notification.user.surname }}
         </td>
         <td *ngIf="!notification.user">Tutti</td>
+        <td class="mx-0">
+          <button
+            class="btn btn-danger"
+            (click)="deleteNotification(notification.id)"
+          >
+            cancella
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
