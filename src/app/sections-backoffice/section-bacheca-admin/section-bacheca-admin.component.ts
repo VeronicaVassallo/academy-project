@@ -56,28 +56,24 @@ export class SectionBachecaAdminComponent implements OnInit {
   }
 
   onSubmit() {
-    /* TO DO : da risolvere
-    if (this.dataForm.invalid) {
-      console.error('Form non valido');
-      return;
+    if (this.dataForm.valid) {
+      const formValue = this.dataForm.value;
+      const notification: any = {
+        date: new Date(),
+        text: formValue.text,
+        user: formValue.user ? { id: formValue.user } : null,
+      };
+
+      this.notificationService.sendNotification(notification).subscribe({
+        next: () => {
+          alert('Notifica inviata con successo');
+          window.location.reload();
+        },
+        error: (err) => {
+          alert("Errore durante l'invio della notifica");
+          console.error("Errore durante l'invio della notifica:", err);
+        },
+      });
     }
-
-    const formValue = this.dataForm.value;
-    const notification: Notification = {
-      date: new Date(),
-      text: formValue.text,
-      user: formValue.user ? { id: formValue.user } : null,
-    };
-    console.log('Dati inviati:', notification);
-
-    this.notificationService.sendNotification(notification).subscribe({
-      next: () => {
-        console.log('Notifica inviata con successo');
-      },
-      error: (err) => {
-        console.error("Errore durante l'invio della notifica:", err);
-      },
-    });
-    */
   }
 }

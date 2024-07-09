@@ -22,10 +22,14 @@
 }
 button {
   width: 100%;
+  background-color: var(--blue-EasyHome);
+  border: solid 2px var(--white-EasyHome);
+  color: var(--white-EasyHome);
+  font-weight: bold;
+}
+button:hover {
   background-color: var(--button-orange);
   border: solid 2px var(--border-button-orange);
-  color: var(--blue-EasyHome);
-  font-weight: bold;
 }
 
 /*media query mobile version*/

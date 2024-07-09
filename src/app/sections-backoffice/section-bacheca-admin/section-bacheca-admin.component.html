@@ -17,7 +17,7 @@
     <label for="user">Destinatario:</label>
     <select class="form-select" formControlName="user">
       <option selected></option>
-      <option value="">Tutti</option>
+      <option [ngValue]="null">Tutti</option>
       <option *ngFor="let user of listUsers" [ngValue]="user.id">
         {{ user.name }} {{ user.surname }}
       </option>
