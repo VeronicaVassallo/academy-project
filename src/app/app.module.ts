@@ -24,6 +24,7 @@ import { CardHouseUserComponent } from './components/card-house-user/card-house-
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
 import { TableNotificationComponent } from './components/table-notification/table-notification.component';
 import { UsageHomepageComponent } from './sections-homepage/usage-homepage/usage-homepage.component';
+import { GraphComponent } from './components/graph/graph.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { UsageHomepageComponent } from './sections-homepage/usage-homepage/usage
     TableNotificationComponent,
     SectionBachecaAdminComponent,
     UsageHomepageComponent,
+    GraphComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [
