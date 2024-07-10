@@ -60,4 +60,19 @@
     Invia
   </button>
 </form>
-<app-graph [usages]="usageList" />
+<div class="d-flex justify-content-center">
+  <div>
+    <app-graph
+      [listUsage]="listUsageWater"
+      [listMonths]="months"
+      [graphId]="'graphWater'"
+    />
+  </div>
+  <div>
+    <app-graph
+      [listUsage]="listUsageGas"
+      [listMonths]="months"
+      [graphId]="'graphGas'"
+    />
+  </div>
+</div>

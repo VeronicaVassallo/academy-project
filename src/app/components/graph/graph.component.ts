@@ -8,17 +8,15 @@ import { Usage } from '../../models/usage.model';
   styleUrl: './graph.component.css',
 })
 export class GraphComponent implements OnInit {
-  @Input() usages: Usage[] = [];
-  listMonths: string[] = [];
+  @Input() listMonths: string[] = [];
+  @Input() listUsage: number[] = [];
+  @Input() graphId: string = '';
+
   ngOnInit(): void {
-    this.listMonths = this.usages.map((u) => {
-      const date = new Date(u.date);
-      return date.toLocaleString('default', { month: 'long' });
-    });
-    console.log('MESI', this.listMonths);
+    console.log('lista di numeri', this.listUsage);
     type EChartsOption = echarts.EChartsOption;
 
-    var chartDom = document.getElementById('main')!;
+    var chartDom = document.getElementById(this.graphId);
     var myChart = echarts.init(chartDom);
     var option: EChartsOption;
 
@@ -32,7 +30,7 @@ export class GraphComponent implements OnInit {
       },
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
+          data: this.listUsage,
           type: 'bar',
           showBackground: true,
           backgroundStyle: {

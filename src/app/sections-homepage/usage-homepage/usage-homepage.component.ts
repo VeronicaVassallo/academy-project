@@ -15,8 +15,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class UsageHomepageComponent implements OnInit {
   idHouse!: string | null;
   usageList: Usage[] = [];
+  months: string[] = [];
+  listUsageWater: number[] = [];
+  listUsageGas: number[] = [];
   dataForm!: FormGroup;
   loading: boolean = false;
+
   constructor(
     private usageService: UsageService,
     private route: ActivatedRoute
@@ -39,6 +43,17 @@ export class UsageHomepageComponent implements OnInit {
         },
       });
     }
+    //Dati dei gli usi e consumi
+    this.months = this.usageList.map((u) => {
+      const date = new Date(u.date);
+      return date.toLocaleString('default', { month: 'long' });
+    });
+    this.listUsageWater = this.usageList.map((d) => {
+      return d.water;
+    });
+    this.listUsageGas = this.usageList.map((d) => {
+      return d.gas;
+    });
 
     //
     this.dataForm = new FormGroup({
