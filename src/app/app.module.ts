@@ -25,6 +25,7 @@ import { SectionBachecaAdminComponent } from './sections-backoffice/section-bach
 import { TableNotificationComponent } from './components/table-notification/table-notification.component';
 import { UsageHomepageComponent } from './sections-homepage/usage-homepage/usage-homepage.component';
 import { GraphComponent } from './components/graph/graph.component';
+import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/payment-homepage.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { GraphComponent } from './components/graph/graph.component';
     SectionBachecaAdminComponent,
     UsageHomepageComponent,
     GraphComponent,
+    PaymentHomepageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [

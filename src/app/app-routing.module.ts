@@ -9,6 +9,7 @@ import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca
 import { SectionShowUserHouseHomepageComponent } from './sections-homepage/section-show-user-house-homepage/section-show-user-house-homepage.component';
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
 import { UsageHomepageComponent } from './sections-homepage/usage-homepage/usage-homepage.component';
+import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/payment-homepage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: '', component: SectionBachecaUserComponent },
       { path: 'userHouse', component: SectionShowUserHouseHomepageComponent },
       { path: 'usageHomepage/:idHouse', component: UsageHomepageComponent },
+      { path: 'paymentHomepage/:idHouse', component: PaymentHomepageComponent },
     ],
   },
   {
