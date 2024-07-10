@@ -13,7 +13,6 @@ form {
   padding: 2%;
   border-radius: 5px;
 }
-.graph1 {
-}
-.graph2 {
+.graphContainer {
+  margin-left: 10%;
 }

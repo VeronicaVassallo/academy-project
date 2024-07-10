@@ -14,9 +14,11 @@ import * as echarts from 'echarts';
   styleUrls: ['./graph.component.css'],
 })
 export class GraphComponent implements OnChanges, AfterViewInit, OnDestroy {
+  @Input() title: string = '';
   @Input() listMonths: string[] = [];
   @Input() listUsage: number[] = [];
   @Input() graphId: string = '';
+  @Input() color: string = '';
 
   private myChart: any;
 
@@ -60,7 +62,7 @@ export class GraphComponent implements OnChanges, AfterViewInit, OnDestroy {
             type: 'bar',
             showBackground: true,
             backgroundStyle: {
-              color: 'rgba(180, 180, 180, 0.2)',
+              color: this.color,
             },
           },
         ],

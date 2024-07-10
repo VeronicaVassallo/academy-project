@@ -1,5 +1,29 @@
 <h2 class="my-5">Usi E Consumi</h2>
-<h2>Aggiungi Consumi</h2>
+<div
+  class="d-flex justify-content-evenly graphContainer"
+  *ngIf="listUsageWater.length && listUsageGas.length && months.length"
+>
+  <div class="ms-5 mb-5">
+    <app-graph
+      [title]="'Acqua'"
+      [listUsage]="listUsageWater"
+      [listMonths]="months"
+      [graphId]="'graphWater'"
+      [color]="'rgba(10, 180, 180, 0.2)'"
+    ></app-graph>
+  </div>
+  <div class="mb-5">
+    <app-graph
+      [title]="'Gas'"
+      [listUsage]="listUsageGas"
+      [listMonths]="months"
+      [graphId]="'graphGas'"
+      [color]="'rgba(155, 164, 117, 0.2)'"
+    ></app-graph>
+  </div>
+</div>
+
+<h2 class="my-5">Aggiungi Consumi</h2>
 <form
   [formGroup]="dataForm"
   class="d-flex justify-content-around"
@@ -60,22 +84,3 @@
     Invia
   </button>
 </form>
-<div
-  class="d-flex justify-content-center"
-  *ngIf="listUsageWater.length && listUsageGas.length && months.length"
->
-  <div>
-    <app-graph
-      [listUsage]="listUsageWater"
-      [listMonths]="months"
-      [graphId]="'graphWater'"
-    ></app-graph>
-  </div>
-  <div>
-    <app-graph
-      [listUsage]="listUsageGas"
-      [listMonths]="months"
-      [graphId]="'graphGas'"
-    ></app-graph>
-  </div>
-</div>
