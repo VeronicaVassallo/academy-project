@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-usage-homepage',
   templateUrl: './usage-homepage.component.html',
-  styleUrl: './usage-homepage.component.css',
+  styleUrls: ['./usage-homepage.component.css'],
 })
 export class UsageHomepageComponent implements OnInit {
   idHouse!: string | null;
@@ -33,8 +33,7 @@ export class UsageHomepageComponent implements OnInit {
         next: (data: Usage[]) => {
           this.usageList = data;
           this.loading = false;
-          this.usageList = data;
-          console.log('dati Usage:', this.usageList);
+          this.setUsageData();
         },
         error: (err) => {
           console.error('Errore durante la ricezione dei dati:', err);
@@ -43,19 +42,7 @@ export class UsageHomepageComponent implements OnInit {
         },
       });
     }
-    //Dati dei gli usi e consumi
-    this.months = this.usageList.map((u) => {
-      const date = new Date(u.date);
-      return date.toLocaleString('default', { month: 'long' });
-    });
-    this.listUsageWater = this.usageList.map((d) => {
-      return d.water;
-    });
-    this.listUsageGas = this.usageList.map((d) => {
-      return d.gas;
-    });
 
-    //
     this.dataForm = new FormGroup({
       water: new FormControl(0, [Validators.required, nonNegativeValidator()]),
       gas: new FormControl(0, [Validators.required, nonNegativeValidator()]),
@@ -64,6 +51,15 @@ export class UsageHomepageComponent implements OnInit {
         dateNotInFutureValidator(),
       ]),
     });
+  }
+
+  private setUsageData(): void {
+    this.months = this.usageList.map((u) => {
+      const date = new Date(u.date);
+      return date.toLocaleString('default', { month: 'long' });
+    });
+    this.listUsageWater = this.usageList.map((d) => d.water);
+    this.listUsageGas = this.usageList.map((d) => d.gas);
   }
 
   onSubmitSendDataUsages() {

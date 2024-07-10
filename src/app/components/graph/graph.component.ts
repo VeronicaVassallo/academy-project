@@ -1,45 +1,71 @@
-import { Component, Input, OnInit } from '@angular/core';
-//echarts
+import {
+  Component,
+  OnChanges,
+  SimpleChanges,
+  Input,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import * as echarts from 'echarts';
-import { Usage } from '../../models/usage.model';
+
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
-  styleUrl: './graph.component.css',
+  styleUrls: ['./graph.component.css'],
 })
-export class GraphComponent implements OnInit {
+export class GraphComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() listMonths: string[] = [];
   @Input() listUsage: number[] = [];
   @Input() graphId: string = '';
 
-  ngOnInit(): void {
-    console.log('lista di numeri', this.listUsage);
-    type EChartsOption = echarts.EChartsOption;
+  private myChart: any;
 
-    var chartDom = document.getElementById(this.graphId);
-    var myChart = echarts.init(chartDom);
-    var option: EChartsOption;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['listMonths'] || changes['listUsage']) {
+      this.updateChart();
+    }
+  }
 
-    option = {
-      xAxis: {
-        type: 'category',
-        data: this.listMonths,
-      },
-      yAxis: {
-        type: 'value',
-      },
-      series: [
-        {
-          data: this.listUsage,
-          type: 'bar',
-          showBackground: true,
-          backgroundStyle: {
-            color: 'rgba(180, 180, 180, 0.2)',
-          },
+  ngAfterViewInit(): void {
+    this.initChart();
+  }
+
+  ngOnDestroy(): void {
+    if (this.myChart) {
+      this.myChart.dispose();
+    }
+  }
+
+  private initChart(): void {
+    const chartDom = document.getElementById(this.graphId);
+    if (chartDom) {
+      this.myChart = echarts.init(chartDom);
+      this.updateChart();
+    }
+  }
+
+  private updateChart(): void {
+    if (this.myChart) {
+      const option: echarts.EChartsOption = {
+        xAxis: {
+          type: 'category',
+          data: this.listMonths,
         },
-      ],
-    };
-
-    option && myChart.setOption(option);
+        yAxis: {
+          type: 'value',
+        },
+        series: [
+          {
+            data: this.listUsage,
+            type: 'bar',
+            showBackground: true,
+            backgroundStyle: {
+              color: 'rgba(180, 180, 180, 0.2)',
+            },
+          },
+        ],
+      };
+      this.myChart.setOption(option);
+    }
   }
 }

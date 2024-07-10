@@ -60,19 +60,22 @@
     Invia
   </button>
 </form>
-<div class="d-flex justify-content-center">
+<div
+  class="d-flex justify-content-center"
+  *ngIf="listUsageWater.length && listUsageGas.length && months.length"
+>
   <div>
     <app-graph
       [listUsage]="listUsageWater"
       [listMonths]="months"
       [graphId]="'graphWater'"
-    />
+    ></app-graph>
   </div>
   <div>
     <app-graph
       [listUsage]="listUsageGas"
       [listMonths]="months"
       [graphId]="'graphGas'"
-    />
+    ></app-graph>
   </div>
 </div>
