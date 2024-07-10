@@ -1,2 +1,64 @@
 <h2 class="my-5">Usi E Consumi</h2>
 <div id="main" style="width: 300px; height: 300px; margin-left: 20%"></div>
+
+<h2>Aggiungi Consumi</h2>
+<form
+  [formGroup]="dataForm"
+  class="d-flex justify-content-around"
+  (ngSubmit)="onSubmitSendDataUsages()"
+>
+  <div class="me-5">
+    <label for="water">Acqua:</label>
+    <br />
+    <input type="number" id="water" name="water" formControlName="water" />
+    <div
+      class="text-danger"
+      *ngIf="dataForm.get('water')?.errors?.['nonNegative']"
+    >
+      Valore non consentito
+    </div>
+    <div
+      class="text-danger"
+      *ngIf="!dataForm.get('water')?.valid && dataForm.get('water')?.touched"
+    >
+      Inserisci Acqua
+    </div>
+  </div>
+  <div class="me-5">
+    <label for="gas">Gas:</label>
+    <br />
+    <input type="number" id="gas" name="gas" formControlName="gas" />
+    <div
+      class="text-danger"
+      *ngIf="dataForm.get('gas')?.errors?.['nonNegative']"
+    >
+      Valore non consentito
+    </div>
+    <div
+      class="text-danger"
+      *ngIf="!dataForm.get('gas')?.valid && dataForm.get('gas')?.touched"
+    >
+      Inserisci Gas
+    </div>
+  </div>
+  <div class="me-5">
+    <label for="date">Data:</label>
+    <br />
+    <input type="date" id="date" name="date" formControlName="date" />
+    <div
+      class="text-danger"
+      *ngIf="dataForm.get('date')?.errors?.['dateNotInFuture']"
+    >
+      Scegliere una data non successiva al mese corrente.
+    </div>
+    <div
+      class="text-danger"
+      *ngIf="!dataForm.get('date')?.valid && dataForm.get('date')?.touched"
+    >
+      Inserisci data
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!dataForm.valid">
+    Invia
+  </button>
+</form>
