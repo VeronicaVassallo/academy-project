@@ -1,0 +1,47 @@
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Data</th>
+      <th scope="col">Data pagamento</th>
+      <th scope="col">Intestatario</th>
+      <th scope="col">Totale</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Stato pagamento</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payment of paymentsList">
+      <td>{{ payment.startDate | date : "dd/MM/yy HH:mm" }}</td>
+      <td>{{ payment.paymentDate | date : "dd/MM/yy HH:mm" }}</td>
+      <td>{{ payment.user.name }} {{ payment.user.surname }}</td>
+      <td>{{ payment.total }}€</td>
+      <td>{{ payment.description }}</td>
+      <td *ngIf="payment.isPaid; else notPaid">pagato</td>
+      <ng-template #notPaid>
+        <td>non pervenuto</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="openModal()"
+          >
+            paga
+          </button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+@if (isOpen) {
+<p>
+  You can pass an existing component as content of the modal window. In this
+  case, if you're still using Angular 8 or older, remember to add the content
+  component in the <code>entryComponents</code> section of your
+  <code>NgModule</code>. For Angular 9 or newer, it's not needed anymore.
+</p>
+
+}

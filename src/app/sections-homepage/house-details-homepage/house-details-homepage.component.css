@@ -1,8 +1,16 @@
 h2 {
-  margin-left: 49%;
   font-weight: 700;
   font-weight: 700;
   color: var(--white-EasyHome);
+}
+h2:first-of-type {
+  margin-left: 46%;
+}
+h2:nth-of-type(2) {
+  margin-left: 47%;
+}
+h2:last-of-type {
+  margin-left: 40%;
 }
 form {
   margin-left: 20%;

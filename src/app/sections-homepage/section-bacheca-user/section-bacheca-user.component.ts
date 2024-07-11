@@ -13,7 +13,7 @@ export class SectionBachecaUserComponent implements OnInit {
   notifications: Notification[] = [];
   // user: User | null = null; TO Do da rimuovere quando sara pronto la login
   user: User = {
-    id: '123',
+    id: '124',
     buildingManager: false,
     name: 'Mario',
     surname: 'Rossi',

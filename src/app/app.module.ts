@@ -29,6 +29,7 @@ import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/p
 import { UsageBackofficeComponent } from './sections-backoffice/usage-backoffice/usage-backoffice.component';
 import { PaymentBackofficeComponent } from './sections-backoffice/payment-backoffice/payment-backoffice.component';
 import { CardHouseHomepageComponent } from './components/card-house-homepage/card-house-homepage.component';
+import { TablePaymentsComponent } from './components/table-payments/table-payments.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { CardHouseHomepageComponent } from './components/card-house-homepage/car
     UsageBackofficeComponent,
     PaymentBackofficeComponent,
     CardHouseHomepageComponent,
+    TablePaymentsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [

@@ -1,4 +1,4 @@
-<h2 class="my-5">Usi E Consumi</h2>
+<h2 class="my-5">Sezione Usi E Consumi</h2>
 <div
   class="d-flex justify-content-evenly graphContainer"
   *ngIf="listUsageWater.length && listUsageGas.length && months.length"
@@ -84,3 +84,6 @@
     Invia
   </button>
 </form>
+
+<h2 class="my-5">Sezione Pagamenti Amministrativi</h2>
+<app-table-payments [paymentsList]="payments" />

@@ -5,8 +5,11 @@ import {
   Input,
   AfterViewInit,
   OnDestroy,
+  Inject,
+  PLATFORM_ID,
 } from '@angular/core';
 import * as echarts from 'echarts';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-graph',
@@ -22,6 +25,8 @@ export class GraphComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   private myChart: any;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['listMonths'] || changes['listUsage']) {
       this.updateChart();
@@ -29,7 +34,9 @@ export class GraphComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.initChart();
+    if (isPlatformBrowser(this.platformId)) {
+      this.initChart();
+    }
   }
 
   ngOnDestroy(): void {
@@ -39,10 +46,12 @@ export class GraphComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   private initChart(): void {
-    const chartDom = document.getElementById(this.graphId);
-    if (chartDom) {
-      this.myChart = echarts.init(chartDom);
-      this.updateChart();
+    if (isPlatformBrowser(this.platformId)) {
+      const chartDom = document.getElementById(this.graphId);
+      if (chartDom) {
+        this.myChart = echarts.init(chartDom);
+        this.updateChart();
+      }
     }
   }
 

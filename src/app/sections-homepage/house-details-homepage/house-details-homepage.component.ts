@@ -6,6 +6,8 @@ import { dateNotInFutureValidator } from '../../validators/date.validators';
 import { nonNegativeValidator } from '../../validators/number.validators';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PaymentService } from '../../services/payment.service';
+import { Payment } from '../../models/payment.model';
 
 @Component({
   selector: 'app-house-details-homepage',
@@ -20,11 +22,14 @@ export class HouseDetailsComponent implements OnInit {
   listUsageGas: number[] = [];
   dataForm!: FormGroup;
   loading: boolean = false;
+  payments: Payment[] = [];
 
   constructor(
     private usageService: UsageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private paymentService: PaymentService
   ) {}
+
   ngOnInit(): void {
     this.idHouse = this.route.snapshot.paramMap.get('idHouse');
     if (this.idHouse) {
@@ -32,8 +37,8 @@ export class HouseDetailsComponent implements OnInit {
       this.usageService.getAllUsagesHouse(this.idHouse).subscribe({
         next: (data: Usage[]) => {
           this.usageList = data;
-          this.loading = false;
           this.setUsageData();
+          this.loading = false;
         },
         error: (err) => {
           console.error('Errore durante la ricezione dei dati:', err);
@@ -41,12 +46,22 @@ export class HouseDetailsComponent implements OnInit {
           this.loading = false;
         },
       });
+
+      this.paymentService.getPaymentHouse(this.idHouse).subscribe({
+        next: (p: Payment[]) => {
+          this.payments = p;
+        },
+        error: (err) => {
+          console.error('Errore durante la ricezione dei dati:', err);
+          this.payments = [];
+        },
+      });
     }
 
     this.dataForm = new FormGroup({
       water: new FormControl(0, [Validators.required, nonNegativeValidator()]),
       gas: new FormControl(0, [Validators.required, nonNegativeValidator()]),
-      date: new FormControl(Date.now(), [
+      date: new FormControl(new Date().toISOString().substring(0, 10), [
         Validators.required,
         dateNotInFutureValidator(),
       ]),
