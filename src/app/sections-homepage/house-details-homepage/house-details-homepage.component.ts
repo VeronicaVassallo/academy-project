@@ -8,11 +8,11 @@ import { nonNegativeValidator } from '../../validators/number.validators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-usage-homepage',
-  templateUrl: './usage-homepage.component.html',
-  styleUrls: ['./usage-homepage.component.css'],
+  selector: 'app-house-details-homepage',
+  templateUrl: './house-details-homepage.component.html',
+  styleUrls: ['./house-details-homepage.component.css'],
 })
-export class UsageHomepageComponent implements OnInit {
+export class HouseDetailsComponent implements OnInit {
   idHouse!: string | null;
   usageList: Usage[] = [];
   months: string[] = [];
@@ -46,7 +46,7 @@ export class UsageHomepageComponent implements OnInit {
     this.dataForm = new FormGroup({
       water: new FormControl(0, [Validators.required, nonNegativeValidator()]),
       gas: new FormControl(0, [Validators.required, nonNegativeValidator()]),
-      date: new FormControl(null, [
+      date: new FormControl(Date.now(), [
         Validators.required,
         dateNotInFutureValidator(),
       ]),
@@ -75,6 +75,7 @@ export class UsageHomepageComponent implements OnInit {
         .subscribe({
           next: () => {
             alert('Dati inviati con successo');
+            window.location.reload();
           },
           error: (err) => {
             console.error("Errore durante l'invio dei dati:", err);

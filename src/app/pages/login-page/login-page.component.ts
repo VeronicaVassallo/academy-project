@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
   showPassword: boolean = false;
   dataLoginForm!: FormGroup;
   user: User | undefined;
+  body: { email: string; password: string } | null = null;
   constructor(
     private userService: UserService,
     private router: Router,
@@ -26,15 +27,18 @@ export class LoginPageComponent implements OnInit {
     });
   }
   onSubmit() {
-    /* TO DO: Rimuovere il commente qundo il BE Finisce di sistemare la query di login
-    if (this.dataLoginForm.valid) {
-      const email = this.dataLoginForm.get('email')?.value;
-      const password = this.dataLoginForm.get('password')?.value;
-      this.userService.getUser(email, password).subscribe({
-        next: (user: User) => {
-          this.user = user;
-          this.sessionService.setSession(user);
-
+    this.body = {
+      email: this.dataLoginForm.get('email')?.value,
+      password: this.dataLoginForm.get('password')?.value,
+    };
+    /*
+    if (this.dataLoginForm.valid && this.body) {
+      this.userService.getUser(this.body).subscribe({
+        next: (u: User) => {
+          this.user = u;
+          console.log('Dati utente', u);
+          // this.sessionService.setSession(user);
+          
           if (this.user.buildingManager) {
             this.router.navigate(['backoffice']);
           } else {

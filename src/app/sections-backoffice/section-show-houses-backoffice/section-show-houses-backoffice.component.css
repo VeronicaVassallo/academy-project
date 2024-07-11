@@ -3,12 +3,11 @@ h2 {
   font-weight: 700;
   font-weight: 700;
   color: var(--white-EasyHome);
-  text-shadow: 6px 7px 9px rgba(0, 0, 0, 0.92);
 }
 .navbar {
   width: 80%;
   margin-left: 18%;
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.24);
 }
 .navbar + div {
   margin-left: 20%;

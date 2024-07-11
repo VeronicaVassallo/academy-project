@@ -10,12 +10,10 @@ import { enviroment } from '../../enviroments/enviroment';
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-
-  getUser(email: string, password: string): Observable<User> {
+  /*
+  getUser(body: { email: string; password: string }): Observable<User> {
     return this.http
-      .get<any>(
-        `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/login/${email}/${password}`
-      )
+      .post<any>(`${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/login`, body)
       .pipe(
         map((userFromDB) => ({
           ...userFromDB,
@@ -24,15 +22,7 @@ export class UserService {
         }))
       );
   }
-
-  //To Do: da rimuovere
-  insertUser(body: {}) {
-    return this.http.post(
-      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/save`,
-      body
-    );
-  }
-
+*/
   //Metodo che crea un nuovo utente e aggiorna il campo user della casa:
   createUserAndUpdateHouse(body: {}) {
     return this.http.patch(

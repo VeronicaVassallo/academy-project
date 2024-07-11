@@ -1,0 +1,27 @@
+.card {
+  cursor: pointer;
+  background-color: var(--blue-EasyHome);
+  margin-left: 12%;
+}
+.cardHouse {
+  width: 60vw;
+}
+.card-body {
+  height: 50vh;
+  width: 50%;
+  overflow: hidden;
+}
+.card-img-top {
+  width: 100%;
+}
+.infoCard {
+  width: 30%;
+  position: relative;
+  z-index: 500;
+  left: -15%;
+  background-color: var(--white-EasyHome);
+  color: var(--blue-EasyHome);
+}
+.card:hover {
+  background-color: var(--blue-EasyHome);
+}

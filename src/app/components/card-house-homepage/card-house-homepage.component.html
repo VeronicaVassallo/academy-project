@@ -1,0 +1,18 @@
+<div
+  class="card cardHouse text-center d-flex flex-row align-items-center"
+  routerLink="/homepage/houseDetails/{{ userHouse.id }}"
+>
+  <div class="card-body mb-3">
+    <img class="card-img-top" src="{{ userHouse.houseImg }}" alt="img_house" />
+  </div>
+  <div class="infoCard pt-2">
+    <p><strong>Interno: </strong> {{ userHouse.interno }}</p>
+    <p><strong>Piano: </strong> {{ userHouse.piano }}</p>
+    <p><strong>Scala: </strong> {{ userHouse.scala }}</p>
+    <p *ngIf="userHouse.user">
+      <strong>Proprietario: </strong> {{ userHouse.user.name }}
+      {{ userHouse.user.surname }}
+    </p>
+    <p *ngIf="!userHouse.user"><strong>Proprietario: </strong>nessuno</p>
+  </div>
+</div>

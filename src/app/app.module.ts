@@ -23,9 +23,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { CardHouseUserComponent } from './components/card-house-user/card-house-user.component';
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
 import { TableNotificationComponent } from './components/table-notification/table-notification.component';
-import { UsageHomepageComponent } from './sections-homepage/usage-homepage/usage-homepage.component';
+import { HouseDetailsComponent } from './sections-homepage/house-details-homepage/house-details-homepage.component';
 import { GraphComponent } from './components/graph/graph.component';
 import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/payment-homepage.component';
+import { UsageBackofficeComponent } from './sections-backoffice/usage-backoffice/usage-backoffice.component';
+import { PaymentBackofficeComponent } from './sections-backoffice/payment-backoffice/payment-backoffice.component';
+import { CardHouseHomepageComponent } from './components/card-house-homepage/card-house-homepage.component';
 
 @NgModule({
   declarations: [
@@ -44,9 +47,12 @@ import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/p
     CardHouseUserComponent,
     TableNotificationComponent,
     SectionBachecaAdminComponent,
-    UsageHomepageComponent,
+    HouseDetailsComponent,
     GraphComponent,
     PaymentHomepageComponent,
+    UsageBackofficeComponent,
+    PaymentBackofficeComponent,
+    CardHouseHomepageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [

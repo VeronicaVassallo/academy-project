@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --blue-EasyHome: rgb(35, 75, 107);
+  --blue-EasyHome: rgb(66, 106, 140);
   --white-EasyHome: rgb(246, 239, 230);
   --light-blue: rgb(188, 188, 226);
   --border-button-orange: rgb(151, 100, 5);
@@ -17,4 +17,8 @@
   border: 0px;
   border-radius: 10%;
   background-color: var(--white-EasyHome);
+}
+.titleEasyHome {
+  font-weight: 700;
+  color: var(--white-EasyHome);
 }

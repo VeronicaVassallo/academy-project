@@ -2,7 +2,6 @@ h2 {
   margin-left: 43%;
   font-weight: 700;
   color: var(--white-EasyHome);
-  text-shadow: 6px 7px 9px rgba(0, 0, 0, 0.92);
 }
 form {
   margin-left: 20%;
@@ -11,7 +10,7 @@ form {
   color: var(--white-EasyHome);
   border-radius: 2%;
   padding: 2%;
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.54);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.24);
 }
 form input {
   margin-right: 15px;

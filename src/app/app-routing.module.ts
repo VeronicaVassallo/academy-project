@@ -8,8 +8,10 @@ import { SectionShowHousesBackofficeComponent } from './sections-backoffice/sect
 import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca-user/section-bacheca-user.component';
 import { SectionShowUserHouseHomepageComponent } from './sections-homepage/section-show-user-house-homepage/section-show-user-house-homepage.component';
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
-import { UsageHomepageComponent } from './sections-homepage/usage-homepage/usage-homepage.component';
+import { HouseDetailsComponent } from './sections-homepage/house-details-homepage/house-details-homepage.component';
 import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/payment-homepage.component';
+import { UsageBackofficeComponent } from './sections-backoffice/usage-backoffice/usage-backoffice.component';
+import { PaymentBackofficeComponent } from './sections-backoffice/payment-backoffice/payment-backoffice.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,8 +22,7 @@ const routes: Routes = [
     children: [
       { path: '', component: SectionBachecaUserComponent },
       { path: 'userHouse', component: SectionShowUserHouseHomepageComponent },
-      { path: 'usageHomepage/:idHouse', component: UsageHomepageComponent },
-      { path: 'paymentHomepage/:idHouse', component: PaymentHomepageComponent },
+      { path: 'houseDetails/:idHouse', component: HouseDetailsComponent },
     ],
   },
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
       { path: '', component: SectionShowHousesBackofficeComponent },
       { path: 'formaAddUser', component: SectionRegisterNewUser },
       { path: 'bachecaAdmin', component: SectionBachecaAdminComponent },
+      { path: 'usageBackoffice/:idHouse', component: UsageBackofficeComponent },
+      {
+        path: 'paymentBackoffice/:idHouse',
+        component: PaymentBackofficeComponent,
+      },
     ],
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
