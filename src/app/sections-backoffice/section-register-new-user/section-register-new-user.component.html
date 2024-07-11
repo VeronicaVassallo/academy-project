@@ -1,5 +1,6 @@
 <h2 class="mt-5 mb-5">Aggiungi un nuovo Utente</h2>
 <form [formGroup]="dataFormUser" (ngSubmit)="onSubmitSendData()">
+  <h4>Dati utente</h4>
   <div class="d-flex justify-content-start flex-wrap mb-4">
     <div>
       <label for="name">*Nome:</label>
@@ -142,7 +143,22 @@
   </div>
   <hr />
   <h4>Dati carta di credito</h4>
-  <div class="d-flex justify-content-around flex-wrap mb-5">
+  <div class="d-flex justify-content-start flex-wrap mb-5">
+    <div>
+      <label for="holder">Titolare carta:</label>
+      <br />
+      <input type="text" id="holder" name="holder" formControlName="holder" />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('holder')?.valid &&
+          dataFormUser.get('holder')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci nome e cognome titolare carta
+      </p>
+    </div>
     <div>
       <label for="creditCard">Carta di credito:</label>
       <br />
@@ -178,7 +194,7 @@
       </p>
     </div>
     <div>
-      <label for="expire">Data di scadenza Carta di credito:</label>
+      <label for="expire">Data di scadenza:</label>
       <br />
       <input type="date" id="expire" name="expire" formControlName="expire" />
       <br />
@@ -190,21 +206,6 @@
         class="text-danger"
       >
         Inserisci data di scadenza
-      </p>
-    </div>
-    <div>
-      <label for="holder">Titolare carta:</label>
-      <br />
-      <input type="text" id="holder" name="holder" formControlName="holder" />
-      <br />
-      <p
-        *ngIf="
-          !dataFormUser.get('holder')?.valid &&
-          dataFormUser.get('holder')?.touched
-        "
-        class="text-danger"
-      >
-        Inserisci nome e cognome titolare carta
       </p>
     </div>
   </div>
