@@ -31,18 +31,21 @@ export class LoginPageComponent implements OnInit {
       email: this.dataLoginForm.get('email')?.value,
       password: this.dataLoginForm.get('password')?.value,
     };
-    /*
+
     if (this.dataLoginForm.valid && this.body) {
       this.userService.getUser(this.body).subscribe({
         next: (u: User) => {
           this.user = u;
           console.log('Dati utente', u);
-          // this.sessionService.setSession(user);
-          
+          this.sessionService.setSession(this.user);
+
           if (this.user.buildingManager) {
             this.router.navigate(['backoffice']);
-          } else {
+          } else if (!this.user.buildingManager && this.user.id != null) {
             this.router.navigate(['homepage']);
+          } else {
+            alert('Password o email errate!');
+            this.router.navigate(['login']);
           }
         },
         error: (err) => {
@@ -53,7 +56,6 @@ export class LoginPageComponent implements OnInit {
     } else {
       console.log('Form non valido');
     }
-      */
   }
 
   toggleShowPassword() {

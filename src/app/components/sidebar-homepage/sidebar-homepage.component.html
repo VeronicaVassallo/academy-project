@@ -1,5 +1,6 @@
 <section id="sidebar">
-  <div id="profile" class="ps-5 pt-3">
+  @if (user) {
+  <div id="profile" class="pt-3">
     <div id="imgProfile" class="m-2">
       <img
         class="w-100 h-100"
@@ -8,7 +9,7 @@
       />
     </div>
 
-    <p class="py-2 px-3">{{ user.name }} {{ user.surname }}</p>
+    <p class="py-2">{{ user.name }} {{ user.surname }}</p>
     <img
       id="logo"
       routerLink="/login"
@@ -17,19 +18,21 @@
       alt="alt_logo"
     />
   </div>
+  }
+
   <!--Bottoni User-->
   <div id="menu" class="px-3 pt-3">
-    <!--  @if (!user.buildingManager) { -->
+    @if (user && !user.buildingManager) {
     <button
       routerLink="/homepage/"
-      class="btn btn-primary mb-2 d-flex align-items-center justify-content-start"
+      class="btn btn-primary mb-2 d-flex align-items-center justify-content-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
         height="16"
         fill="currentColor"
-        class="bi bi-chat-square-text me-3"
+        class="bi bi-chat-square-text me-2"
         viewBox="0 0 16 16"
       >
         <path
@@ -43,14 +46,14 @@
     </button>
     <button
       routerLink="/homepage/userHouse"
-      class="btn btn-primary mb-2 d-flex align-items-center justify-content-start"
+      class="btn btn-primary mb-2 d-flex align-items-center justify-content-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
         height="16"
         fill="currentColor"
-        class="bi bi-house-heart me-3"
+        class="bi bi-house-heart me-2"
         viewBox="0 0 16 16"
       >
         <path
@@ -63,14 +66,14 @@
       <div>La mia casa</div>
     </button>
     <button
-      class="btn btn-primary mb-2 d-flex align-items-center justify-content-start"
+      class="btn btn-primary mb-2 d-flex align-items-center justify-content-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg "
         width="16"
         height="16"
         fill="currentColor"
-        class="bi bi-tools me-3"
+        class="bi bi-tools me-2"
         viewBox="0 0 16 16"
       >
         <path
@@ -79,21 +82,20 @@
       </svg>
       <div>Impostazioni</div>
     </button>
-    <!--  } -->
-    <h5 class="text-danger">Bottoni Amministratore</h5>
+    }
     <!--Bottoni Amministratore-->
-    <!--  @else { -->
+    @else {
     <div>
       <button
         routerLink="/backoffice/"
-        class="btn btn-primary mb-2 d-flex align-items-center justify-content-start"
+        class="btn btn-primary mb-2 d-flex align-items-center justify-content-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
           fill="currentColor"
-          class="bi bi-houses-fill me-3"
+          class="bi bi-houses-fill me-2"
           viewBox="0 0 16 16"
         >
           <path
@@ -107,14 +109,14 @@
       </button>
       <button
         routerLink="/backoffice/formaAddUser"
-        class="btn btn-primary mb-2 d-flex align-items-center justify-content-start"
+        class="btn btn-primary mb-2 d-flex align-items-center justify-content-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
           fill="currentColor"
-          class="bi bi-person-plus me-3"
+          class="bi bi-person-plus me-2"
           viewBox="0 0 16 16"
         >
           <path
@@ -129,14 +131,14 @@
       </button>
       <button
         routerLink="/backoffice/bachecaAdmin"
-        class="btn btn-primary mb-2 d-flex align-items-center justify-content-start"
+        class="btn btn-primary mb-2 d-flex align-items-center justify-content-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
           fill="currentColor"
-          class="bi bi-chat-square-text me-3"
+          class="bi bi-chat-square-text me-2"
           viewBox="0 0 16 16"
         >
           <path
@@ -149,6 +151,6 @@
         <div>Bacheca</div>
       </button>
     </div>
-    <!--  } -->
+    }
   </div>
 </section>

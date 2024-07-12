@@ -19,27 +19,24 @@ export class SectionShowUserHouseHomepageComponent implements OnInit {
     private sessionService: SessionService
   ) {}
   ngOnInit(): void {
-    debugger;
-    /*TO DO; da rimuovere quando la login è pronta 
     this.user = this.sessionService.getUserFromSession();
-    */
-    // if (this.user) {
-    this.houseService.getSpecificHouse('124').subscribe({
-      //TODO: sostituisci 123 con questo this.user?.id
-      next: (data: any) => {
-        if (data && data.lo) {
-          this.houses = data.lo;
-        } else {
-          console.log('Non ci sono case a disposizione');
-          this.houses = [];
-        }
-      },
-      error: (err) => {
-        console.error('Errore durante la ricezioni dei dati', err);
-      },
-    });
-    /*   } else {
+
+    if (this.user) {
+      this.houseService.getSpecificHouse(this.user?.id).subscribe({
+        next: (data: any) => {
+          if (data && data.lo) {
+            this.houses = data.lo;
+          } else {
+            console.log('Non ci sono case a disposizione');
+            this.houses = [];
+          }
+        },
+        error: (err) => {
+          console.error('Errore durante la ricezioni dei dati', err);
+        },
+      });
+    } else {
       this.message = true;
-    } */
+    }
   }
 }

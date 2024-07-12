@@ -9,7 +9,7 @@ export class SessionService {
   user: User | null = null;
 
   constructor() {}
-  /*
+
   setSession(user: User) {
     if (typeof window !== 'undefined' && window.sessionStorage) {
       this.userSession = JSON.stringify(user);
@@ -27,5 +27,4 @@ export class SessionService {
 
     return this.user;
   }
-    */
 }

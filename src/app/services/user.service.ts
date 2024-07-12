@@ -10,7 +10,7 @@ import { enviroment } from '../../enviroments/enviroment';
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-  /*
+
   getUser(body: { email: string; password: string }): Observable<User> {
     return this.http
       .post<any>(`${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/login`, body)
@@ -22,7 +22,6 @@ export class UserService {
         }))
       );
   }
-*/
   //Metodo che crea un nuovo utente e aggiorna il campo user della casa:
   createUserAndUpdateHouse(body: {}) {
     return this.http.patch(
