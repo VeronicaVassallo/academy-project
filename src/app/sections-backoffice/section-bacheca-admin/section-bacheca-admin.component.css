@@ -31,3 +31,17 @@ button:hover {
   border: solid 2px var(--border-button-orange);
   background-color: rgb(210, 138, 4);
 }
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  h2 {
+    margin-left: 0px;
+    text-align: center;
+  }
+  form {
+    margin-left: 10%;
+    width: 80vw;
+  }
+  button {
+    margin-left: 76%;
+  }
+}

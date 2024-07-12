@@ -12,3 +12,16 @@ h2 {
 .navbar + div {
   margin-left: 20%;
 }
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  h2 {
+    margin-left: 0px;
+    text-align: center;
+  }
+  .navbar {
+    margin-left: 10%;
+  }
+  .navbar + div {
+    margin-left: 10%;
+  }
+}

@@ -16,4 +16,13 @@ svg {
   footer {
     margin-left: 0px;
   }
+  #contacts div:first-of-type {
+    padding-left: 13%;
+  }
+  #contacts div:not(:first-of-type) {
+    padding-left: 27%;
+  }
+  #containerLogoFooter {
+    justify-content: center;
+  }
 }

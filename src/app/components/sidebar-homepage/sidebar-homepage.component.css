@@ -52,33 +52,36 @@ button:hover {
     display: flex;
     flex-direction: row-reverse;
     position: absolute;
-    top: 20px;
+    top: 10px;
   }
   #profile p {
-    padding-top: 0px !important;
+    padding-top: 20px !important;
   }
   #imgProfile {
     width: 50px;
     height: 50px;
   }
   #logo {
+    width: 20px;
     position: relative;
-    left: -40%;
+    left: -45%;
     top: -7px;
+    z-index: 600;
   }
   #menu {
     display: flex;
     justify-content: space-around;
     align-items: end;
-    transform: translateX(-16%);
+    transform: translateX(-8%);
+    margin-top: 5px;
   }
   button {
     width: auto;
-    height: 30%;
     padding: 5px !important;
     background-color: var(--blue-EasyHome);
     border: none;
-    margin-left: 15px;
+    font-size: 8pt;
+    padding: 0px;
   }
 }
 
