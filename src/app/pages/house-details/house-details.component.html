@@ -22,7 +22,7 @@
     ></app-graph>
   </div>
 </div>
-
+@if (!userLogged?.buildingManager ) {
 <h2 class="my-5">Aggiungi Consumi</h2>
 <form
   [formGroup]="dataForm"
@@ -84,6 +84,7 @@
     Invia
   </button>
 </form>
+}
 
 <h2 class="my-5">Sezione Pagamenti Amministrativi</h2>
-<app-table-payments [paymentsList]="payments" />
+<app-table-payments [paymentsList]="payments" [user]="userLogged" />

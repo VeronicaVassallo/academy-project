@@ -7,7 +7,9 @@
       <th scope="col">Totale</th>
       <th scope="col">Descrizione</th>
       <th scope="col">Stato pagamento</th>
+      @if (!user?.buildingManager) {
       <th scope="col"></th>
+      }
     </tr>
   </thead>
   <tbody>
@@ -20,6 +22,7 @@
       <td *ngIf="payment.isPaid; else notPaid">pagato</td>
       <ng-template #notPaid>
         <td>non pervenuto</td>
+        @if (!user?.buildingManager) {
         <td>
           <button
             type="button"
@@ -30,6 +33,7 @@
             paga
           </button>
         </td>
+        }
       </ng-template>
     </tr>
   </tbody>

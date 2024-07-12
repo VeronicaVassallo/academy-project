@@ -5,7 +5,9 @@
         <th scope="col">Messaggio</th>
         <th scope="col">Data</th>
         <th scope="col">Destinatario</th>
+        @if (userLogged?.buildingManager) {
         <th scope="col" class="col-cancella"></th>
+        }
       </tr>
     </thead>
     <tbody>
@@ -17,6 +19,7 @@
           {{ notification.user.surname }}
         </td>
         <td *ngIf="!notification.user">Tutti</td>
+        @if (userLogged?.buildingManager) {
         <td class="mx-0">
           <button
             class="btn btn-danger d-flex align-items-center"
@@ -40,6 +43,7 @@
             <div class="d-none d-md-block d-lg-block">cancella</div>
           </button>
         </td>
+        }
       </tr>
     </tbody>
   </table>

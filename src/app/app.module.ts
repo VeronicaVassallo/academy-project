@@ -23,7 +23,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CardHouseUserComponent } from './components/card-house-user/card-house-user.component';
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
 import { TableNotificationComponent } from './components/table-notification/table-notification.component';
-import { HouseDetailsComponent } from './sections-homepage/house-details-homepage/house-details-homepage.component';
+import { HouseDetailsComponent } from './pages/house-details/house-details.component';
 import { GraphComponent } from './components/graph/graph.component';
 import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/payment-homepage.component';
 import { UsageBackofficeComponent } from './sections-backoffice/usage-backoffice/usage-backoffice.component';

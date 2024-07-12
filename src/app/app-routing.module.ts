@@ -8,7 +8,7 @@ import { SectionShowHousesBackofficeComponent } from './sections-backoffice/sect
 import { SectionBachecaUserComponent } from './sections-homepage/section-bacheca-user/section-bacheca-user.component';
 import { SectionShowUserHouseHomepageComponent } from './sections-homepage/section-show-user-house-homepage/section-show-user-house-homepage.component';
 import { SectionBachecaAdminComponent } from './sections-backoffice/section-bacheca-admin/section-bacheca-admin.component';
-import { HouseDetailsComponent } from './sections-homepage/house-details-homepage/house-details-homepage.component';
+import { HouseDetailsComponent } from './pages/house-details/house-details.component';
 import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/payment-homepage.component';
 import { UsageBackofficeComponent } from './sections-backoffice/usage-backoffice/usage-backoffice.component';
 import { PaymentBackofficeComponent } from './sections-backoffice/payment-backoffice/payment-backoffice.component';

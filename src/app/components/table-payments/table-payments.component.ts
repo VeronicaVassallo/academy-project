@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Payment } from '../../models/payment.model';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-table-payments',
@@ -8,4 +9,5 @@ import { Payment } from '../../models/payment.model';
 })
 export class TablePaymentsComponent {
   @Input() paymentsList: Payment[] = [];
+  @Input() user: User | null = null;
 }

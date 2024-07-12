@@ -8,14 +8,17 @@ import { nonNegativeValidator } from '../../validators/number.validators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaymentService } from '../../services/payment.service';
 import { Payment } from '../../models/payment.model';
+import { SessionService } from '../../services/session.service';
+import { User } from '../../models/user.model';
 
 @Component({
-  selector: 'app-house-details-homepage',
-  templateUrl: './house-details-homepage.component.html',
-  styleUrls: ['./house-details-homepage.component.css'],
+  selector: 'app-house-details',
+  templateUrl: './house-details.component.html',
+  styleUrls: ['./house-details.component.css'],
 })
 export class HouseDetailsComponent implements OnInit {
   idHouse!: string | null;
+  userLogged: User | null = null;
   usageList: Usage[] = [];
   months: string[] = [];
   listUsageWater: number[] = [];
@@ -27,7 +30,8 @@ export class HouseDetailsComponent implements OnInit {
   constructor(
     private usageService: UsageService,
     private route: ActivatedRoute,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private sessionService: SessionService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +50,8 @@ export class HouseDetailsComponent implements OnInit {
           this.loading = false;
         },
       });
+
+      this.userLogged = this.sessionService.getUserFromSession();
 
       this.paymentService.getPaymentHouse(this.idHouse).subscribe({
         next: (p: Payment[]) => {

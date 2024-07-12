@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Notification } from '../../models/notification.model';
 import { NotificationService } from '../../services/notification.service';
+import { User } from '../../models/user.model';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-table-notification',
@@ -9,10 +11,15 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class TableNotificationComponent {
   @Input() notficationsList: Notification[] = [];
+  userLogged: User | null = null;
 
-  constructor(private notificationService: NotificationService) {}
+  constructor(
+    private notificationService: NotificationService,
+    private sessionService: SessionService
+  ) {}
 
   deleteNotification(id: string | undefined): void {
+    this.userLogged = this.sessionService.getUserFromSession();
     if (!id) {
       console.error('ID della notifica non definito');
       return;
