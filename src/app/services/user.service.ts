@@ -55,4 +55,11 @@ export class UserService {
         })
       );
   }
+
+  updateUser(body: User): Observable<any> {
+    return this.http.put(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/putUpdate`,
+      body
+    );
+  }
 }

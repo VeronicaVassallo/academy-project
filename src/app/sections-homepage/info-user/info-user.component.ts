@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-info-user',
   templateUrl: './info-user.component.html',
-  styleUrls: ['./info-user.component.css'], // Correzione dell'importazione
+  styleUrls: ['./info-user.component.css'],
 })
 export class InfoUserComponent implements OnInit {
   userLogged: User | null = null;
@@ -70,5 +70,37 @@ export class InfoUserComponent implements OnInit {
       expire: user.expire,
       holder: user.holder,
     });
+  }
+
+  sendUpdateUser() {
+    const dataFormValue = this.dataForm.value;
+    if (this.user) {
+      this.userService
+        .updateUser({
+          id: this.user.id,
+          buildingManager: this.user.buildingManager,
+          name: dataFormValue.name,
+          surname: dataFormValue.surname,
+          email: dataFormValue.email,
+          password: dataFormValue.password,
+          cell: dataFormValue.cell,
+          birthDate: dataFormValue.birthDate,
+          profileImg: dataFormValue.profileImg,
+          creditCard: dataFormValue.creditCard,
+          cvv: dataFormValue.cvv,
+          expire: dataFormValue.expire,
+          holder: dataFormValue.holder,
+        })
+        .subscribe({
+          next: (data) => {
+            alert('Dati modificati con successo!');
+            //TO DO: Fai in modo che i nuovo dati vengano salvati nella session
+            window.location.reload();
+          },
+          error: (err) => {
+            console.error("Errore durante l'update", err);
+          },
+        });
+    }
   }
 }
