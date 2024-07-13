@@ -1,0 +1,31 @@
+h2 {
+  margin-left: 48%;
+}
+#info {
+  margin-left: 23%;
+  width: 65vw;
+  background-color: var(--blue-EasyHome);
+  color: var(--white-EasyHome);
+  border-radius: 20px;
+}
+#info img {
+  border-radius: 5px;
+}
+#containerImg {
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
+  border-radius: 12%;
+  margin-right: 2%;
+}
+input {
+  width: 100%;
+}
+
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  table {
+    width: 95vw;
+    margin-left: 2.5vw;
+  }
+}

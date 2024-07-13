@@ -23,16 +23,7 @@
       <ng-template #notPaid>
         <td>non pervenuto</td>
         @if (!user?.buildingManager) {
-        <td>
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            paga
-          </button>
-        </td>
+        <td></td>
         }
       </ng-template>
     </tr>
@@ -50,7 +41,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Esegui il pagamento</h5>
         <button
           type="button"
           class="btn-close"
@@ -58,12 +49,19 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">...</div>
+      <div class="modal-body">
+        <p>Inserisci o conferma i dati del pagamento</p>
+        <div>
+          <div>
+            <label for="holder"></label>
+          </div>
+        </div>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+          annulla
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Esegui pagamento</button>
       </div>
     </div>
   </div>
