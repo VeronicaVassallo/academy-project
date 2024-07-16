@@ -13,56 +13,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let payment of paymentsList">
+    @for (payment of paymentsList; track payment) {
+    <tr>
       <td>{{ payment.startDate | date : "dd/MM/yy HH:mm" }}</td>
       <td>{{ payment.paymentDate | date : "dd/MM/yy HH:mm" }}</td>
       <td>{{ payment.user.name }} {{ payment.user.surname }}</td>
       <td>{{ payment.total }}€</td>
       <td>{{ payment.description }}</td>
-      <td *ngIf="payment.isPaid; else notPaid">pagato</td>
-      <ng-template #notPaid>
-        <td>non pervenuto</td>
-        @if (!user?.buildingManager) {
-        <td></td>
-        }
-      </ng-template>
+      @if (payment.ongoing) {
+      <td>pagato</td>
+      } @else {
+      <td>non pervenuto</td>
+      } @if ( !user?.buildingManager && payment.ongoing == false) {
+      <td>
+        <button class="btn btn-primary">Paga</button>
+      </td>
+      }
     </tr>
+    }
   </tbody>
 </table>
-
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Esegui il pagamento</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <p>Inserisci o conferma i dati del pagamento</p>
-        <div>
-          <div>
-            <label for="holder"></label>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          annulla
-        </button>
-        <button type="button" class="btn btn-primary">Esegui pagamento</button>
-      </div>
-    </div>
-  </div>
-</div>

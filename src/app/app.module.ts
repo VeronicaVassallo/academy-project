@@ -32,6 +32,10 @@ import { CardHouseHomepageComponent } from './components/card-house-homepage/car
 import { TablePaymentsComponent } from './components/table-payments/table-payments.component';
 import { InfoUserComponent } from './sections-homepage/info-user/info-user.component';
 
+// Guard
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +64,8 @@ import { InfoUserComponent } from './sections-homepage/info-user/info-user.compo
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
   providers: [
+    AuthGuard,
+    AuthService,
     provideClientHydration(),
     provideHttpClient(),
     provideHttpClient(withFetch()),

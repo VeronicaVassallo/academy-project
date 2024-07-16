@@ -22,10 +22,26 @@ input {
   width: 100%;
 }
 
+#buttonInfo {
+  position: absolute;
+  top: 110%;
+  left: 78.6%;
+}
+
 /*media query mobile version*/
 @media only screen and (max-width: 767px) {
-  table {
+  h2 {
+    margin-left: 0%;
+    text-align: center;
+  }
+  #info {
     width: 95vw;
     margin-left: 2.5vw;
+  }
+  #buttonInfo {
+    position: absolute;
+    top: 158%;
+    left: 48%;
+    width: 150px;
   }
 }

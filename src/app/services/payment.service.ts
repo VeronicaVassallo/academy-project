@@ -28,4 +28,11 @@ export class PaymentService {
         })
       );
   }
+
+  sendPayment(body: Payment) {
+    return this.http.patch(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}payment/patchUpdate`,
+      body
+    );
+  }
 }

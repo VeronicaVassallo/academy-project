@@ -1,8 +1,10 @@
 <h2 class="titleEasyHome my-5">Informazio Profilo</h2>
 
 <div id="info">
-  <div class="d-flex justify-content-between w-100">
-    <div class="p-3 w-50">
+  <div
+    class="d-flex flex-column-reverse flex-md-row flex-lg-row justify-content-between w-100"
+  >
+    <div class="p-3 w-100">
       <div class="p-3">
         <h3>Dati Utente</h3>
         <p><strong>Nome: </strong> {{ user?.name }}</p>
@@ -34,16 +36,17 @@
         [src]="'assets/' + (user?.profileImg || 'img2.jpg')"
         alt="img_profile"
       />
-      <div class="mt-3 d-flex justify-content-end">
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          Modifica Dati
-        </button>
-      </div>
+    </div>
+    <div>
+      <button
+        id="buttonInfo"
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Modifica Dati
+      </button>
     </div>
   </div>
 </div>
