@@ -7,29 +7,26 @@
       <th scope="col">Totale</th>
       <th scope="col">Descrizione</th>
       <th scope="col">Stato pagamento</th>
-      @if (!user?.buildingManager) {
-      <th scope="col"></th>
-      }
+      <ng-container *ngIf="!user?.buildingManager">
+        <th scope="col"></th>
+      </ng-container>
     </tr>
   </thead>
   <tbody>
-    @for (payment of paymentsList; track payment) {
-    <tr>
+    <tr *ngFor="let payment of paymentsList; trackBy: trackByPayment">
       <td>{{ payment.startDate | date : "dd/MM/yy HH:mm" }}</td>
       <td>{{ payment.paymentDate | date : "dd/MM/yy HH:mm" }}</td>
-      <td>{{ payment.user.name }} {{ payment.user.surname }}</td>
+      <td *ngIf="payment.user && isFullUser(payment.user)">
+        {{ payment.user.name }} {{ payment.user.surname }}
+      </td>
       <td>{{ payment.total }}€</td>
       <td>{{ payment.description }}</td>
-      @if (payment.ongoing) {
-      <td>pagato</td>
-      } @else {
-      <td>non pervenuto</td>
-      } @if ( !user?.buildingManager && payment.ongoing == false) {
-      <td>
-        <button class="btn btn-primary">Paga</button>
-      </td>
-      }
+      <td>{{ payment.ongoing ? "pagato" : "non pervenuto" }}</td>
+      <ng-container *ngIf="!user?.buildingManager && !payment.ongoing">
+        <td>
+          <button class="btn btn-primary">Paga</button>
+        </td>
+      </ng-container>
     </tr>
-    }
   </tbody>
 </table>

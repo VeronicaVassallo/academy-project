@@ -88,3 +88,6 @@
 
 <h2 class="my-5">Sezione Pagamenti Amministrativi</h2>
 <app-table-payments [paymentsList]="payments" [user]="userLogged" />
+@if(userLogged?.buildingManager){
+<app-form-add-payment [house_id]="idHouse" />
+}

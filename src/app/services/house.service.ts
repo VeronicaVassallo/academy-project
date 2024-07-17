@@ -26,4 +26,10 @@ export class HouseService {
       `${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/get/houses/by/${userId}`
     );
   }
+
+  getHousebyId(houseId: string): Observable<House[]> {
+    return this.http.get<House[]>(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/get/${houseId}`
+    );
+  }
 }

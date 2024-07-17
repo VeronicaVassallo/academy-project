@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BackofficePageComponent } from './pages/backoffice-page/backoffice-page.component';
 import { SectionRegisterNewUser } from './sections-backoffice/section-register-new-user/section-register-new-user.component';
@@ -25,7 +25,6 @@ import { SectionBachecaAdminComponent } from './sections-backoffice/section-bach
 import { TableNotificationComponent } from './components/table-notification/table-notification.component';
 import { HouseDetailsComponent } from './pages/house-details/house-details.component';
 import { GraphComponent } from './components/graph/graph.component';
-import { PaymentHomepageComponent } from './sections-homepage/payment-homepage/payment-homepage.component';
 import { UsageBackofficeComponent } from './sections-backoffice/usage-backoffice/usage-backoffice.component';
 import { PaymentBackofficeComponent } from './sections-backoffice/payment-backoffice/payment-backoffice.component';
 import { CardHouseHomepageComponent } from './components/card-house-homepage/card-house-homepage.component';
@@ -35,6 +34,7 @@ import { InfoUserComponent } from './sections-homepage/info-user/info-user.compo
 // Guard
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
+import { FormAddPaymentComponent } from './components/form-add-payment/form-add-payment.component';
 
 @NgModule({
   declarations: [
@@ -55,14 +55,20 @@ import { AuthService } from './auth/auth.service';
     SectionBachecaAdminComponent,
     HouseDetailsComponent,
     GraphComponent,
-    PaymentHomepageComponent,
     UsageBackofficeComponent,
     PaymentBackofficeComponent,
     CardHouseHomepageComponent,
     TablePaymentsComponent,
     InfoUserComponent,
+    FormAddPaymentComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   providers: [
     AuthGuard,
     AuthService,

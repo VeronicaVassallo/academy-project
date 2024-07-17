@@ -1,0 +1,70 @@
+<h2 class="titleEasyHome my-5">Aggiungi un Pagamento per questa casa</h2>
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Intestatario</th>
+        <th scope="col">Descrizione pagamento</th>
+        <th scope="col">totale</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ user?.name }} {{ user?.surname }}</td>
+        <input
+          type="hidden"
+          formControlName="startDate"
+          name="startDate"
+          id="startDate"
+        />
+
+        <td>
+          <textarea
+            formControlName="description"
+            name="description"
+            id="description"
+          ></textarea>
+          <br />
+          <p
+            *ngIf="
+              !paymentForm.get('description')?.valid &&
+              paymentForm.get('description')?.touched
+            "
+            class="text-danger"
+          >
+            Inserisci una descrizione
+          </p>
+        </td>
+        <td>
+          <input
+            type="number"
+            formControlName="total"
+            for="total"
+            name="total"
+          />
+          <span> €</span>
+          <br />
+          <p
+            class="text-danger"
+            *ngIf="paymentForm.get('total')?.errors?.['nonNegative']"
+          >
+            Valore non consentito
+          </p>
+          <p
+            class="text-danger"
+            *ngIf="
+              !paymentForm.get('total')?.valid &&
+              paymentForm.get('total')?.touched
+            "
+          >
+            Inserisci totale importo
+          </p>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-primary">Invia</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

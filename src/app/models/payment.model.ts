@@ -2,13 +2,13 @@ import { House } from './house.model';
 import { User } from './user.model';
 
 export interface Payment {
-  id: string;
+  id?: string;
   isPaid: boolean;
   startDate: Date;
-  paymentDate: Date;
+  paymentDate: Date | null;
   ongoing: boolean;
-  user: User;
-  HouseEntity: House;
+  user: User | { id: string } | null;
+  house: House | { id: string } | null;
   total: number;
   description: string;
   creditCard: String;

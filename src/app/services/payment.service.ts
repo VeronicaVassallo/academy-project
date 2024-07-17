@@ -35,4 +35,11 @@ export class PaymentService {
       body
     );
   }
+
+  createNewPayment(body: Payment) {
+    return this.http.post(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}payment/save`,
+      body
+    );
+  }
 }
