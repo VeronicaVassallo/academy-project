@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { SessionService } from '../../services/session.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  ValidatorFn,
+  AbstractControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-info-user',
@@ -39,21 +45,40 @@ export class InfoUserComponent implements OnInit {
   }
 
   initializeForm(): void {
-    this.dataForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      surname: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
-      cell: new FormControl('', Validators.required),
-      birthDate: new FormControl('', Validators.required),
-      profileImg: new FormControl('', Validators.required),
-      creditCard: new FormControl('', Validators.required),
-      cvv: new FormControl('', Validators.required),
-      expire: new FormControl('', Validators.required),
-      holder: new FormControl('', Validators.required),
-    });
+    this.dataForm = new FormGroup(
+      {
+        name: new FormControl('', Validators.required),
+        surname: new FormControl('', Validators.required),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', Validators.required),
+        confirmPassword: new FormControl('', Validators.required),
+        cell: new FormControl('', Validators.required),
+        birthDate: new FormControl('', Validators.required),
+        profileImg: new FormControl('', Validators.required),
+        creditCard: new FormControl('', Validators.required),
+        cvv: new FormControl('', [
+          Validators.required,
+          Validators.pattern(/^\d{3,4}$/),
+        ]),
+        expire: new FormControl('', Validators.required),
+        holder: new FormControl('', Validators.required),
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
+
+  passwordMatchValidator: ValidatorFn = (
+    control: AbstractControl
+  ): { [key: string]: boolean } | null => {
+    if (!(control instanceof FormGroup)) {
+      return null;
+    }
+
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+
+    return password === confirmPassword ? null : { passwordsMismatch: true };
+  };
 
   updateForm(user: User): void {
     this.dataForm.patchValue({
@@ -63,44 +88,50 @@ export class InfoUserComponent implements OnInit {
       password: user.password,
       confirmPassword: user.password,
       cell: user.cell,
-      birthDate: user.birthDate,
+      birthDate: new Date(user.birthDate).toISOString().substring(0, 10),
       profileImg: user.profileImg,
       creditCard: user.creditCard,
       cvv: user.cvv,
-      expire: user.expire,
+      expire: new Date(user.expire).toISOString().substring(0, 10),
       holder: user.holder,
     });
   }
 
   sendUpdateUser() {
+    if (this.dataForm.invalid) {
+      return;
+    }
+
     const dataFormValue = this.dataForm.value;
     if (this.user) {
-      this.userService
-        .updateUser({
-          id: this.user.id,
-          buildingManager: this.user.buildingManager,
-          name: dataFormValue.name,
-          surname: dataFormValue.surname,
-          email: dataFormValue.email,
-          password: dataFormValue.password,
-          cell: dataFormValue.cell,
-          birthDate: dataFormValue.birthDate,
-          profileImg: dataFormValue.profileImg,
-          creditCard: dataFormValue.creditCard,
-          cvv: dataFormValue.cvv,
-          expire: dataFormValue.expire,
-          holder: dataFormValue.holder,
-        })
-        .subscribe({
-          next: (data) => {
-            alert('Dati modificati con successo!');
-            //TO DO: Fai in modo che i nuovo dati vengano salvati nella session
-            window.location.reload();
-          },
-          error: (err) => {
-            console.error("Errore durante l'update", err);
-          },
-        });
+      const body: User = {
+        id: this.user.id,
+        buildingManager: this.user.buildingManager,
+        name: dataFormValue.name,
+        surname: dataFormValue.surname,
+        email: dataFormValue.email,
+        password: dataFormValue.password,
+        cell: dataFormValue.cell,
+        birthDate: new Date(dataFormValue.birthDate),
+        profileImg: dataFormValue.profileImg,
+        creditCard: dataFormValue.creditCard,
+        cvv: dataFormValue.cvv,
+        expire: new Date(dataFormValue.expire),
+        holder: dataFormValue.holder,
+      };
+
+      const bodyStringified = JSON.stringify(body);
+      this.userService.updateUser(body).subscribe({
+        next: (data) => {
+          alert('Dati modificati con successo!');
+          sessionStorage.setItem('user', bodyStringified);
+          this.sessionService.setSession(body);
+          window.location.reload();
+        },
+        error: (err) => {
+          console.error("Errore durante l'update", err);
+        },
+      });
     }
   }
 }

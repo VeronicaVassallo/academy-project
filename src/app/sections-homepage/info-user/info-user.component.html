@@ -80,20 +80,25 @@
             <input type="text" id="surname" formControlName="surname" />
           </div>
           <div>
-            <label for="email">Email :</label>
-            <input type="email" id="email" formControlName="email" />
-          </div>
-          <div>
-            <label for="password">password :</label>
+            <label for="password">Password :</label>
             <input type="password" id="password" formControlName="password" />
           </div>
           <div>
-            <label for="confirmPassword"> Conferma password :</label>
+            <label for="confirmPassword">Conferma password :</label>
             <input
               type="password"
               id="confirmPassword"
               formControlName="confirmPassword"
             />
+            <div
+              class="text-danger"
+              *ngIf="
+                dataForm.hasError('passwordsMismatch') &&
+                dataForm.get('confirmPassword')!.touched
+              "
+            >
+              Le password non corrispondono.
+            </div>
           </div>
           <div>
             <label for="cell">Cellulare :</label>

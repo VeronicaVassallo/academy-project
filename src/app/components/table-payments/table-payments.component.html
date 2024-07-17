@@ -24,7 +24,13 @@
       <td>{{ payment.ongoing ? "pagato" : "non pervenuto" }}</td>
       <ng-container *ngIf="!user?.buildingManager && !payment.ongoing">
         <td>
-          <button class="btn btn-primary">Paga</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="updatePayment(payment)"
+          >
+            Paga
+          </button>
         </td>
       </ng-container>
     </tr>

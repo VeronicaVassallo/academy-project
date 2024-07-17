@@ -103,6 +103,7 @@ export class SectionRegisterNewUser implements OnInit {
         .subscribe({
           next: (data) => {
             alert('Utente Registrato con successo');
+            window.location.reload();
           },
           error: (error) => {
             console.error("Errore durante l'inserimento:", error);

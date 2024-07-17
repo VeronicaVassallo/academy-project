@@ -23,4 +23,30 @@ export class TablePaymentsComponent {
       (user as User).name !== undefined && (user as User).surname !== undefined
     );
   }
+
+  updatePayment(b: Payment) {
+    if (this.user && b.paymentDate && b.house && b.house.id) {
+      const body: Payment = {
+        id: b.id,
+        isPaid: true,
+        startDate: b.paymentDate,
+        paymentDate: new Date(),
+        ongoing: true,
+        user: { id: this.user.id },
+        house: { id: b.house.id },
+        total: b.total,
+        description: b.description,
+        creditCard: this.user.creditCard,
+      };
+
+      this.paymentService.sendPayment(body).subscribe({
+        next: (data) => {
+          alert('Pagamento aggiornato con successo');
+        },
+        error: (err) => {
+          console.error("Errore durante l'aggiornamento del pagamento", err);
+        },
+      });
+    }
+  }
 }
