@@ -40,7 +40,6 @@ export class SectionBachecaAdminComponent implements OnInit {
             (u: User) => u.buildingManager === false
           );
         } else {
-          console.log('Non ci sono case a disposizione');
           this.listUsers = [];
         }
       },

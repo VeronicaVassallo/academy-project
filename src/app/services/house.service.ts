@@ -32,4 +32,11 @@ export class HouseService {
       `${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/get/${houseId}`
     );
   }
+  //metodo che crea una casa
+  createNewHouse(body: House): Observable<House> {
+    return this.http.post<House>(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/save`,
+      body
+    );
+  }
 }

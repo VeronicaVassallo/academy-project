@@ -1,10 +1,10 @@
 import { User } from './user.model';
 
 export interface House {
-  id: string;
+  id?: string;
   scala: string;
   piano: number;
   interno: number;
-  user: User;
+  user: User | null;
   houseImg: string;
 }

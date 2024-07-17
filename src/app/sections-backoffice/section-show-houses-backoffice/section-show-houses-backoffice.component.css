@@ -1,9 +1,11 @@
-h2 {
+.containerBtnETitle {
   margin-left: 49%;
-  font-weight: 700;
-  font-weight: 700;
-  color: var(--white-EasyHome);
 }
+.containerBtnETitle button {
+  width: 40px;
+  height: 40px;
+}
+
 .navbar {
   width: 80%;
   margin-left: 18%;

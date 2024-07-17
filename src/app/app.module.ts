@@ -35,6 +35,7 @@ import { InfoUserComponent } from './sections-homepage/info-user/info-user.compo
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { FormAddPaymentComponent } from './components/form-add-payment/form-add-payment.component';
+import { ModalAddHouseComponent } from './components/modal-add-house/modal-add-house.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { FormAddPaymentComponent } from './components/form-add-payment/form-add-
     TablePaymentsComponent,
     InfoUserComponent,
     FormAddPaymentComponent,
+    ModalAddHouseComponent,
   ],
   imports: [
     BrowserModule,

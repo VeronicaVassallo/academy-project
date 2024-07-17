@@ -1,0 +1,94 @@
+<button
+  id="buttonInfo"
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal2"
+>
+  +
+</button>
+
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crea Casa</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="dataForm">
+          <div>
+            <label for="scala">Scala:</label>
+            <br />
+            <input
+              type="text"
+              name="scala"
+              id="scala"
+              formControlName="scala"
+            />
+          </div>
+          <div>
+            <label for="piano">Piano:</label>
+            <br />
+            <input
+              type="number"
+              name="piano"
+              id="piano"
+              formControlName="piano"
+            />
+          </div>
+          <div>
+            <label for="interno">Interno:</label>
+            <br />
+            <input
+              type="number"
+              name="interno"
+              id="interno"
+              formControlName="interno"
+            />
+          </div>
+          <div>
+            <label for="houseImg">Immagine Casa:</label>
+            <br />
+            <input
+              type="text"
+              name="houseImg"
+              id="houseImg"
+              formControlName="houseImg"
+            />
+          </div>
+          <div>
+            <label for="user">Utente:</label>
+            <select class="form-select" formControlName="user">
+              <option selected></option>
+              <option [ngValue]="null">Nessuno</option>
+              <option *ngFor="let user of listUsers" [ngValue]="user.id">
+                {{ user.name }} {{ user.surname }}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          annulla
+        </button>
+        <button type="button" class="btn btn-primary" (click)="createHouse()">
+          Salva
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
