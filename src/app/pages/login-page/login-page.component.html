@@ -4,6 +4,21 @@
       <form [formGroup]="dataLoginForm" (ngSubmit)="onSubmit()">
         <h2 class="text-center mb-4">EasyHome</h2>
         <div>
+          <label for="username">Username:</label>
+          <br />
+          <input type="text" name="username" formControlName="username" />
+          <br />
+          <p
+            *ngIf="
+              !dataLoginForm.get('username')?.valid &&
+              dataLoginForm.get('username')?.touched
+            "
+            class="text-danger"
+          >
+            Inserisci Username
+          </p>
+        </div>
+        <div>
           <label for="email">E-mail:</label>
           <br />
           <input type="email" name="email" formControlName="email" />

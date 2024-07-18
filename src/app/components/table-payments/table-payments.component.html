@@ -7,7 +7,7 @@
       <th scope="col">Totale</th>
       <th scope="col">Descrizione</th>
       <th scope="col">Stato pagamento</th>
-      <ng-container *ngIf="!user?.buildingManager">
+      <ng-container *ngIf="isUserRole(ERole.ROLE_USER)">
         <th scope="col"></th>
       </ng-container>
     </tr>
@@ -22,7 +22,7 @@
       <td>{{ payment.total }}€</td>
       <td>{{ payment.description }}</td>
       <td>{{ payment.ongoing ? "pagato" : "non pervenuto" }}</td>
-      <ng-container *ngIf="!user?.buildingManager && !payment.ongoing">
+      <ng-container *ngIf="isUserRole(ERole.ROLE_USER) && !payment.ongoing">
         <td>
           <button
             type="button"

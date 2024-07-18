@@ -1,19 +1,38 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { enviroment } from '../../enviroments/enviroment';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private sessionService: SessionService
+  ) {}
 
-  getUser(body: { email: string; password: string }): Observable<User> {
+  private getAuthHeaders(): HttpHeaders {
+    const token = this.sessionService.getUserTokenFromSession();
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+  }
+
+  //get user by dati di autenticazione
+  getUser(body: {
+    username: string;
+    email: string;
+    password: string;
+  }): Observable<any> {
     return this.http
-      .post<any>(`${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/login`, body)
+      .post<any>(
+        `${enviroment.ANGULAR_APP_SERVER_BASE_URL}api/auth/signin`,
+        body
+      )
       .pipe(
         map((userFromDB) => ({
           ...userFromDB,
@@ -22,24 +41,28 @@ export class UserService {
         }))
       );
   }
+
   //Metodo che crea un nuovo utente e aggiorna il campo user della casa: TO DO: Da rivedere logica backend
-  createUserAndUpdateHouse(body: {}) {
+  createUserAndUpdateHouse(body: {}): Observable<any> {
     return this.http.patch(
       `${enviroment.ANGULAR_APP_SERVER_BASE_URL}house/patchUpdate`,
-      body
+      body,
+      { headers: this.getAuthHeaders() }
     );
   }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(
-      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/getAll`
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/getAll`,
+      { headers: this.getAuthHeaders() }
     );
   }
 
   getUserById(idUser: string): Observable<User | null> {
     return this.http
       .get<{ o: User | null }>(
-        `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/get/${idUser}`
+        `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/get/${idUser}`,
+        { headers: this.getAuthHeaders() }
       )
       .pipe(
         map((response) => {
@@ -57,9 +80,10 @@ export class UserService {
   }
 
   updateUser(body: User): Observable<any> {
-    return this.http.put(
-      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/putUpdate`,
-      body
+    return this.http.patch(
+      `${enviroment.ANGULAR_APP_SERVER_BASE_URL}user/patchUpdate`,
+      body,
+      { headers: this.getAuthHeaders() }
     );
   }
 }

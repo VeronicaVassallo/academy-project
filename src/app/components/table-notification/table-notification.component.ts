@@ -1,25 +1,32 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Notification } from '../../models/notification.model';
 import { NotificationService } from '../../services/notification.service';
-import { User } from '../../models/user.model';
 import { SessionService } from '../../services/session.service';
-
+import { ERole } from '../../models/roles';
+import { jwtDecode } from 'jwt-decode';
 @Component({
   selector: 'app-table-notification',
   templateUrl: './table-notification.component.html',
   styleUrl: './table-notification.component.css',
 })
-export class TableNotificationComponent {
+export class TableNotificationComponent implements OnInit {
+  token: string | null = '';
+  tokenConverted: any;
   @Input() notficationsList: Notification[] = [];
-  userLogged: User | null = null;
+  ERole = ERole;
 
   constructor(
     private notificationService: NotificationService,
     private sessionService: SessionService
   ) {}
+  ngOnInit(): void {
+    this.token = this.sessionService.getUserTokenFromSession();
+    if (this.token) {
+      this.tokenConverted = jwtDecode(this.token);
+    }
+  }
 
   deleteNotification(id: string | undefined): void {
-    this.userLogged = this.sessionService.getUserFromSession();
     if (!id) {
       console.error('ID della notifica non definito');
       return;
@@ -36,5 +43,9 @@ export class TableNotificationComponent {
         },
       });
     }
+  }
+
+  isUserRole(role: ERole): boolean {
+    return this.tokenConverted.roles.includes(role) ?? false;
   }
 }

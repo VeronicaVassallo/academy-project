@@ -3,7 +3,7 @@
   <h4>Dati utente</h4>
   <div class="d-flex justify-content-start flex-wrap mb-4">
     <div>
-      <label for="name">*Nome:</label>
+      <label for="name">Nome:</label>
       <br />
       <input type="text" id="name" name="name" formControlName="name" />
       <br />
@@ -17,7 +17,7 @@
       </p>
     </div>
     <div>
-      <label for="surname">*Cognome:</label>
+      <label for="surname">Cognome:</label>
       <br />
       <input
         type="text"
@@ -37,7 +37,27 @@
       </p>
     </div>
     <div>
-      <label for="email">*Email:</label>
+      <label for="username">Username:</label>
+      <br />
+      <input
+        type="text"
+        id="username"
+        name="username"
+        formControlName="username"
+      />
+      <br />
+      <p
+        *ngIf="
+          !dataFormUser.get('username')?.valid &&
+          dataFormUser.get('username')?.touched
+        "
+        class="text-danger"
+      >
+        Inserisci Username
+      </p>
+    </div>
+    <div>
+      <label for="email">Email:</label>
       <br />
       <input type="email" id="email" name="email" formControlName="email" />
       <br />
@@ -52,7 +72,7 @@
       </p>
     </div>
     <div>
-      <label for="cell">*Cellulare:</label>
+      <label for="cell">Cellulare:</label>
       <br />
       <input type="text" id="cell" name="cell" formControlName="cell" />
       <br />
@@ -68,7 +88,7 @@
   </div>
   <div class="d-flex justify-content-start flex-wrap mb-5">
     <div>
-      <label for="password">*Password:</label>
+      <label for="password">Password:</label>
       <br />
       <input
         type="password"
@@ -88,7 +108,7 @@
       </p>
     </div>
     <div>
-      <label for="confirmPassword">*Conferma Password:</label>
+      <label for="confirmPassword">Conferma Password:</label>
       <br />
       <input
         type="password"
@@ -119,7 +139,7 @@
       />
     </div>
     <div>
-      <label for="birthDate">*Data di nascita:</label>
+      <label for="birthDate">Data di nascita:</label>
       <br />
       <input
         type="date"

@@ -22,7 +22,7 @@
     ></app-graph>
   </div>
 </div>
-@if (!userLogged?.buildingManager ) {
+@if (isUserRole(ERole.ROLE_USER) ) {
 <h2 class="my-5">Aggiungi Consumi</h2>
 <form
   [formGroup]="dataForm"
@@ -88,6 +88,6 @@
 
 <h2 class="my-5">Sezione Pagamenti Amministrativi</h2>
 <app-table-payments [paymentsList]="payments" [user]="userLogged" />
-@if(userLogged?.buildingManager){
+@if(isUserRole(ERole.ROLE_MANAGER)){
 <app-form-add-payment [house_id]="idHouse" />
 }

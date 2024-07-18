@@ -10,6 +10,9 @@ import { PaymentService } from '../../services/payment.service';
 import { Payment } from '../../models/payment.model';
 import { SessionService } from '../../services/session.service';
 import { User } from '../../models/user.model';
+import { ERole } from '../../models/roles';
+import { jwtDecode } from 'jwt-decode';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-house-details',
@@ -26,12 +29,16 @@ export class HouseDetailsComponent implements OnInit {
   dataForm!: FormGroup;
   loading: boolean = false;
   payments: Payment[] = [];
+  token: string | null = '';
+  tokenConverted: any;
+  ERole = ERole;
 
   constructor(
     private usageService: UsageService,
     private route: ActivatedRoute,
     private paymentService: PaymentService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -51,8 +58,19 @@ export class HouseDetailsComponent implements OnInit {
         },
       });
 
-      this.userLogged = this.sessionService.getUserFromSession();
-
+      this.token = this.sessionService.getUserTokenFromSession();
+      if (this.token) {
+        this.tokenConverted = jwtDecode(this.token);
+        this.userService.getUserById(this.tokenConverted.id).subscribe({
+          next: (user: User | null) => {
+            this.userLogged = user;
+            console.log('PROVA', this.userLogged);
+          },
+          error: (error) => {
+            console.error('Errore durante la ricezione dei dati:', error);
+          },
+        });
+      }
       this.paymentService.getPaymentHouse(this.idHouse).subscribe({
         next: (p: Payment[]) => {
           this.payments = p;
@@ -104,5 +122,9 @@ export class HouseDetailsComponent implements OnInit {
           },
         });
     }
+  }
+
+  isUserRole(role: ERole): boolean {
+    return this.tokenConverted?.roles.includes(role) ?? false;
   }
 }

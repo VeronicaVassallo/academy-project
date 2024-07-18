@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user.model';
 import { SessionService } from '../services/session.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userLogged: User | null = null;
   constructor(private sessionService: SessionService) {}
-  /*
-  isLoggedIn(): boolean {
-    // Logica per verificare il token è prendere l'informazione dal token
-    return !!localStorage.getItem('userToken');
+
+  private getDecodedToken(): any {
+    const token = this.sessionService.getUserTokenFromSession();
+
+    if (!token) {
+      return null; //Nessun token disponibile
+    }
+
+    try {
+      return jwtDecode(token);
+    } catch (error) {
+      console.error('Token non valido:', error);
+      return null; //Token non valido
+    }
   }
-*/
 
   isAdmin(): boolean {
-    this.userLogged = this.sessionService.getUserFromSession();
-    //verifico che l'utente è admin
-    if (this.userLogged && this.userLogged.buildingManager) {
-      return true;
-    } else {
-      return false;
+    const decodedToken = this.getDecodedToken();
+
+    if (decodedToken && decodedToken.roles) {
+      return decodedToken.roles.includes('ROLE_MANAGER');
     }
+
+    return false;
   }
 }

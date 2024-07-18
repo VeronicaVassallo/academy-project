@@ -10,21 +10,18 @@ export class SessionService {
 
   constructor() {}
 
-  setSession(user: User) {
+  setSession(token: string) {
     if (typeof window !== 'undefined' && window.sessionStorage) {
-      this.userSession = JSON.stringify(user);
-      sessionStorage.setItem('user', this.userSession);
+      sessionStorage.setItem('user', token);
     }
   }
 
-  getUserFromSession(): User | null {
+  getUserTokenFromSession(): string | null {
     if (typeof window !== 'undefined' && window.sessionStorage) {
-      const userString = sessionStorage.getItem('user');
-      if (userString) {
-        this.user = JSON.parse(userString);
-      }
+      const token = sessionStorage.getItem('user');
+      return token;
+    } else {
+      return '';
     }
-
-    return this.user;
   }
 }

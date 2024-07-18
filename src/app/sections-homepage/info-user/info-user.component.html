@@ -84,23 +84,6 @@
             <input type="password" id="password" formControlName="password" />
           </div>
           <div>
-            <label for="confirmPassword">Conferma password :</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              formControlName="confirmPassword"
-            />
-            <div
-              class="text-danger"
-              *ngIf="
-                dataForm.hasError('passwordsMismatch') &&
-                dataForm.get('confirmPassword')!.touched
-              "
-            >
-              Le password non corrispondono.
-            </div>
-          </div>
-          <div>
             <label for="cell">Cellulare :</label>
             <input type="text" id="cell" formControlName="cell" />
           </div>

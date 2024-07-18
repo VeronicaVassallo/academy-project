@@ -22,7 +22,7 @@
 
   <!--Bottoni User-->
   <div id="menu" class="px-3 pt-3">
-    @if (user && !user.buildingManager) {
+    @if (isUserRole(ERole.ROLE_USER)) {
     <div class="d-flex flex-row flex-md-column flex-lg-column">
       <button
         routerLink="/homepage/"

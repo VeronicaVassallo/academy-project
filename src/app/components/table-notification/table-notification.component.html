@@ -5,7 +5,7 @@
         <th scope="col">Messaggio</th>
         <th scope="col">Data</th>
         <th scope="col">Destinatario</th>
-        @if (userLogged?.buildingManager) {
+        @if (isUserRole(ERole.ROLE_MANAGER)) {
         <th scope="col" class="col-cancella"></th>
         }
       </tr>
@@ -19,7 +19,7 @@
           {{ notification.user.surname }}
         </td>
         <td *ngIf="!notification.user">Tutti</td>
-        @if (userLogged?.buildingManager) {
+        @if (isUserRole(ERole.ROLE_MANAGER)) {
         <td class="mx-0">
           <button
             class="btn btn-danger d-flex align-items-center"

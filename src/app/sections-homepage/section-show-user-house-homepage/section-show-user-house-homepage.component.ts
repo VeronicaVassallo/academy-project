@@ -3,6 +3,8 @@ import { House } from '../../models/house.model';
 import { HouseService } from '../../services/house.service';
 import { SessionService } from '../../services/session.service';
 import { User } from '../../models/user.model';
+import { ERole } from '../../models/roles';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-section-show-user-house-homepage',
@@ -13,16 +15,20 @@ export class SectionShowUserHouseHomepageComponent implements OnInit {
   user: User | null = null;
   houses: House[] = [];
   message: boolean = false;
+  token: string | null = '';
+  tokenConverted: any;
+  ERole = ERole;
 
   constructor(
     private houseService: HouseService,
     private sessionService: SessionService
   ) {}
   ngOnInit(): void {
-    this.user = this.sessionService.getUserFromSession();
+    this.token = this.sessionService.getUserTokenFromSession();
 
-    if (this.user) {
-      this.houseService.getSpecificHouse(this.user?.id).subscribe({
+    if (this.token) {
+      this.tokenConverted = jwtDecode(this.token);
+      this.houseService.getSpecificHouse(this.tokenConverted.id).subscribe({
         next: (data: any) => {
           if (data && data.lo) {
             this.houses = data.lo;

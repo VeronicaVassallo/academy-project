@@ -1,10 +1,13 @@
+import { ERole } from './roles';
+
 export interface User {
   id: string;
-  buildingManager: boolean;
+  roles: ERole[];
+  username: boolean;
   name: string;
   surname: string;
   email: string;
-  password: string;
+  password?: string;
   cell: string;
   birthDate: Date;
   profileImg: string;

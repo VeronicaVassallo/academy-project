@@ -37,7 +37,7 @@ export class SectionBachecaAdminComponent implements OnInit {
       next: (users: any) => {
         if (users && users.lo) {
           this.listUsers = users.lo.filter(
-            (u: User) => u.buildingManager === false
+            (u: any) => u.roles[0].name == 'ROLE_USER'
           );
         } else {
           this.listUsers = [];

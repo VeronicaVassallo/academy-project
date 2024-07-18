@@ -9,6 +9,7 @@ import {
 import { UserService } from '../../services/user.service';
 import { House } from '../../models/house.model';
 import { HouseService } from '../../services/house.service';
+import { ERole } from '../../models/roles';
 
 @Component({
   selector: 'app-section-register-new-user',
@@ -27,6 +28,7 @@ export class SectionRegisterNewUser implements OnInit {
     this.dataFormUser = new FormGroup({
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
@@ -72,6 +74,7 @@ export class SectionRegisterNewUser implements OnInit {
     }
   }
   onSubmitSendData() {
+    debugger;
     const dataForm = this.dataFormUser.value;
     if (
       this.dataFormUser.valid &&
@@ -86,7 +89,8 @@ export class SectionRegisterNewUser implements OnInit {
           interno: this.houseSelected?.interno,
           houseImg: this.houseSelected?.houseImg,
           user: {
-            buildingManager: false,
+            roles: [ERole.ROLE_USER],
+            username: dataForm.username,
             name: dataForm.name,
             surname: dataForm.surname,
             email: dataForm.email,

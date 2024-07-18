@@ -10,6 +10,8 @@ import {
   AbstractControl,
 } from '@angular/forms';
 
+import { jwtDecode } from 'jwt-decode';
+
 @Component({
   selector: 'app-info-user',
   templateUrl: './info-user.component.html',
@@ -17,6 +19,9 @@ import {
 })
 export class InfoUserComponent implements OnInit {
   userLogged: User | null = null;
+  token: string | null = '';
+  tokenCeverted: any;
+  idUser: string = '';
   user: User | null = null;
   dataForm!: FormGroup;
 
@@ -26,11 +31,15 @@ export class InfoUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userLogged = this.sessionService.getUserFromSession();
+    this.token = this.sessionService.getUserTokenFromSession();
+    if (this.token) {
+      this.tokenCeverted = jwtDecode(this.token);
+    }
+
     this.initializeForm();
 
-    if (this.userLogged) {
-      this.userService.getUserById(this.userLogged.id).subscribe({
+    if (this.tokenCeverted) {
+      this.userService.getUserById(this.tokenCeverted.id).subscribe({
         next: (u: User | null) => {
           this.user = u;
           if (this.user) {
@@ -45,40 +54,23 @@ export class InfoUserComponent implements OnInit {
   }
 
   initializeForm(): void {
-    this.dataForm = new FormGroup(
-      {
-        name: new FormControl('', Validators.required),
-        surname: new FormControl('', Validators.required),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', Validators.required),
-        confirmPassword: new FormControl('', Validators.required),
-        cell: new FormControl('', Validators.required),
-        birthDate: new FormControl('', Validators.required),
-        profileImg: new FormControl('', Validators.required),
-        creditCard: new FormControl('', Validators.required),
-        cvv: new FormControl('', [
-          Validators.required,
-          Validators.pattern(/^\d{3,4}$/),
-        ]),
-        expire: new FormControl('', Validators.required),
-        holder: new FormControl('', Validators.required),
-      },
-      { validators: this.passwordMatchValidator }
-    );
+    this.dataForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      surname: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required),
+      cell: new FormControl('', Validators.required),
+      birthDate: new FormControl('', Validators.required),
+      profileImg: new FormControl('', Validators.required),
+      creditCard: new FormControl('', Validators.required),
+      cvv: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\d{3,4}$/),
+      ]),
+      expire: new FormControl('', Validators.required),
+      holder: new FormControl('', Validators.required),
+    });
   }
-
-  passwordMatchValidator: ValidatorFn = (
-    control: AbstractControl
-  ): { [key: string]: boolean } | null => {
-    if (!(control instanceof FormGroup)) {
-      return null;
-    }
-
-    const password = control.get('password')?.value;
-    const confirmPassword = control.get('confirmPassword')?.value;
-
-    return password === confirmPassword ? null : { passwordsMismatch: true };
-  };
 
   updateForm(user: User): void {
     this.dataForm.patchValue({
@@ -86,7 +78,6 @@ export class InfoUserComponent implements OnInit {
       surname: user.surname,
       email: user.email,
       password: user.password,
-      confirmPassword: user.password,
       cell: user.cell,
       birthDate: new Date(user.birthDate).toISOString().substring(0, 10),
       profileImg: user.profileImg,
@@ -106,7 +97,8 @@ export class InfoUserComponent implements OnInit {
     if (this.user) {
       const body: User = {
         id: this.user.id,
-        buildingManager: this.user.buildingManager,
+        username: this.user.username,
+        roles: [...this.user.roles],
         name: dataFormValue.name,
         surname: dataFormValue.surname,
         email: dataFormValue.email,
@@ -125,8 +117,8 @@ export class InfoUserComponent implements OnInit {
         next: (data) => {
           alert('Dati modificati con successo!');
           sessionStorage.setItem('user', bodyStringified);
-          this.sessionService.setSession(body);
-          window.location.reload();
+          alert('FAI RIEFFETTUARE IL LOGIN');
+          //TO DO: fai rieffetuare il login all'user
         },
         error: (err) => {
           console.error("Errore durante l'update", err);
