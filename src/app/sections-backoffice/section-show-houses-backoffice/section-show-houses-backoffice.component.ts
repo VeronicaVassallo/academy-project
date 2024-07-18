@@ -9,8 +9,10 @@ import { House } from '../../models/house.model';
 })
 export class SectionShowHousesBackofficeComponent implements OnInit {
   houses: House[] = [];
+  loader: boolean = false;
   constructor(private houseService: HouseService) {}
   ngOnInit(): void {
+    this.loader = true;
     this.houseService.getAllHouses().subscribe({
       next: (data: any) => {
         if (data && data.lo) {
@@ -19,6 +21,7 @@ export class SectionShowHousesBackofficeComponent implements OnInit {
           console.log('Non ci sono case a disposizione');
           this.houses = [];
         }
+        this.loader = false;
       },
       error: (err) => {
         console.error('Errore durante la ricezione dei dati:', err);

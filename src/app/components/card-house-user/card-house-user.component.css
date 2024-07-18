@@ -18,3 +18,14 @@
 .info-card p {
   margin-left: 10px;
 }
+.editHouse {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  z-index: 150;
+  background-color: orange;
+  border-radius: 50%;
+  top: -15%;
+  left: 80%;
+  text-align: center;
+}

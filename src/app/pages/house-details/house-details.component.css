@@ -1,16 +1,11 @@
-h2 {
-  font-weight: 700;
-  font-weight: 700;
-  color: var(--white-EasyHome);
-}
-h2:first-of-type {
+.t1 {
   margin-left: 46%;
 }
-h2:nth-of-type(2) {
-  margin-left: 47%;
+.t2 {
+  margin-left: 48%;
 }
-h2:last-of-type {
-  margin-left: 40%;
+.t4 {
+  margin-left: 41%;
 }
 form {
   margin-left: 20%;
@@ -22,4 +17,28 @@ form {
 }
 .graphContainer {
   margin-left: 10%;
+}
+
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  .t1 {
+    margin-left: 0%;
+    text-align: center;
+  }
+  .t2 {
+    margin-left: 0%;
+    text-align: center;
+  }
+
+  .graphContainer {
+    margin-left: 0%;
+  }
+}
+
+/*Media query per Ipad*/
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  form {
+    margin-right: 10%;
+    width: 100vw;
+  }
 }

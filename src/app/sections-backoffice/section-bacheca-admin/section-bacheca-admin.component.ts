@@ -14,11 +14,13 @@ export class SectionBachecaAdminComponent implements OnInit {
   @Input() notifications: Notification[] = [];
   listUsers: User[] = [];
   dataForm!: FormGroup;
+  loader: boolean = false;
   constructor(
     private notificationService: NotificationService,
     private userService: UserService
   ) {}
   ngOnInit(): void {
+    this.loader = true;
     this.notificationService.getAllNotification().subscribe({
       next: (data: any) => {
         if (data && data.lo) {
@@ -27,6 +29,7 @@ export class SectionBachecaAdminComponent implements OnInit {
           console.log('Non ci sono case a disposizione');
           this.notifications = [];
         }
+        this.loader = false;
       },
       error: (err) => {
         console.error('Errore durante la ricezione dei dati:', err);
@@ -36,12 +39,14 @@ export class SectionBachecaAdminComponent implements OnInit {
     this.userService.getAllUsers().subscribe({
       next: (users: any) => {
         if (users && users.lo) {
+          this.loader = true;
           this.listUsers = users.lo.filter(
-            (u: any) => u.roles[0].name == 'ROLE_USER'
+            (u: any) => u.roles[0]?.name == 'ROLE_USER'
           );
         } else {
           this.listUsers = [];
         }
+        this.loader = false;
       },
       error: (err) => {
         console.error('Errore durante la ricezione dei dati:', err);

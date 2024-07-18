@@ -17,6 +17,7 @@ export class TablePaymentsComponent implements OnInit {
   token: string | null = '';
   tokenConverted: any;
   ERole = ERole;
+  loader: boolean = false;
 
   constructor(
     private paymentService: PaymentService,
@@ -40,7 +41,6 @@ export class TablePaymentsComponent implements OnInit {
   }
 
   updatePayment(b: Payment) {
-    debugger;
     if (this.user && b.paymentDate && b.house && b.house.id) {
       const body: Payment = {
         id: b.id,
@@ -58,10 +58,11 @@ export class TablePaymentsComponent implements OnInit {
         description: b.description,
         creditCard: this.user.creditCard,
       };
-
+      this.loader = true;
       this.paymentService.sendPayment(body).subscribe({
         next: (data) => {
           alert('Pagamento aggiornato con successo');
+          this.loader = false;
           window.location.reload();
         },
         error: (err) => {

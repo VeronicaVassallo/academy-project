@@ -63,9 +63,9 @@ button:hover {
   }
   #logo {
     width: 20px;
-    position: relative;
-    left: -45%;
-    top: -7px;
+    position: absolute;
+    left: 20px;
+    top: 10px;
     z-index: 600;
   }
   #menu {

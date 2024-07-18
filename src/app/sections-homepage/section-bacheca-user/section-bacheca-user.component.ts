@@ -17,6 +17,7 @@ export class SectionBachecaUserComponent implements OnInit {
   token: string | null = '';
   tokenConverted: any;
   ERole = ERole;
+  loader: boolean = false;
 
   constructor(
     private notificationService: NotificationService,
@@ -27,12 +28,14 @@ export class SectionBachecaUserComponent implements OnInit {
     this.token = this.sessionService.getUserTokenFromSession();
     if (this.token) {
       this.tokenConverted = jwtDecode(this.token);
+      this.loader = true;
       this.notificationService
         .getNotificationUser(this.tokenConverted.id)
         .subscribe({
           next: (data: any) => {
             this.notifications = data.lo;
             console.log('BACHECA:', this.notifications);
+            this.loader = false;
           },
           error: (err) => {
             console.error('Errore durante la ricezione dei dati:', err);

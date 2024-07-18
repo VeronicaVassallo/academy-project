@@ -1,8 +1,10 @@
+@if (loader) {
+<span class="loader"></span>
+}
 <table>
   <thead>
     <tr>
       <th scope="col">Data</th>
-      <th scope="col">Data pagamento</th>
       <th scope="col">Intestatario</th>
       <th scope="col">Totale</th>
       <th scope="col">Descrizione</th>
@@ -15,7 +17,6 @@
   <tbody>
     <tr *ngFor="let payment of paymentsList; trackBy: trackByPayment">
       <td>{{ payment.startDate | date : "dd/MM/yy HH:mm" }}</td>
-      <td>{{ payment.paymentDate | date : "dd/MM/yy HH:mm" }}</td>
       <td *ngIf="payment.user && isFullUser(payment.user)">
         {{ payment.user.name }} {{ payment.user.surname }}
       </td>

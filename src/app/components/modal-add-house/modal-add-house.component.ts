@@ -21,8 +21,8 @@ export class ModalAddHouseComponent implements OnInit, OnDestroy {
     this.userService.getAllUsers().subscribe({
       next: (users: any) => {
         if (users && users.lo) {
-          this.listUsers = users.lo.filter((u: User) =>
-            u.roles.find((r) => r == 'ROLE_USER')
+          this.listUsers = users.lo.filter(
+            (u: any) => u.roles[0]?.name == 'ROLE_USER'
           );
         } else {
           this.listUsers = [];

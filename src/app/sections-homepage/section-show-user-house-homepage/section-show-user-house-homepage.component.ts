@@ -18,7 +18,7 @@ export class SectionShowUserHouseHomepageComponent implements OnInit {
   token: string | null = '';
   tokenConverted: any;
   ERole = ERole;
-
+  loader: boolean = false;
   constructor(
     private houseService: HouseService,
     private sessionService: SessionService
@@ -28,6 +28,7 @@ export class SectionShowUserHouseHomepageComponent implements OnInit {
 
     if (this.token) {
       this.tokenConverted = jwtDecode(this.token);
+      this.loader = true;
       this.houseService.getSpecificHouse(this.tokenConverted.id).subscribe({
         next: (data: any) => {
           if (data && data.lo) {
@@ -36,6 +37,8 @@ export class SectionShowUserHouseHomepageComponent implements OnInit {
             console.log('Non ci sono case a disposizione');
             this.houses = [];
           }
+
+          this.loader = false;
         },
         error: (err) => {
           console.error('Errore durante la ricezioni dei dati', err);

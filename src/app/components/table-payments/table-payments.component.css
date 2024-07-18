@@ -33,7 +33,12 @@ thead tr th {
 /*media query mobile version*/
 @media only screen and (max-width: 767px) {
   table {
-    width: 95vw;
-    margin-left: 2.5vw;
+    width: 100vw;
+    margin-left: 0px;
+  }
+  th,
+  td {
+    padding: 0px;
+    text-align: left;
   }
 }

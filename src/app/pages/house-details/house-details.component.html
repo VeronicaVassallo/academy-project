@@ -1,9 +1,12 @@
-<h2 class="my-5">Sezione Usi E Consumi</h2>
+<h2 class="my-5 titleEasyHome t1">Sezione Usi E Consumi</h2>
+@if (loader) {
+<span class="loader"></span>
+}
 <div
   class="d-flex justify-content-evenly graphContainer"
   *ngIf="listUsageWater.length && listUsageGas.length && months.length"
 >
-  <div class="ms-5 mb-5">
+  <div class="ms-5 mb-5 d-flex flex-wrap flex-md-nowrap">
     <app-graph
       [title]="'Acqua'"
       [listUsage]="listUsageWater"
@@ -23,13 +26,13 @@
   </div>
 </div>
 @if (isUserRole(ERole.ROLE_USER) ) {
-<h2 class="my-5">Aggiungi Consumi</h2>
+<h2 class="my-5 titleEasyHome t2">Aggiungi Consumi</h2>
 <form
   [formGroup]="dataForm"
-  class="d-flex justify-content-around"
+  class="d-flex flex-column flex-md-row justify-content-around"
   (ngSubmit)="onSubmitSendDataUsages()"
 >
-  <div class="me-5">
+  <div class="me-5 my2">
     <label for="water">Acqua:</label>
     <br />
     <input type="number" id="water" name="water" formControlName="water" />
@@ -86,7 +89,7 @@
 </form>
 }
 
-<h2 class="my-5">Sezione Pagamenti Amministrativi</h2>
+<h2 class="my-5 titleEasyHome t4">Sezione Pagamenti Amministrativi</h2>
 <app-table-payments [paymentsList]="payments" [user]="userLogged" />
 @if(isUserRole(ERole.ROLE_MANAGER)){
 <app-form-add-payment [house_id]="idHouse" />

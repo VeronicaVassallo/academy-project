@@ -27,7 +27,7 @@ export class HouseDetailsComponent implements OnInit {
   listUsageWater: number[] = [];
   listUsageGas: number[] = [];
   dataForm!: FormGroup;
-  loading: boolean = false;
+  loader: boolean = false;
   payments: Payment[] = [];
   token: string | null = '';
   tokenConverted: any;
@@ -44,17 +44,17 @@ export class HouseDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.idHouse = this.route.snapshot.paramMap.get('idHouse');
     if (this.idHouse) {
-      this.loading = true;
+      this.loader = true;
       this.usageService.getAllUsagesHouse(this.idHouse).subscribe({
         next: (data: Usage[]) => {
           this.usageList = data;
           this.setUsageData();
-          this.loading = false;
+          this.loader = false;
         },
         error: (err) => {
           console.error('Errore durante la ricezione dei dati:', err);
           this.usageList = [];
-          this.loading = false;
+          this.loader = false;
         },
       });
 

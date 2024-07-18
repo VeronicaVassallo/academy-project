@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 
 import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-info-user',
@@ -24,10 +25,12 @@ export class InfoUserComponent implements OnInit {
   idUser: string = '';
   user: User | null = null;
   dataForm!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private userService: UserService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,12 +42,14 @@ export class InfoUserComponent implements OnInit {
     this.initializeForm();
 
     if (this.tokenCeverted) {
+      this.loader = true;
       this.userService.getUserById(this.tokenCeverted.id).subscribe({
         next: (u: User | null) => {
           this.user = u;
           if (this.user) {
             this.updateForm(this.user);
           }
+          this.loader = false;
         },
         error: (err) => {
           console.error('Error fetching user:', err);
@@ -95,6 +100,7 @@ export class InfoUserComponent implements OnInit {
 
     const dataFormValue = this.dataForm.value;
     if (this.user) {
+      this.loader = false;
       const body: User = {
         id: this.user.id,
         username: this.user.username,
@@ -116,9 +122,8 @@ export class InfoUserComponent implements OnInit {
       this.userService.updateUser(body).subscribe({
         next: (data) => {
           alert('Dati modificati con successo!');
-          sessionStorage.setItem('user', bodyStringified);
-          alert('FAI RIEFFETTUARE IL LOGIN');
-          //TO DO: fai rieffetuare il login all'user
+          this.loader = false;
+          this.router.navigate(['login']);
         },
         error: (err) => {
           console.error("Errore durante l'update", err);

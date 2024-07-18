@@ -15,6 +15,7 @@ import { jwtDecode } from 'jwt-decode';
 export class LoginPageComponent implements OnInit {
   showPassword: boolean = false;
   dataLoginForm!: FormGroup;
+  loader: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -38,8 +39,10 @@ export class LoginPageComponent implements OnInit {
     };
 
     if (this.dataLoginForm.valid) {
+      this.loader = true;
       this.userService.getUser(body).subscribe({
         next: (response: { user: User; accessToken: string }) => {
+          this.loader = false;
           const accessToken = response.accessToken;
           console.log('Dati utente decodificati', jwtDecode(accessToken));
           console.log('Dati interi dalla chiamata', response);

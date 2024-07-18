@@ -1,3 +1,13 @@
 h3 {
   color: var(--blue-EasyHome);
 }
+.sizeGrafh {
+  width: 30vw;
+  height: 50vh;
+}
+/*media query mobile version*/
+@media only screen and (max-width: 767px) {
+  .sizeGrafh {
+    width: 200px;
+  }
+}

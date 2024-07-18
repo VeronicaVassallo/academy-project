@@ -1,6 +1,8 @@
+@if (loader) {
+<span class="loader"></span>
+}
 <h2 class="mt-5">Bacheca Generale</h2>
 <app-table-notification [notficationsList]="notifications" />
-
 <form class="mt-5" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
   <h3>Crea un nuovo messaggio</h3>
   <div>
